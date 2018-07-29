@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceshipsBattle", "Spaceships\SpaceshipsBattle.csproj", "{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceshipBattle", "Spaceships\SpaceshipBattle.csproj", "{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
