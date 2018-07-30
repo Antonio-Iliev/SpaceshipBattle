@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Core
+namespace SpaceshipBattle.Entities.Spaceships
 {
-    public static class OutputMessages
+    public class FuturisticSpaceship
     {
-        
+
     }
 }

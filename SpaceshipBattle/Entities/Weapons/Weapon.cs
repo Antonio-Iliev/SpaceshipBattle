@@ -9,13 +9,17 @@ namespace SpaceshipsBattle.Entities.Weapons
     {
         // lazer, ak47, bazuka, 
         public string  Model { get; set; }
+
         public int Power { get; set; }
         //steps 
         public int Speed { get; set; }
+
         public int Price { get; set; }
+
         public int  Weight { get; set; }
 
-        //??? not sure about this.... s fiksirano capacity
-        public IList<IAmmunition> Ammunitions { get; set; }
+        public int ClipCapacity { get; set; }
+
+        public IBullet Bullet { get; set; }
     }
 }

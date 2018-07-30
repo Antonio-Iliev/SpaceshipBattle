@@ -4,9 +4,10 @@ using System.Text;
 
 namespace SpaceshipsBattle.Contracts
 {
-    public interface IAmmunition : IItem
+    public interface IBullet
     {
         int PositionX { get; }
+
         int PositionY { get; }
     }
 }

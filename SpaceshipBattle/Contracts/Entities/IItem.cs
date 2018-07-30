@@ -6,8 +6,10 @@ namespace SpaceshipsBattle.Contracts
 {
     public interface IItem
     {
-        int Weight { get; }
-        int Price { get; }
         string Model { get; }
+
+        int Price { get; }
+
+        int Weight { get; }
     }
 }

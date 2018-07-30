@@ -8,7 +8,9 @@ namespace SpaceshipsBattle.Contracts
     public interface IEngine : IItem
     {
         int Power { get; }
+
         int FuelCapacity { get; }
+
         FuelType FuelType { get; }
     }
 }

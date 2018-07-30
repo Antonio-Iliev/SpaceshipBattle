@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SpaceshipsBattle.Entities.Engine;
+using System;
 
 namespace SpaceshipsBattle
-{s
+{
     class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new Engine();
+            ferarri, 670, 100, 
         }
     }
 }

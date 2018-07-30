@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceshipBattle", "Spaceships\SpaceshipBattle.csproj", "{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceshipBattle", "SpaceshipBattle\SpaceshipBattle.csproj", "{38FDA69D-0B40-4CA7-A0E4-9667768864C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97F56237-4CE7-4C44-A0F8-3AFE4BE7F6A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38FDA69D-0B40-4CA7-A0E4-9667768864C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38FDA69D-0B40-4CA7-A0E4-9667768864C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38FDA69D-0B40-4CA7-A0E4-9667768864C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38FDA69D-0B40-4CA7-A0E4-9667768864C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B2E449FE-575C-4696-9818-2DB784BC6E6F}
+		SolutionGuid = {50A0DAF3-8873-4757-80C0-50EE3ADC462E}
 	EndGlobalSection
 EndGlobal

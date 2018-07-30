@@ -7,7 +7,9 @@ namespace SpaceshipsBattle.Contracts
     public interface IPlayer
     {
         string Name { get; }
+
         ISpaceship Spaceship { get; }
+
         int Money { get; }
 
     }
