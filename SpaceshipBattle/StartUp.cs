@@ -9,6 +9,8 @@ namespace SpaceshipsBattle
         static void Main(string[] args)
         {
 
+            Console.WriteLine();
+
         }
     }
 }
