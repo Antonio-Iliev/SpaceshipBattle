@@ -7,10 +7,10 @@ using System.Text;
 
 namespace SpaceshipsBattle.Core.Factories
 {
-    public class EngineFactory : IEngineFactory
-    {
-        public IEngine CreateEngine(string model, int weight, int price, int power, int fuelCapacity, FuelType fuelType)
-        {
-        }
-    }
+ // public class EngineFactory : IEngineFactory
+ // {
+ //     public IEngine CreateEngine(string model, int weight, int price, int power, int fuelCapacity, FuelType fuelType)
+ //     {
+ //     }
+ // }
 }

@@ -1,4 +1,5 @@
-﻿using SpaceshipsBattle.Entities.Engine;
+﻿using SpaceshipBattle.Entities.Armours;
+using SpaceshipsBattle.Entities.Engine;
 using System;
 
 namespace SpaceshipsBattle
@@ -7,8 +8,7 @@ namespace SpaceshipsBattle
     {
         static void Main(string[] args)
         {
-            new Engine();
-            ferarri, 670, 100, 
+
         }
     }
 }

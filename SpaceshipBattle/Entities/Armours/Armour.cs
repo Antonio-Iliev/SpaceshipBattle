@@ -1,18 +1,23 @@
 ﻿using SpaceshipsBattle.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SpaceshipsBattle.Entities.Armour
+namespace SpaceshipBattle.Entities.Armours
 {
-    public abstract class Armour : IArmour
+    public class Armour : IArmour
     {
-        public string Model { get; set; }
+        private IArmour armour;
 
-        public int Points { get; set; }
+        public Armour(IArmour armour)
+        {
+            this.armour = armour;
+        }
 
-        public int Price { get; set; }
+        public string Model => armour.Model;
 
-        public int Weight { get; set; }  
+        public int Points => armour.Points;
+
+        public int Price => armour.Price;
+
+        public int Weight => armour.Weight;
     }
 }
