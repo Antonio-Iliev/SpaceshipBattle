@@ -10,7 +10,7 @@ namespace SpaceshipsBattle.Contracts
 
         int TotalDist { get; }
 
-        int Fuel { get; }
+        int FuelCapacity { get; }
 
         int PositionY { get; }
 

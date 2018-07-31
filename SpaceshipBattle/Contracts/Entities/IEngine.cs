@@ -9,8 +9,6 @@ namespace SpaceshipsBattle.Contracts
     {
         int Power { get; }
 
-        int FuelCapacity { get; }
-
         FuelType FuelType { get; }
     }
 }

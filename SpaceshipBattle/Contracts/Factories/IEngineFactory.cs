@@ -7,6 +7,6 @@ namespace SpaceshipsBattle.Contracts.Factories
 {
     public interface IEngineFactory
     {
-        IEngine CreatEngine(string model, int weight, int price, int power, int fuelCapacity, FuelType fuelType);
+        IEngine CreateEngine(string model);
     }
 }

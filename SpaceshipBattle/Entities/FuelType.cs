@@ -5,6 +5,9 @@
         Petrol,
         Diesel,
         LPG,
-        Hybrid
+        Hybrid,
+        Electric,
+        Water,
+        Ion
     }
 }

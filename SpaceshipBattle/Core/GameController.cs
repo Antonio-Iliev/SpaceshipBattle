@@ -1,4 +1,5 @@
-﻿//using System;
+﻿//using SpaceshipsBattle.Entities.Players;
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -9,11 +10,11 @@
 //{
 //    public class GameController
 //    {
-//        static int ballPositionX = 0;
-//        static int ballPositionY = 0;
+//        //static int ballPositionX = 0;
+//        //static int ballPositionY = 0;
 
-//        //static Player firstPlayer = new Player();
-//        //static Player secondPlayer = new Player();
+//        static Player firstPlayer = new Player();
+//        static Player secondPlayer = new Player();
 
 
 
@@ -32,9 +33,9 @@
 //        }
 //        static void DrawFirstPlayer()
 //        {
-//            for (int i = firstPlayer.PositionY; i < firstPlayer.PositionY + 4; i++)
+//            for (int i = firstPlayer.Spaceship.PositionY; i < firstPlayer.Spaceship.PositionY + 4; i++)
 //            {
-//                for (int j = 0; j < i - firstPlayer.PositionY; j++)
+//                for (int j = 0; j < i - firstPlayer.Spaceship.PositionY; j++)
 //                {
 //                    PrintAtPosition(j, i, '*');
 
@@ -47,14 +48,14 @@
 
 //        static void DrawSecondPlayer()
 //        {
-//            PrintAtPosition(Console.WindowWidth - 1, secondPlayer.PositionY, '|');
+//            PrintAtPosition(Console.WindowWidth - 1, secondPlayer.Spaceship.PositionY, '|');
 
 //        }
 
 //        static void SetInitialPositions()
 //        {
-//            firstPlayer.PositionY = Console.WindowHeight / 2;
-//            secondPlayer.PositionY = Console.WindowHeight / 2;
+//            firstPlayer.Spaceship.PositionY = Console.WindowHeight / 2;
+//            secondPlayer.Spaceship.PositionY = Console.WindowHeight / 2;
 //        }
 
 //        static void DrawBall()
