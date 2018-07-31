@@ -17,6 +17,11 @@ namespace SpaceshipBattle.Entities
         private string model;
         private int price;
         private int weight;
+
+        public Item(string model, int price, int weight)
+        {
+
+        }
         
         public string Model
         {
@@ -68,6 +73,11 @@ namespace SpaceshipBattle.Entities
                 }
                 this.weight = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Is not implemented, yet";
         }
     }
 }

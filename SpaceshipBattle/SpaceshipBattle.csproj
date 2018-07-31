@@ -6,4 +6,8 @@
     <StartupObject>SpaceshipsBattle.StartUp</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Armours\ProtectiveFields\" />
+  </ItemGroup>
+
 </Project>
