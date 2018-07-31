@@ -1,6 +1,4 @@
-﻿using SpaceshipBattle.Entities.Armours;
-using SpaceshipsBattle.Entities.Engine;
-using System;
+﻿using System;
 
 namespace SpaceshipsBattle
 {
@@ -8,8 +6,6 @@ namespace SpaceshipsBattle
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine();
 
         }
     }
