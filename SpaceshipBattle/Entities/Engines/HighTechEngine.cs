@@ -13,7 +13,7 @@ namespace SpaceshipBattle.Entities.Engines
 
         private int thrust;
 
-        protected HighTechEngine(string model, int price, int weight, int power, FuelType fuelType, int thrust) : base(model, price, weight, power, fuelType)
+        public HighTechEngine(string model, int price, int weight, int power, FuelType fuelType, int thrust) : base(model, price, weight, power, fuelType)
         {
             this.Thrust = thrust;
         }
@@ -35,7 +35,7 @@ namespace SpaceshipBattle.Entities.Engines
             }
         }
 
-        public override int EngineCoefEfficiency => this.Power + this.Thrust;
+        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Thrust *100)/100d);
 
         public override string ToString()
         {

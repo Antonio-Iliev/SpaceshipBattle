@@ -8,6 +8,8 @@ namespace SpaceshipBattle.Entities.Engines
 {
     public class AutomobileEngine : Engine, IAutomobileEngine
     {
+        private const int MinPowerValue = 1;
+        private const int MaxPowerValue = 1500;
         private const int MinTorqueValue = 0;
         private const int MaxTorqueValue = 1500;
         private const int MinCapacityValue = 500;
@@ -19,11 +21,26 @@ namespace SpaceshipBattle.Entities.Engines
         private int capacity;
         private int cylinderCount;
 
-        protected AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount) : base(model, price, weight, power, fuelType)
+        public AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount) : base(model, price, weight, power, fuelType)
         {
             this.Torque = torque;
             this.Capacity = capacity;
             this.CylinderCount = cylinderCount;
+        }
+        public override int Power
+        {
+            get
+            {
+                return base.Power;
+            }
+            protected set
+            {
+                if (value < MinCapacityValue || value > MaxCapacityValue)
+                {
+                    throw new ArgumentOutOfRangeException($"The capacity of engine cannot be less than {MinCapacityValue } or more than {MaxCapacityValue}.");
+                }
+                base.Power = value;
+            }
         }
 
         public int Capacity
@@ -75,8 +92,8 @@ namespace SpaceshipBattle.Entities.Engines
             }
         }
 
-        public override int EngineCoefEfficiency => this.Power + this.Torque + this.Capacity + this.CylinderCount * 10;
-
+        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Torque + this.Capacity / 10 + this.CylinderCount * 10) / 1000d);
+        
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

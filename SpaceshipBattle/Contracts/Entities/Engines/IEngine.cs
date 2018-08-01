@@ -11,6 +11,6 @@ namespace SpaceshipsBattle.Contracts
 
         FuelType FuelType { get; }
 
-        int EngineCoefEfficiency { get; }
+        int EngineEfficiencyCoef { get; }
     }
 }

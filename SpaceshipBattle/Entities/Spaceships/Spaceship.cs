@@ -9,32 +9,41 @@ namespace SpaceshipsBattle.Entities
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
     public abstract class Spaceship : Item, ISpaceship
     {
-        protected Spaceship(string model, int health, int fuel, IArmour armour, IEngine engine, IWeapon weapon)
+        //TODO
+        protected Spaceship() : base("asf",12, 2)
         {
-            base.Model = model;
-            this.Health = health;
-            this.FuelCapacity = fuel;
-            this.Armour = armour;
-            this.Engine = engine;
-            this.Weapon = weapon;
+
         }
 
-        public int Health { get; set; } = 100;
-        
+        public int Health => 100;
+
+        public override string Model => this.GetType().Name;
+
+        public override int Price => this.Engine.Price + this.Armour.Price + this.Weapon.Price;
+
+        public override int Weight => this.Engine.Weight + this.Armour.Weight + this.Weapon.Weight;
+
         public int FuelCapacity { get; set; } // mashUp = 30, futuristic = 25
+
         public IArmour Armour { get; set; }
+
         public IEngine Engine { get; set; }
+
         public IWeapon Weapon { get; set; }
 
-        public int ArmourPoints { get; set; } // = armourCoef; (~50) 
-        public int HitPoints { get; set; }  // = weaponsCoef ( ~10)
-        public int Speed { get; set; } // = totalWeight/ engineCoef steps (1:3)
-        public int PositionY { get; set; }
-        public bool isAtShooting { get; set; }
-        public int PositionAtTheMomentOfShooting { get; set; }
-        public int TotalDist { get; set; } // moveCount * step
-        // totalWeight - sum of armour.weight, engine.weight and weapon.weight
+        //TODO
+        public int Speed => this.Engine.EngineEfficiencyCoef;
 
+        public int PositionY { get; set; }
+
+        public bool isAtShooting { get; set; } = false;
+
+        public int PositionAtTheMomentOfShooting { get; set; }
+
+        public int TotalDist { get; set; } = 0;
+
+        //public int ArmourPoints { get; set; } // = armourCoef; (~50) 
+        //public int HitPoints { get; set; }  // = weaponsCoef ( ~10)
 
         public void Refuel()
         {
@@ -51,6 +60,17 @@ namespace SpaceshipsBattle.Entities
             //TotalDist += Speed;
             //FuelCapacity -= Speed;
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Engine: {this.Engine.Model}");
+            sb.AppendLine($"Armour: {this.Armour.Model}");
+            sb.AppendLine($"Weapon: {this.Weapon.Model}");
+
+            return base.ToString();
         }
     }
 }

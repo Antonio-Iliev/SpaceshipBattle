@@ -25,7 +25,7 @@ namespace SpaceshipBattle.Entities
             this.Weight = weight;
         }
 
-        public string Model
+        public virtual string Model
         {
             get
             {

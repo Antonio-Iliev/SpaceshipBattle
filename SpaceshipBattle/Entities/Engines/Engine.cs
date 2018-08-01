@@ -8,8 +8,8 @@ namespace SpaceshipsBattle.Entities.Engine
 {
     public abstract class Engine : Item, IEngine
     {
-        private const int MinPowerValue = 0;
-        private const int MaxPowerValue = 1000;
+        private const int MinPowerValue = 1;
+        private const int MaxPowerValue = 10000;
 
         private string model;
         private int price;
@@ -23,13 +23,13 @@ namespace SpaceshipsBattle.Entities.Engine
             this.FuelType = fuelType;
         }
 
-        public int Power
+        public virtual int Power
         {
             get
             {
                 return this.power;
             }
-            private set
+            protected set
             {
                 if (value < MinPowerValue || value > MaxPowerValue)
                 {
@@ -51,7 +51,7 @@ namespace SpaceshipsBattle.Entities.Engine
             }
         }
        
-        public abstract int EngineCoefEfficiency { get; }
+        public abstract int EngineEfficiencyCoef { get; }
 
         public override string ToString()
         {

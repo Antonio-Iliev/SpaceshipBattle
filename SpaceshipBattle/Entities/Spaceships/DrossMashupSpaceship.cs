@@ -11,7 +11,7 @@ namespace SpaceshipBattle.Entities.Spaceships
     {
         private readonly List<string> enginesAllowed = new List<string>()
         {
-            nameof(TDI)
+            
         };
 
         private readonly List<string> armoursAllowed = new List<string>()
@@ -24,9 +24,6 @@ namespace SpaceshipBattle.Entities.Spaceships
 
         };
 
-        protected DrossMashupSpaceship(string model, int health, int fuel, IArmour armour, IEngine engine, IWeapon weapon) : base(model, health, fuel, armour, engine, weapon)
-        {
 
-        }
     }
 }
