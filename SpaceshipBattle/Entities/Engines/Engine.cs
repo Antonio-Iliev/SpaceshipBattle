@@ -17,11 +17,8 @@ namespace SpaceshipsBattle.Entities.Engine
         private int power;
         private FuelType fuelType;
         
-        protected Engine(string model, int price, int weight, int power, FuelType fuelType)
+        protected Engine(string model, int price, int weight, int power, FuelType fuelType) : base(model, price, weight)
         {
-            base.Model = model;
-            base.Weight = weight;
-            base.Price = price;
             this.Power = power;
             this.FuelType = fuelType;
         }
