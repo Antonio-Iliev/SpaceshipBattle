@@ -18,6 +18,12 @@ namespace SpaceshipBattle.Entities
         private int price;
         private int weight;
 
+        protected Item(string model, int price, int weight)
+        {
+            this.Model = model;
+            this.Price = price;
+            this.Weight = weight;
+        }
 
         public string Model
         {
