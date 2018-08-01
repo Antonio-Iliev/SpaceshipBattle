@@ -11,7 +11,6 @@ namespace SpaceshipsBattle.Entities.Armour
         private string model;
         private int price;
         private int weight;
-        private ArmourType armourType;
 
         public ArmourAbstract(string model, int price, int weight, int points, ArmourType armourType)
             : base(model, price, weight)
@@ -33,12 +32,12 @@ namespace SpaceshipsBattle.Entities.Armour
             }
         }
 
-        public ArmourType ArmourType { get => this.armourType;  set => this.armourType = value; }
+        public ArmourType ArmourType { get; set; }
 
         public override string ToString()
         {
             return base.ToString() + $"Armour points: {this.points}" +
-                $"Armour type: {this.armourType}";
+                $"Armour type: {this.ArmourType}";
         }
     }
 }
