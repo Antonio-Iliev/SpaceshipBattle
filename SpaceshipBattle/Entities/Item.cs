@@ -9,15 +9,15 @@ namespace SpaceshipBattle.Entities
     {
         private const int MinModelLength = 2;
         private const int MaxModelLength = 15;
-        private const int MinPriceValue = 0;
-        private const int MaxPriceValue = 10000;
+        private const int MinPriceValue = 1000;
+        private const int MaxPriceValue = 5000;
         private const int MinWeightValue = 0;
         private const int MaxWeightValue = 1000;
-        
+
         private string model;
         private int price;
         private int weight;
-        
+
         public string Model
         {
             get
@@ -44,7 +44,7 @@ namespace SpaceshipBattle.Entities
             {
                 return this.price;
             }
-           private set
+            protected set
             {
                 if (value < MinPriceValue || value > MaxPriceValue)
                 {
@@ -60,14 +60,25 @@ namespace SpaceshipBattle.Entities
             {
                 return this.weight;
             }
-            set
+            protected set
             {
                 if (value < MinWeightValue || value > MaxWeightValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The price cannot be less than {MinWeightValue} or more than {MaxWeightValue}.");
+                    throw new ArgumentOutOfRangeException($"The weight cannot be less than {MinWeightValue} or more than {MaxWeightValue}.");
                 }
                 this.weight = value;
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"---{this.GetType().Name}");
+            sb.AppendLine($"Model: {this.Model}");
+            sb.AppendLine($"Price: {this.Price}");
+            sb.AppendLine($"Weight: {this.Weight}");
+
+            return sb.ToString();
         }
     }
 }

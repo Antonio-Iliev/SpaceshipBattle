@@ -14,14 +14,29 @@ namespace SpaceshipsBattle.Core.Factories
         {
             switch (model)
             {
-                case "TDI":
-                    return new AutomobileEngine("1.9 TDI", 500, 250, 110, 80, FuelType.Diesel);
-                case "V8":
-                    return new AutomobileEngine("V8", 500, 250, 110, 80, FuelType.Diesel);
+                //case "TDI":
+                //    return new AutomobileEngine("1.9 TDI", 1000, 250, 110, FuelType.Diesel);
+                //case "V8":
+                //    return new AutomobileEngine("V8", 500, 250, 110, 200, FuelType.Diesel);
 
-                default: throw new ArgumentException("There is no such a model!");                    
+                default: throw new ArgumentException("There is no such a model!");
             }
         }
+
+        //DATA
+        //string modelValue = "H2O Motor";
+        //int priceValue = 2000;
+        //int weightValue = 100;
+        //int powerValue = 75;
+        //int fuelCapacityValue = 50;
+        //FuelType fuelTypeValue = FuelType.Water;
+
+        //string modelValue = "Ion X3";
+        //int priceValue = 1000;
+        //int weightValue = 600;
+        //int powerValue = 400;
+        //int fuelCapacityValue = 40;
+        //FuelType fuelTypeValue = FuelType.Ion;
 
 
     }
