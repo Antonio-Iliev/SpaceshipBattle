@@ -20,7 +20,7 @@ namespace SpaceshipsBattle.Entities.Players
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 15)
+                if (value.Length < MinNameLength || value.Length > MaxNameLength)
                 {
                     throw new ArgumentException($"The player name cannot be less than {MinNameLength} or more than {MaxNameLength} symbols long.");
                 }

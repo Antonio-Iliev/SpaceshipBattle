@@ -8,33 +8,22 @@ namespace SpaceshipsBattle.Entities.Engine
 {
     public abstract class Engine : Item, IEngine
     {
+        private const int MinPowerValue = 0;
+        private const int MaxPowerValue = 1000;
+
         private string model;
         private int price;
         private int weight;
         private int power;
         private FuelType fuelType;
-
-        protected Engine(int weight, int power, int fuelCapacity, FuelType fuelType)
+        
+        protected Engine(string model, int price, int weight, int power, FuelType fuelType)
         {
-            this.Weight = weight;
+            base.Model = model;
+            base.Weight = weight;
+            base.Price = price;
             this.Power = power;
             this.FuelType = fuelType;
-        }
-        
-        public override int Weight
-        {
-            get
-            {
-                return this.weight;
-            }
-            set
-            {
-                if (value < 100 || value > 500)
-                {
-                    throw new ArgumentException($"The weight of the engine should be between 100kg and 500kg.");
-                }
-                this.weight = value;
-            }
         }
 
         public int Power
@@ -45,11 +34,14 @@ namespace SpaceshipsBattle.Entities.Engine
             }
             private set
             {
+                if (value < MinPowerValue || value > MaxPowerValue)
+                {
+                    throw new ArgumentOutOfRangeException($"The power of engine cannot be less than {MinPowerValue } or more than {MaxPowerValue}.");
+                }
                 this.power = value;
             }
         }
-
-
+        
         public FuelType FuelType
         {
             get
@@ -60,6 +52,18 @@ namespace SpaceshipsBattle.Entities.Engine
             {
                 this.fuelType = value;
             }
+        }
+       
+        public abstract int EngineCoefEfficiency { get; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Power: { this.Power}");
+            sb.AppendLine($"Fuel type: { this.FuelType}");
+            
+            return sb.ToString();
         }
     }
 }
