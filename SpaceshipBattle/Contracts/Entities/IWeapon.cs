@@ -14,5 +14,6 @@ namespace SpaceshipsBattle.Contracts
         int ClipCapacity { get; }
 
         IBullet Bullet { get;  }
+        
     }
 }

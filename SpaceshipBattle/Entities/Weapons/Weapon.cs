@@ -1,19 +1,29 @@
 ﻿using SpaceshipBattle.Entities;
 using SpaceshipsBattle.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceshipsBattle.Entities.Weapons
 {
-    public abstract class Weapon : Item, IWeapon
+    public class Weapon : Item, IWeapon
     {
-        public int Power { get; set; }
-        //steps 
-        public int Speed { get; set; }
+        protected int weight;
+        protected int price;
+        public Weapon(string model, int price, int weight, int power, int speed, int clipCapacity) : base(model, price, weight)
+        {
+            Power = power;
+            Speed = speed;
+            ClipCapacity = clipCapacity;
 
-        public int ClipCapacity { get; set; }
+        }
+        public int Power { get; }
+        public int Speed { get; }
+        public int ClipCapacity { get; }
+        public int RemainingClips { get; private set; }
 
-        public IBullet Bullet { get; set; }
+        public double Damage => this.Power + this.Speed / 5;
+
+
+        public IBullet Bullet { get; }
+
     }
 }
