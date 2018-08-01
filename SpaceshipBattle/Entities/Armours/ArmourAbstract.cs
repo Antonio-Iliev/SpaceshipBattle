@@ -2,6 +2,7 @@
 using SpaceshipBattle.Entities.Armours.Common;
 using SpaceshipsBattle.Contracts;
 using System;
+using System.Text;
 
 namespace SpaceshipsBattle.Entities.Armour
 {
@@ -36,8 +37,11 @@ namespace SpaceshipsBattle.Entities.Armour
 
         public override string ToString()
         {
-            return base.ToString() + $"Armour points: {this.points}" +
-                $"Armour type: {this.ArmourType}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Defense points: {this.points}");
+            sb.AppendLine($"Armour type: {this.ArmourType} -----");
+            return sb.ToString();
         }
     }
 }

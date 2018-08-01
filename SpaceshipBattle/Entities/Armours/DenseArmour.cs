@@ -2,6 +2,7 @@
 using SpaceshipBattle.Entities.Armours.Common;
 using SpaceshipsBattle.Entities.Armour;
 using System;
+using System.Text;
 
 namespace SpaceshipBattle.Entities.Armours
 {
@@ -45,5 +46,14 @@ namespace SpaceshipBattle.Entities.Armours
         }
 
         public int ArmourCoefficient { get => this.Points + this.hardness + this.toughness; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Hardness: {this.hardness}");
+            sb.AppendLine($"Toughness: {this.toughness}");
+            return sb.ToString();
+        }
     }
 }

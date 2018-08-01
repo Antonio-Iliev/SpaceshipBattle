@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Core.Factories
 {
     public class ArmoursFactories : IArmourFactory
     {
-        public IArmour CreateEngine(string model)
+        public IArmour CreateArmour(string model)
         {
             switch (model)
             {

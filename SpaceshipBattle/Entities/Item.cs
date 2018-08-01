@@ -18,6 +18,7 @@ namespace SpaceshipBattle.Entities
         private int price;
         private int weight;
 
+
         public string Model
         {
             get
