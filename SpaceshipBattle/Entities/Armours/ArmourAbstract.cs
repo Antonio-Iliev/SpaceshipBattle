@@ -27,7 +27,7 @@ namespace SpaceshipsBattle.Entities.Armour
             {
                 if (value < 10 || value > 250)
                 {
-                    throw new ArgumentOutOfRangeException("Armour must be between 10 and 250 pints ");
+                    throw new ArgumentOutOfRangeException("Armour must be between 10 and 250 pints.");
                 }
                 this.points = value;
             }
