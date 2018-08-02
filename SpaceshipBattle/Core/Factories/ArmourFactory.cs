@@ -6,7 +6,7 @@ using System;
 
 namespace SpaceshipBattle.Core.Factories
 {
-    public class ArmoursFactories : IArmourFactory
+    public class ArmourFactory : IArmourFactory
     {
         public IArmour CreateArmour(string model)
         {

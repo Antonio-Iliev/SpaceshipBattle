@@ -12,11 +12,14 @@ namespace SpaceshipsBattle.Contracts
 
         int FuelCapacity { get; }
 
-        int PositionY { get; }
+        int Speed { get; }
+        //TODO
+        int PositionY { get; set; }
+        //TODO
+        bool IsAtShooting { get; set; }
 
-        bool isAtShooting { get; }
-
-        int PositionAtTheMomentOfShooting { get; }
+        //TODO
+        int PositionAtTheMomentOfShooting { get; set; }
 
         IEngine Engine { get; }
 

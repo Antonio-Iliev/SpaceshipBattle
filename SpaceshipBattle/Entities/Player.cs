@@ -12,6 +12,12 @@ namespace SpaceshipsBattle.Entities.Players
         
         private string name;
 
+        public Player(string name, ISpaceship spaceship)
+        {
+            this.Name = name;
+            this.Spaceship = spaceship;
+        }
+
         public string Name
         {
             get

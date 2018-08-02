@@ -7,12 +7,14 @@ using System.Text;
 namespace SpaceshipsBattle.Entities
 {
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
-    public abstract class Spaceship : Item, ISpaceship
+    public  class Spaceship : Item, ISpaceship
     {
         //TODO
-        protected Spaceship() : base("asf",12, 2)
+        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon) : base("asf",12, 2)
         {
-
+            this.Engine = engine;
+            this.Armour = armour;
+            this.Weapon = weapon;
         }
 
         public int Health => 100;
@@ -25,10 +27,10 @@ namespace SpaceshipsBattle.Entities
 
         public int FuelCapacity { get; set; } // mashUp = 30, futuristic = 25
 
-        public IArmour Armour { get; set; }
-
         public IEngine Engine { get; set; }
 
+        public IArmour Armour { get; set; }
+        
         public IWeapon Weapon { get; set; }
 
         //TODO
@@ -36,7 +38,7 @@ namespace SpaceshipsBattle.Entities
 
         public int PositionY { get; set; }
 
-        public bool isAtShooting { get; set; } = false;
+        public bool IsAtShooting { get; set; } = false;
 
         public int PositionAtTheMomentOfShooting { get; set; }
 
@@ -52,7 +54,12 @@ namespace SpaceshipsBattle.Entities
 
         public void Shoot()
         {
-            throw new NotImplementedException();
+            //this.Bullet.PositionX += this.Speed;
+
+            //if (Bullet.PositionX + step >= Console.WindowWidth)
+            //{
+            //    this.IsOnFire = false;
+            //}
         }
 
         public void Move(string direction)

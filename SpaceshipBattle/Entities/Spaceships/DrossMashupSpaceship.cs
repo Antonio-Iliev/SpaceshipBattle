@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Entities.Spaceships
 {
     public class DrossMashupSpaceship : Spaceship
     {
-        private readonly List<string> enginesAllowed = new List<string>()
+        private readonly List<IEngine> enginesAllowed = new List<IEngine>()
         {
             
         };

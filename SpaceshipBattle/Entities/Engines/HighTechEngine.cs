@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Entities.Engines
     public class HighTechEngine : Engine, IHighTechEngine
     {
         private const int MinThrustValue = 0;
-        private const int MaxThrustValue = 1500;
+        private const int MaxThrustValue = 100;
 
         private int thrust;
 
@@ -35,7 +35,7 @@ namespace SpaceshipBattle.Entities.Engines
             }
         }
 
-        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Thrust *100)/100d);
+        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Thrust *100)/1000d);
 
         public override string ToString()
         {
