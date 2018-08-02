@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities.Engines
 {
-    public abstract class Engine : Item, IEngine
+    public abstract class SpaceshipEngine : Item, IEngine
     {
         private const int MinPowerValue = 1;
         private const int MaxPowerValue = 10000;
@@ -14,7 +14,7 @@ namespace SpaceshipBattle.Entities.Engines
         private int power;
         private FuelType fuelType;
         
-        protected Engine(string model, int price, int weight, int power, FuelType fuelType) : base(model, price, weight)
+        protected SpaceshipEngine(string model, int price, int weight, int power, FuelType fuelType) : base(model, price, weight)
         {
             this.Power = power;
             this.FuelType = fuelType;

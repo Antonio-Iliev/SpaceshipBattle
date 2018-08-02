@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities.Engines
 {
-    public class HighTechEngine : Engine, IHighTechEngine
+    public class HighTechEngine : SpaceshipEngine, IHighTechEngine
     {
         private const int MinThrustValue = 0;
         private const int MaxThrustValue = 100;

@@ -18,8 +18,7 @@ namespace SpaceshipBattle.Entities.Weapons
         public int Power { get; }
         public int Speed { get; }
         public int ClipCapacity { get; }
-        public int RemainingClips { get; private set; }
-               
+        public int RemainingClips { get; private set; }               
 
         public IBullet Bullet { get; set; }
 

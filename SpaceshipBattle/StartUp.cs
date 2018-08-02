@@ -14,7 +14,7 @@ namespace SpaceshipBattle
             IWriter writer = new ConsoleWriter();
             IReader reader = new ConsoleReader();
 
-            var engine = new GameEngine(playerCreator, gameController, writer, reader);
+            var engine = new Engine(playerCreator, gameController, writer, reader);
             engine.Start();
         }
 

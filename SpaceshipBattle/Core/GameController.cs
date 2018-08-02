@@ -83,14 +83,12 @@ namespace SpaceshipBattle.Core
                 {
                     secondPlayer.Spaceship.Weapon.Bullet.PositionY = secondPlayer.Spaceship.PositionAtTheMomentOfShooting;
 
-                    // secondPlayer.Spaceship.Shoot("right");
                     secondPlayer.Spaceship.Weapon.Bullet.PositionX -= 3;
                     if (secondPlayer.Spaceship.Weapon.Bullet.PositionX - 3 <= 0)
                     {
                         secondPlayer.Spaceship.IsAtShooting = false;
                     }
 
-                    //hit
                     HitPlayer(firstPlayer, secondPlayer);
 
                 }
