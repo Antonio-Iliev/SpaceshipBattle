@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Contracts.Providers
 {
-    public interface IGameEngine
+    public interface IEngine
     {
         void Start();
     }

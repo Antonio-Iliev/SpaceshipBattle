@@ -4,13 +4,13 @@ using SpaceshipBattle.Entities.Spaceships;
 
 namespace SpaceshipBattle.Core
 {
-    public class GameEngine : IGameEngine
+    public class Engine : Contracts.Providers.IEngine
     {
         //TODO implement IPlayerCreator and IGameController
         private PlayerCreator playerCreator;
         private GameController gameController;
 
-        public GameEngine(PlayerCreator playerCreator, GameController gameController, IWriter writer, IReader reader)
+        public Engine(PlayerCreator playerCreator, GameController gameController, IWriter writer, IReader reader)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;
