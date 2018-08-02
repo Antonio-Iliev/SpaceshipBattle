@@ -1,6 +1,8 @@
-﻿namespace SpaceshipBattle.Contracts.Entities
+﻿using SpaceshipsBattle.Contracts;
+
+namespace SpaceshipBattle.Contracts.Entities
 {
-    public interface IProtectiveFields
+    public interface IProtectiveFields :IArmour
     {
         int Reflection { get; }
         int Refraction { get; }
