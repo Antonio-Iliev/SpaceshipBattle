@@ -25,7 +25,7 @@ namespace SpaceshipBattle.Entities.Armours
             get => this.hardness;
             private set
             {
-                if (value < 0 || value < 10)
+                if (value < 0 || value > 10)
                 {
                     throw new ArgumentException("Hardness must be between 0 and 10 pints.");
                 }
@@ -37,7 +37,7 @@ namespace SpaceshipBattle.Entities.Armours
             get => this.toughness;
             private set
             {
-                if (value < 0 || value < 5)
+                if (value < 0 || value > 5)
                 {
                     throw new ArgumentException("Toughness must be between 0 and 5 pints.");
                 }

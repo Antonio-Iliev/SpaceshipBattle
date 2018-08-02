@@ -1,6 +1,8 @@
-﻿namespace SpaceshipBattle.Contracts.Entities
+﻿using SpaceshipsBattle.Contracts;
+
+namespace SpaceshipBattle.Contracts.Entities
 {
-    public interface IDenseArmour
+    public interface IDenseArmour : IArmour
     {
         int Hardness { get; }
         int Toughness { get; }
