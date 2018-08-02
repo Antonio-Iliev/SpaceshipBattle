@@ -9,16 +9,18 @@ namespace SpaceshipBattle.Entities
 {
 
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
-    public abstract class Spaceship :  ISpaceship
+    public abstract class Spaceship : ISpaceship
     {
         private const int MinPriceValue = 1000;
         private const int MaxPriceValue = 10000;
+        private string[] design;
 
-        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon)
+        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design)
         {
             this.Engine = engine;
             this.Armour = armour;
             this.Weapon = weapon;
+            this.Design = design;
         }
 
         public int Health { get; set; } = 100;
@@ -46,6 +48,19 @@ namespace SpaceshipBattle.Entities
         public IArmour Armour { get; set; }
 
         public IWeapon Weapon { get; set; }
+
+        public string[] Design
+        {
+            get => this.design;
+            private set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Design cannot be null");
+                }
+                this.design = value;
+            }
+        }
 
         //TODO
         public int Speed => this.Engine.EngineEfficiencyCoef;
@@ -99,7 +114,7 @@ namespace SpaceshipBattle.Entities
             }
         }
 
-      
+
         public void Move(string direction)
         {
             if (direction == "down")
@@ -107,7 +122,7 @@ namespace SpaceshipBattle.Entities
                 if (this.PositionY + this.Speed < Console.WindowHeight)
                 {
                     this.PositionY++;
-                    this.TotalDist+= this.Speed;
+                    this.TotalDist += this.Speed;
                     this.FuelCapacity -= this.Speed;
 
                     if (this.FuelCapacity <= 0)
@@ -130,7 +145,7 @@ namespace SpaceshipBattle.Entities
                         Refuel();
                     }
                 }
-            }            
+            }
         }
 
         public void TakeDamage(int hitPoints)

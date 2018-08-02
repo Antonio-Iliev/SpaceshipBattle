@@ -9,7 +9,9 @@ namespace SpaceshipBattle.Entities.Spaceships
 {
     public class DrossMashupSpaceship : Spaceship
     {
-        public DrossMashupSpaceship(IEngine engine, IArmour armour, IWeapon weapon) : base(engine, armour, weapon)
+
+
+        public DrossMashupSpaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design) : base(engine, armour, weapon, design)
         {
 
         }
@@ -28,6 +30,7 @@ namespace SpaceshipBattle.Entities.Spaceships
         {
 
         };
+
 
 
     }

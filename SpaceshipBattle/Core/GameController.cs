@@ -14,6 +14,7 @@ namespace SpaceshipBattle.Core
         private void RemoveScrollBars()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetWindowSize(120, 35);
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
         }
@@ -24,15 +25,15 @@ namespace SpaceshipBattle.Core
             Console.Write(symbol);
         }
 
-        private void DrawFirstPlayer(IPlayer player)
-        {
-            PrintAtPosition(0, player.Spaceship. PositionY , '|');
-        }
+        //private void DrawFirstPlayer(IPlayer player)
+        //{
+        //    PrintAtPosition(0, player.Spaceship. PositionY , '|');
+        //}
 
-        private void DrawSecondPlayer(IPlayer player)
-        {
-            PrintAtPosition(Console.WindowWidth - 1, player.Spaceship.PositionY, '|');
-        }       
+        //private void DrawSecondPlayer(IPlayer player)
+        //{
+        //    PrintAtPosition(Console.WindowWidth - 1, player.Spaceship.PositionY, '|');
+        //}       
 
         private void SetInitialPositions(IPlayer player)
         {
@@ -96,8 +97,8 @@ namespace SpaceshipBattle.Core
                 }
                 Console.Clear();
 
-                DrawFirstPlayer(firstPlayer);
-                DrawSecondPlayer(secondPlayer);
+                DrawShip.DrawShipPlayerOne(firstPlayer, firstPlayer.Spaceship.Design);
+                DrawShip.DrawShipPlayerTwo(secondPlayer, secondPlayer.Spaceship.Design);
 
                 DrawFirstPlayerBullet(firstPlayer);
                 DrawSecondPlayerBullet(secondPlayer);

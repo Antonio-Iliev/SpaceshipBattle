@@ -9,9 +9,6 @@ namespace SpaceshipBattle.Entities.Armour
     public abstract class ArmourAbstract : Item, IArmour
     {
         private int points;
-        private string model;
-        private int price;
-        private int weight;
 
         public ArmourAbstract(string model, int price, int weight, int points, ArmourType armourType)
             : base(model, price, weight)

@@ -27,13 +27,13 @@ namespace SpaceshipBattle.Core
             this.bulletFactory = new BulletFactory();
         }
 
-        public IPlayer CreatePlayer(string name, string spaceshipModel, string engineModel, string armourModel, string weaponModel )
+        public IPlayer CreatePlayer(string name, string spaceshipModel, string engineModel, string armourModel, string weaponModel, string[] design)
         {
             IEngine engine = engineFactory.CreateEngine(engineModel);
             IArmour armour = armourFactory.CreateArmour(armourModel);
             IWeapon weapon = weaponFactory.CreateWeapon(weaponModel);
             weapon.Bullet = bulletFactory.CreateBullet();
-            ISpaceship spaceship = spaceshipFactory.CreateSpaceship(spaceshipModel, engine, armour, weapon);
+            ISpaceship spaceship = spaceshipFactory.CreateSpaceship(spaceshipModel, engine, armour, weapon, design);
             IPlayer player = playerFactory.CreatePlayer(name, spaceship);
 
             return player;

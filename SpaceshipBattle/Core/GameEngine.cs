@@ -1,5 +1,6 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
 using SpaceshipBattle.Contracts;
+using SpaceshipBattle.Entities.Spaceships;
 
 namespace SpaceshipBattle.Core
 {
@@ -32,8 +33,9 @@ namespace SpaceshipBattle.Core
             string armourModel = Reader.ReadLine();
             Writer.Write("Select a weapon: ");
             string weaponModel = Reader.ReadLine();
+            string[] firstPlayerDesign = SpaceShipDesign.DrossLeft;
 
-            IPlayer firstPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel);
+            IPlayer firstPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel, firstPlayerDesign);
 
             Writer.Write("Please enter second player name: ");
             string secondPlayerName = Reader.ReadLine();
@@ -45,8 +47,9 @@ namespace SpaceshipBattle.Core
             armourModel = Reader.ReadLine();
             Writer.Write("Select a weapon: ");
             weaponModel = Reader.ReadLine();
+            string[] secondPlayerDesign = SpaceShipDesign.FuturisticRight;
 
-            IPlayer secondPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel);
+            IPlayer secondPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel, secondPlayerDesign);
 
             gameController.Play(firstPlayer, secondPlayer);
         }

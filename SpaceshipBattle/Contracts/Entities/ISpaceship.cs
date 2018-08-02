@@ -14,9 +14,9 @@ namespace SpaceshipBattle.Contracts
         int FuelCapacity { get; }
 
         int Speed { get; }
-        
+
         int PositionY { get; set; }
-        
+
         bool IsAtShooting { get; set; }
 
         //TODO
@@ -35,5 +35,7 @@ namespace SpaceshipBattle.Contracts
         void Move(string direction);
 
         void TakeDamage(int hitPoints);
+
+        string[] Design { get; }
     }
 }
