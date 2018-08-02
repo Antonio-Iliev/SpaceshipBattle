@@ -1,4 +1,4 @@
-﻿namespace SpaceshipsBattle.Contracts.Factories
+﻿namespace SpaceshipBattle.Contracts.Factories
 {
     public interface IEngineFactory
     {

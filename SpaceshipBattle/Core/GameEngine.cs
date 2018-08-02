@@ -1,11 +1,5 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
-using SpaceshipBattle.Core.Providers;
-using SpaceshipsBattle.Contracts;
-using SpaceshipsBattle.Core.GameController;
-using SpaceshipsBattle.Entities.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SpaceshipBattle.Contracts;
 
 namespace SpaceshipBattle.Core
 {

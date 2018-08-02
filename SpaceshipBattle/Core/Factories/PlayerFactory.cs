@@ -1,6 +1,6 @@
 ﻿using SpaceshipBattle.Contracts.Factories;
-using SpaceshipsBattle.Contracts;
-using SpaceshipsBattle.Entities.Players;
+using SpaceshipBattle.Contracts;
+using SpaceshipBattle.Entities.Players;
 using System;
 using System.Collections.Generic;
 using System.Text;

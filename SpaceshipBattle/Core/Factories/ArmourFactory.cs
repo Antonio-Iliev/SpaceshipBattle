@@ -1,12 +1,12 @@
 ﻿using SpaceshipBattle.Contracts.Factories;
 using SpaceshipBattle.Entities.Armours;
 using SpaceshipBattle.Entities.Armours.Common;
-using SpaceshipsBattle.Contracts;
+using SpaceshipBattle.Contracts;
 using System;
 
 namespace SpaceshipBattle.Core.Factories
 {
-    public class ArmoursFactories : IArmourFactory
+    public class ArmourFactory : IArmourFactory
     {
         public IArmour CreateArmour(string model)
         {

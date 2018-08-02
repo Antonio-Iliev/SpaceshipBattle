@@ -1,8 +1,8 @@
 ﻿using SpaceshipBattle.Entities;
-using SpaceshipsBattle.Contracts;
+using SpaceshipBattle.Contracts;
 using System;
 
-namespace SpaceshipsBattle.Entities.Weapons
+namespace SpaceshipBattle.Entities.Weapons
 {
     public abstract class WeaponAbstract : Item, IWeapon
     {
@@ -19,10 +19,12 @@ namespace SpaceshipsBattle.Entities.Weapons
         public int Speed { get; }
         public int ClipCapacity { get; }
         public int RemainingClips { get; private set; }
+               
+
+        public IBullet Bullet { get; set; }
+
+        public int Damage => throw new NotImplementedException();
 
         
-
-        public IBullet Bullet { get; }
-
     }
 }

@@ -1,5 +1,5 @@
-﻿using SpaceshipsBattle.Contracts;
-using SpaceshipsBattle.Entities;
+﻿using SpaceshipBattle.Contracts;
+using SpaceshipBattle.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Contracts
+namespace SpaceshipBattle.Contracts
 {
     public interface IPlayer
     {

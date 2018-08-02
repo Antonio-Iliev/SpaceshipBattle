@@ -1,4 +1,4 @@
-﻿using SpaceshipsBattle.Contracts;
+﻿using SpaceshipBattle.Contracts;
 
 namespace SpaceshipBattle.Contracts.Entities
 {

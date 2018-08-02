@@ -1,8 +1,8 @@
-﻿using SpaceshipsBattle.Contracts;
+﻿using SpaceshipBattle.Contracts;
 using System;
 using System.Threading;
 
-namespace SpaceshipsBattle.Core.GameController
+namespace SpaceshipBattle.Core
 {
     public class GameController
     {

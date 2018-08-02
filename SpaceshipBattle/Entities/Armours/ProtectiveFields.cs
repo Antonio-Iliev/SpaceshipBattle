@@ -1,6 +1,6 @@
 ﻿using SpaceshipBattle.Contracts.Entities;
 using SpaceshipBattle.Entities.Armours.Common;
-using SpaceshipsBattle.Entities.Armour;
+using SpaceshipBattle.Entities.Armour;
 using System;
 using System.Text;
 

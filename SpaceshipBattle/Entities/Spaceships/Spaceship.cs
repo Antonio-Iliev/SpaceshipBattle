@@ -1,11 +1,11 @@
 ﻿using SpaceshipBattle.Contracts.Entities;
 using SpaceshipBattle.Entities;
-using SpaceshipsBattle.Contracts;
+using SpaceshipBattle.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Entities
+namespace SpaceshipBattle.Entities
 {
 
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health

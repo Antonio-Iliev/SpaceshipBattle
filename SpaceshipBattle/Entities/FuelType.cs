@@ -1,4 +1,4 @@
-﻿namespace SpaceshipsBattle.Entities.Engine
+﻿namespace SpaceshipBattle.Entities.Engines
 {
     public enum FuelType
     {

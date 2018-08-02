@@ -1,9 +1,9 @@
-﻿using SpaceshipsBattle.Contracts;
+﻿using SpaceshipBattle.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Entities.Players
+namespace SpaceshipBattle.Entities.Players
 {
     public class Player : IPlayer
     {

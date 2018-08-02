@@ -1,7 +1,6 @@
 ﻿using SpaceshipBattle.Contracts.Factories;
 using SpaceshipBattle.Entities.Weapons;
-using SpaceshipsBattle.Contracts;
-using SpaceshipsBattle.Entities.Weapons;
+using SpaceshipBattle.Contracts;
 using System;
 
 namespace SpaceshipBattle.Core.Factories

@@ -1,10 +1,10 @@
 ﻿using SpaceshipBattle.Entities;
 using SpaceshipBattle.Entities.Armours.Common;
-using SpaceshipsBattle.Contracts;
+using SpaceshipBattle.Contracts;
 using System;
 using System.Text;
 
-namespace SpaceshipsBattle.Entities.Armour
+namespace SpaceshipBattle.Entities.Armour
 {
     public abstract class ArmourAbstract : Item, IArmour
     {

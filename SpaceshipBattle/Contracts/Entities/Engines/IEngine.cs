@@ -1,9 +1,9 @@
-﻿using SpaceshipsBattle.Entities.Engine;
+﻿using SpaceshipBattle.Entities.Engines;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Contracts
+namespace SpaceshipBattle.Contracts
 {
     public interface IEngine : IItem
     {

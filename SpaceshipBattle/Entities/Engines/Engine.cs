@@ -1,19 +1,16 @@
 ﻿using SpaceshipBattle.Entities;
-using SpaceshipsBattle.Contracts;
+using SpaceshipBattle.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipsBattle.Entities.Engine
+namespace SpaceshipBattle.Entities.Engines
 {
     public abstract class Engine : Item, IEngine
     {
         private const int MinPowerValue = 1;
         private const int MaxPowerValue = 10000;
 
-        private string model;
-        private int price;
-        private int weight;
         private int power;
         private FuelType fuelType;
         

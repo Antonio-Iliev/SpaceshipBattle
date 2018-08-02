@@ -1,12 +1,9 @@
 ﻿using SpaceshipBattle.Entities.Engines;
-using SpaceshipsBattle.Contracts;
-using SpaceshipsBattle.Contracts.Factories;
-using SpaceshipsBattle.Entities.Engine;
+using SpaceshipBattle.Contracts;
+using SpaceshipBattle.Contracts.Factories;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SpaceshipsBattle.Core.Factories
+namespace SpaceshipBattle.Core.Factories
 {
     public class EngineFactory : IEngineFactory
     {

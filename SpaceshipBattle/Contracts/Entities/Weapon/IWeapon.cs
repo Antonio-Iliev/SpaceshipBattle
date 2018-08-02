@@ -1,6 +1,6 @@
 ﻿
 
-namespace SpaceshipsBattle.Contracts
+namespace SpaceshipBattle.Contracts
 {
     public interface IWeapon : IItem
     {

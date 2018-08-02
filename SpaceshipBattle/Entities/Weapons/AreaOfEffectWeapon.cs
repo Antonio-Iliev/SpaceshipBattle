@@ -1,5 +1,5 @@
 ﻿using SpaceshipBattle.Contracts.Entities.Weapon;
-using SpaceshipsBattle.Entities.Weapons;
+using SpaceshipBattle.Entities.Weapons;
 
 namespace SpaceshipBattle.Entities.Weapons
 {

@@ -1,9 +1,8 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
 using SpaceshipBattle.Core;
 using SpaceshipBattle.Core.Providers;
-using SpaceshipsBattle.Core.GameController;
 
-namespace SpaceshipsBattle
+namespace SpaceshipBattle
 {
     public class StartUp
     {

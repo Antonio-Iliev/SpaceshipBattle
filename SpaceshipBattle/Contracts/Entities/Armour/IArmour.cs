@@ -1,4 +1,4 @@
-﻿namespace SpaceshipsBattle.Contracts
+﻿namespace SpaceshipBattle.Contracts
 {
     public interface IArmour : IItem
     {

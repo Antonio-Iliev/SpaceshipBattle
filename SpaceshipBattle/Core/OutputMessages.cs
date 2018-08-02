@@ -1,4 +1,4 @@
-﻿namespace SpaceshipsBattle.Core
+﻿namespace SpaceshipBattle.Core
 {
     public static class OutputMessages
     {
