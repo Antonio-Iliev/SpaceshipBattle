@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceshipBattle.Contracts.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

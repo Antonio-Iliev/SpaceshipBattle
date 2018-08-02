@@ -1,4 +1,5 @@
-﻿using SpaceshipBattle.Entities;
+﻿using SpaceshipBattle.Contracts.Entities;
+using SpaceshipBattle.Entities;
 using SpaceshipsBattle.Contracts;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,7 @@ namespace SpaceshipsBattle.Entities
             //FuelCapacity -= Speed;
             throw new NotImplementedException();
         }
+
 
         public override string ToString()
         {
