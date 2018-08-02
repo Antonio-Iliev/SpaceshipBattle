@@ -27,6 +27,7 @@ namespace SpaceshipBattle.Entities.Engines
             this.Capacity = capacity;
             this.CylinderCount = cylinderCount;
         }
+
         public override int Power
         {
             get
@@ -35,9 +36,9 @@ namespace SpaceshipBattle.Entities.Engines
             }
             protected set
             {
-                if (value < MinCapacityValue || value > MaxCapacityValue)
+                if (value < MinPowerValue || value > MaxPowerValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The capacity of engine cannot be less than {MinCapacityValue } or more than {MaxCapacityValue}.");
+                    throw new ArgumentOutOfRangeException($"The power of engine cannot be less than {MinPowerValue } or more than {MaxPowerValue}.");
                 }
                 base.Power = value;
             }
@@ -98,8 +99,8 @@ namespace SpaceshipBattle.Entities.Engines
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine($"Capacity: { this.Capacity}");
-            sb.AppendLine($"Torque: { this.Torque}");
+            sb.AppendLine($"Capacity: { this.Capacity}cc");
+            sb.AppendLine($"Torque: { this.Torque}N.m");
             sb.AppendLine($"Count of cylinders: { this.CylinderCount}");
 
             return sb.ToString();

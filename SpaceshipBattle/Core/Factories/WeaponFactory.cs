@@ -7,7 +7,7 @@ namespace SpaceshipBattle.Core.Factories
 {
     class WeaponFactory : IWeaponFactory
     {
-        public IWeapon CreateEngine(string model)
+        public IWeapon CreateWeapon(string model)
         {
             switch (model)
             {

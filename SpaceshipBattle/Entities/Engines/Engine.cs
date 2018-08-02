@@ -57,8 +57,8 @@ namespace SpaceshipsBattle.Entities.Engine
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine($"Power: { this.Power}");
-            sb.AppendLine($"Fuel type: { this.FuelType}");
+            sb.AppendLine($"Power: { this.Power}hp");
+            sb.Append($"Fuel type: { this.FuelType}");
             
             return sb.ToString();
         }

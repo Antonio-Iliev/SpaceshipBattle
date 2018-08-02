@@ -9,6 +9,11 @@ namespace SpaceshipBattle.Entities.Spaceships
 {
     public class DrossMashupSpaceship : Spaceship
     {
+        public DrossMashupSpaceship(IEngine engine, IArmour armour, IWeapon weapon) : base(engine, armour, weapon)
+        {
+
+        }
+
         private readonly List<IEngine> enginesAllowed = new List<IEngine>()
         {
             

@@ -6,31 +6,44 @@ using System.Text;
 
 namespace SpaceshipsBattle.Entities
 {
+
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
-    public  class Spaceship : Item, ISpaceship
+    public abstract class Spaceship :  ISpaceship
     {
-        //TODO
-        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon) : base("asf",12, 2)
+        private const int MinPriceValue = 1000;
+        private const int MaxPriceValue = 10000;
+
+        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon)
         {
             this.Engine = engine;
             this.Armour = armour;
             this.Weapon = weapon;
         }
 
-        public int Health => 100;
+        public int Health { get; set; } = 100;
 
-        public override string Model => this.GetType().Name;
+        public string Model => this.GetType().Name;
 
-        public override int Price => this.Engine.Price + this.Armour.Price + this.Weapon.Price;
+        public int Price
+        {
+            get => this.Engine.Price + this.Armour.Price + this.Weapon.Price;
+            protected set
+            {
+                if (value < 0 || value > 10000)
+                {
+                    throw new ArgumentOutOfRangeException($"The price of {this.GetType().Name} cannot be less than {MinPriceValue} or more than {MaxPriceValue}.");
+                }
+            }
+        }
 
-        public override int Weight => this.Engine.Weight + this.Armour.Weight + this.Weapon.Weight;
+        public int Weight => this.Engine.Weight + this.Armour.Weight + this.Weapon.Weight;
 
         public int FuelCapacity { get; set; } // mashUp = 30, futuristic = 25
 
         public IEngine Engine { get; set; }
 
         public IArmour Armour { get; set; }
-        
+
         public IWeapon Weapon { get; set; }
 
         //TODO
@@ -44,29 +57,84 @@ namespace SpaceshipsBattle.Entities
 
         public int TotalDist { get; set; } = 0;
 
-        //public int ArmourPoints { get; set; } // = armourCoef; (~50) 
-        //public int HitPoints { get; set; }  // = weaponsCoef ( ~10)
-
         public void Refuel()
         {
-            throw new NotImplementedException();
+            this.FuelCapacity = 25;
         }
 
-        public void Shoot()
+        public void Shoot(string side)
         {
-            //this.Bullet.PositionX += this.Speed;
+            if (side == "left")
+            {
+                if (this.IsAtShooting == false)
+                {
+                    this.PositionAtTheMomentOfShooting = this.PositionY;
+                    this.Weapon.Bullet.PositionX = 1;
+                    this.IsAtShooting = true;
+                }
 
-            //if (Bullet.PositionX + step >= Console.WindowWidth)
-            //{
-            //    this.IsOnFire = false;
-            //}
+                this.Weapon.Bullet.PositionX += this.Weapon.Speed;
+
+                if (this.Weapon.Bullet.PositionX + this.Weapon.Speed >= Console.WindowWidth)
+                {
+                    this.IsAtShooting = false;
+                }
+            }
+            else if (side == "right")
+            {
+                if (this.IsAtShooting == false)
+                {
+                    this.PositionAtTheMomentOfShooting = this.PositionY;
+                    this.Weapon.Bullet.PositionX = Console.WindowWidth - 1;
+                    this.IsAtShooting = true;
+                }
+
+                this.Weapon.Bullet.PositionX -= this.Weapon.Speed;
+
+                if (this.Weapon.Bullet.PositionX + this.Weapon.Speed < 0)
+                {
+                    this.IsAtShooting = false;
+                }
+            }
         }
 
+      
         public void Move(string direction)
         {
-            //TotalDist += Speed;
-            //FuelCapacity -= Speed;
-            throw new NotImplementedException();
+            if (direction == "down")
+            {
+                if (this.PositionY + this.Speed < Console.WindowHeight)
+                {
+                    this.PositionY++;
+                    this.TotalDist+= this.Speed;
+                    this.FuelCapacity -= this.Speed;
+
+                    if (this.FuelCapacity <= 0)
+                    {
+                        Refuel();
+                    }
+                }
+            }
+            //up
+            else
+            {
+                if (this.PositionY + this.Speed > 0)
+                {
+                    this.PositionY--;
+                    this.TotalDist += this.Speed;
+                    this.FuelCapacity -= this.Speed;
+
+                    if (this.FuelCapacity <= 0)
+                    {
+                        Refuel();
+                    }
+                }
+            }            
+        }
+
+        public void TakeDamage(int hitPoints)
+        {
+            this.Health -= hitPoints;
         }
 
         public override string ToString()

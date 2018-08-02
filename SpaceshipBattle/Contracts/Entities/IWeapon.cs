@@ -13,7 +13,10 @@ namespace SpaceshipsBattle.Contracts
 
         int ClipCapacity { get; }
 
-        IBullet Bullet { get;  }
+        //TODO
+        IBullet Bullet { get; set; }
+
+        int Damage { get; }
         
     }
 }

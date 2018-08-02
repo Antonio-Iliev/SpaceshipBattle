@@ -31,7 +31,7 @@ namespace SpaceshipsBattle.Core.Factories
                     return new HighTechEngine("Ion X3", 2000, 400, 1320, FuelType.Ion, 2); //step 2 1520
                 case "Plasma":
                     return new HighTechEngine("Vasimir Plasma Engine ", 3500, 600, 2860, FuelType.Plasma, 6); // step 3 3460
-                default: throw new ArgumentException("There is no such a model!");
+                default: throw new ArgumentException("There is no such model!");
             }
         }
 

@@ -4,18 +4,18 @@ using System.Text;
 
 namespace SpaceshipsBattle.Contracts
 {
-    public interface ISpaceship : IItem
+    public interface ISpaceship
     {
-        int Health { get; }
+        int Health { get; set; }
 
         int TotalDist { get; }
 
         int FuelCapacity { get; }
 
         int Speed { get; }
-        //TODO
+        
         int PositionY { get; set; }
-        //TODO
+        
         bool IsAtShooting { get; set; }
 
         //TODO
@@ -27,10 +27,12 @@ namespace SpaceshipsBattle.Contracts
 
         IArmour Armour { get; }
 
-        void Shoot();
+        void Shoot(string side);
 
         void Refuel();
 
         void Move(string direction);
+
+        void TakeDamage(int hitPoints);
     }
 }

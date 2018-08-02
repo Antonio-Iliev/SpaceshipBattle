@@ -6,8 +6,9 @@ namespace SpaceshipsBattle.Contracts
 {
     public interface IBullet
     {
-        int PositionX { get; }
+        //TODO
+        int PositionX { get; set; }
 
-        int PositionY { get; }
+        int PositionY { get; set; }
     }
 }

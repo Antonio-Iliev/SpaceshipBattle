@@ -55,7 +55,7 @@ namespace SpaceshipBattle.Entities
             {
                 if (value < MinPriceValue || value > MaxPriceValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The price cannot be less than {MinPriceValue} or more than {MaxPriceValue}.");
+                    throw new ArgumentOutOfRangeException($"The price of {this.GetType().Name} cannot be less than {MinPriceValue} or more than {MaxPriceValue}.");
                 }
                 this.price = value;
             }
@@ -71,7 +71,7 @@ namespace SpaceshipBattle.Entities
             {
                 if (value < MinWeightValue || value > MaxWeightValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The weight cannot be less than {MinWeightValue} or more than {MaxWeightValue}.");
+                    throw new ArgumentOutOfRangeException($"The weight of {this.GetType().Name} cannot be less than {MinWeightValue} or more than {MaxWeightValue}.");
                 }
                 this.weight = value;
             }
@@ -82,8 +82,8 @@ namespace SpaceshipBattle.Entities
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"---{this.GetType().Name}");
             sb.AppendLine($"Model: {this.Model}");
-            sb.AppendLine($"Price: {this.Price}");
-            sb.AppendLine($"Weight: {this.Weight}");
+            sb.AppendLine($"Price: {this.Price}$");
+            sb.Append($"Weight: {this.Weight}kg");
 
             return sb.ToString();
         }
