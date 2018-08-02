@@ -225,6 +225,7 @@ namespace SpaceshipsBattle.Core.GameController
                 Thread.Sleep(30);
             }
         }
+        //Alex da napishe tuk logikata za damage done
     }
 }
 /*

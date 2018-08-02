@@ -4,6 +4,6 @@ namespace SpaceshipBattle.Contracts.Factories
 {
     interface IWeaponFactory
     {
-        IWeapon CreateEngine(string model);
+        IWeapon CreateWeapon(string model);
     }
 }

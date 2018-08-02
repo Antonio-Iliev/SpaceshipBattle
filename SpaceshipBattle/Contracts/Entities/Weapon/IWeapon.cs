@@ -1,7 +1,4 @@
-﻿using SpaceshipsBattle.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace SpaceshipsBattle.Contracts
 {
