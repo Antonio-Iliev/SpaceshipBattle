@@ -1,4 +1,5 @@
-﻿using SpaceshipBattle.Entities;
+﻿using SpaceshipBattle.Contracts.Entities;
+using SpaceshipBattle.Entities;
 using SpaceshipsBattle.Contracts;
 using System;
 using System.Collections.Generic;
@@ -136,6 +137,7 @@ namespace SpaceshipsBattle.Entities
         {
             this.Health -= hitPoints;
         }
+
 
         public override string ToString()
         {

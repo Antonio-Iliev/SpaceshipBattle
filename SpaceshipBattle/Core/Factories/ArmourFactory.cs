@@ -6,7 +6,7 @@ using System;
 
 namespace SpaceshipBattle.Core.Factories
 {
-    public class ArmourFactory : IArmourFactory
+    public class ArmoursFactories : IArmourFactory
     {
         public IArmour CreateArmour(string model)
         {
@@ -15,7 +15,7 @@ namespace SpaceshipBattle.Core.Factories
                 case "Recycled Paper":
                     return new DenseArmour("Recycled Paper", 1000, 50, 20, 0, 2, ArmourType.Paper);
                 case "Brick cage":
-                    return new DenseArmour("Brick cage", 1500, 200, 25, 6, 0, ArmourType.Brick);
+                    return new DenseArmour("Brick cage", 1500, 800, 25, 6, 0, ArmourType.Brick);
                 case "Aerogel Armour":
                     return new DenseArmour("Aerogel Armour", 2000, 500, 30, 2, 5, ArmourType.Aerogel);
                 case "Fullerenes Armour":
