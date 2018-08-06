@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Core
 {
-    public class DrawShip
+    public static class DrawShip
     {
 
         public static void DrawShipPlayerOne(IPlayer player, string[] shipDesign)
