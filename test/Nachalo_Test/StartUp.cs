@@ -22,7 +22,11 @@ namespace Nachalo_Test
             //Thread.Sleep(3000);
             //Console.Clear();
 
-            Registration.Instace.ChooseSpaceShip();
+            ////Ekran 3
+            //Registration.Instace.ChooseSpaceShip();
+
+            //Ekran 4
+            Registration.Instace.ChooseComponent();
         }
     }
 }
