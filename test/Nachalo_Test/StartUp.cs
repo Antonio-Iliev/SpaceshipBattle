@@ -13,12 +13,14 @@ namespace Nachalo_Test
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
 
-            Registration.Instace.ChooseName();
-            Console.Clear();
+            ////Ekran 1
+            //Registration.Instace.ChooseName();
+            //Console.Clear();
 
-            Registration.Instace.WelcomScreen();
-            Thread.Sleep(3000);
-            Console.Clear();
+            ////Ekran 2
+            //Registration.Instace.WelcomScreen();
+            //Thread.Sleep(3000);
+            //Console.Clear();
 
             Registration.Instace.ChooseSpaceShip();
         }

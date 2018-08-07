@@ -60,7 +60,6 @@ namespace test
                         Thread.Sleep(5000);
                     }
                 }
-                
 
                 DrawLine1(text1);
                 DrawLine2(text2);
