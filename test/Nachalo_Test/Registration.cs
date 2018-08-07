@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Nachalo_Test
 {
     public class Registration
     {
+
+        private int positionRow;
+        private int positionCol;
+        private int rowOffset = 5;
+        private int colOffset = 0;
         private string userName;
         private List<string> addCommands = new List<string>();
-        private int positionYSelect = 0;
+        private int positionYSelect;
+
         private readonly string[] spaceshipNames = new string[] { "Dross-Mashup Spaceship", "Futuristic Spaceship", };
         private readonly string[] componentSpaceship = new string[] { "Weapon", "Engine", "Armour" };
         private readonly string[] weapons = new string[] { "AK47", "Cannon", "Laser", "Plasma Weapon", };
@@ -20,10 +25,7 @@ namespace Nachalo_Test
         private string selectedEngine;
         private string selectedArmour;
 
-        private int positionRow;
-        private int positionCol;
-        private int rowOffset = 5;
-        private int colOffset = 0;
+
 
         public string UserName
         {
@@ -38,19 +40,23 @@ namespace Nachalo_Test
             }
         }
 
+        public List<string> AddCommands { get => new List<string>(this.addCommands); }
+
         public void ChooseName()
         {
             this.positionRow = (Console.WindowHeight / 2) - rowOffset;
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
-            WriteTextInPosition(this.positionCol, this.positionRow++, "Welcome player 1");
+            WriteTextInPosition(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
             WriteTextInPosition(this.positionCol, this.positionRow++, "Enter your name:");
 
-            Console.SetCursorPosition(positionCol - 5, positionRow++);
+            Console.SetCursorPosition(positionCol - 10, positionRow + 1);
+            Console.Write(">>>> ");
             this.UserName = Console.ReadLine();
+            Console.Clear();
         }
 
-        public void WelcomScreen()
+        public void MessageScreen(string message)
         {
             this.positionRow = (Console.WindowHeight / 2) - rowOffset;
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
@@ -58,18 +64,22 @@ namespace Nachalo_Test
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
-            WriteTextInPosition(this.positionCol, this.positionRow, $"Welcome {this.userName}!");
+            WriteTextInPosition(this.positionCol, this.positionRow, message);
 
             Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.BackgroundColor = ConsoleColor.Black;
+
+            Thread.Sleep(3000);
+            Console.Clear();
         }
 
         public void ChooseSpaceShip()
         {
             this.positionRow = (Console.WindowHeight / 2) - rowOffset - (spaceshipNames.Length / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            positionYSelect = 0;
 
             int lengthOfElements = spaceshipNames.Length;
 
@@ -96,6 +106,7 @@ namespace Nachalo_Test
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
                         this.addCommands.Add(this.spaceshipNames[positionYSelect]);
+                        Console.Clear();
                         return;
                     }
                 }
@@ -120,6 +131,7 @@ namespace Nachalo_Test
         {
             this.positionRow = (Console.WindowHeight / 2) - rowOffset - (spaceshipNames.Length / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            positionYSelect = 0;
 
             List<string> compList = new List<string>(componentSpaceship);
 
@@ -172,6 +184,7 @@ namespace Nachalo_Test
                     addCommands.Add(selectedWeapon);
                     addCommands.Add(selectedEngine);
                     addCommands.Add(selectedArmour);
+                    Console.Clear();
                     return;
                 }
                 else
@@ -375,5 +388,15 @@ namespace Nachalo_Test
         }
 
         public static Registration Instace { get => new Registration(); }
+
+        public override string ToString()
+        {
+            return $">>>>>. {this.UserName} .<<<<<\r\n" +
+                $"Spaceship: {this.addCommands[0]}\r\n" +
+                $"Component of the ship is:\r\n-----------\r\n" +
+                $"Weapon: {this.addCommands[1]}\r\n" +
+                $"Engine: {this.addCommands[2]}\r\n" +
+                $"Armour: {this.addCommands[3]}\r\n";
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Nachalo_Test
 {
@@ -13,20 +12,32 @@ namespace Nachalo_Test
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
 
-            ////Ekran 1
-            //Registration.Instace.ChooseName();
-            //Console.Clear();
 
-            ////Ekran 2
-            //Registration.Instace.WelcomScreen();
-            //Thread.Sleep(3000);
-            //Console.Clear();
+            // First Player
+            Registration firstPlayer = new Registration();
 
-            ////Ekran 3
-            //Registration.Instace.ChooseSpaceShip();
+            firstPlayer.ChooseName();
+            firstPlayer.MessageScreen($"Welcome {firstPlayer.UserName}!");
+            firstPlayer.ChooseSpaceShip();
+            firstPlayer.ChooseComponent();
+            firstPlayer.MessageScreen("You are ready!!!");
 
-            //Ekran 4
-            Registration.Instace.ChooseComponent();
+            // Second Player
+            Registration secondPlayer = new Registration();
+
+            secondPlayer.ChooseName();
+            secondPlayer.MessageScreen($"Welcome {secondPlayer.UserName}!");
+            secondPlayer.ChooseSpaceShip();
+            secondPlayer.ChooseComponent();
+            secondPlayer.MessageScreen("You are ready!!!");
+
+
+
+            Console.WriteLine("First player:");
+            Console.WriteLine(firstPlayer.ToString());
+            Console.WriteLine("Second player:");
+            Console.WriteLine(secondPlayer.ToString());
+
         }
     }
 }
