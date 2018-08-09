@@ -11,5 +11,7 @@ namespace SpaceshipBattle.Entities.Spaceships
         public FuturisticSpaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design) : base(engine, armour, weapon, design)
         {
         }
+
+        public override int FuelCapacity => 25;
     }
 }

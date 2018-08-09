@@ -9,8 +9,8 @@ namespace SpaceshipBattle.Entities.Spaceships
 {
     public class DrossMashupSpaceship : Spaceship
     {
-
-
+        public override int FuelCapacity => 30;
+        
         public DrossMashupSpaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design) : base(engine, armour, weapon, design)
         {
 
@@ -21,17 +21,15 @@ namespace SpaceshipBattle.Entities.Spaceships
             
         };
 
-        private readonly List<string> armoursAllowed = new List<string>()
+        private readonly List<IArmour> armoursAllowed = new List<IArmour>()
         {
             
         };
 
-        private readonly List<string> weaponsAllowed = new List<string>()
+        private readonly List<IWeapon> weaponsAllowed = new List<IWeapon>()
         {
 
         };
-
-
 
     }
 }

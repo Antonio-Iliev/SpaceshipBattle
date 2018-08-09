@@ -19,9 +19,6 @@ namespace SpaceshipBattle.Contracts
 
         bool IsAtShooting { get; set; }
 
-        //TODO
-        int PositionAtTheMomentOfShooting { get; set; }
-
         IEngine Engine { get; }
 
         IWeapon Weapon { get; }
@@ -34,7 +31,7 @@ namespace SpaceshipBattle.Contracts
 
         void Move(string direction);
 
-        void TakeDamage(int hitPoints);
+        void TakeDamageToPlayer(IPlayer player);
 
         string[] Design { get; }
     }

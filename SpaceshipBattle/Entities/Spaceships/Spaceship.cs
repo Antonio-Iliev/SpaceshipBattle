@@ -7,7 +7,6 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities
 {
-
     //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
     public abstract class Spaceship : ISpaceship
     {
@@ -41,7 +40,7 @@ namespace SpaceshipBattle.Entities
 
         public int Weight => this.Engine.Weight + this.Armour.Weight + this.Weapon.Weight;
 
-        public int FuelCapacity { get; set; } // mashUp = 30, futuristic = 25
+        public virtual int FuelCapacity { get; private set; }
 
         public IEngine Engine { get; set; }
 
@@ -69,63 +68,41 @@ namespace SpaceshipBattle.Entities
 
         public bool IsAtShooting { get; set; } = false;
 
-        public int PositionAtTheMomentOfShooting { get; set; }
-
         public int TotalDist { get; set; } = 0;
 
         public void Refuel()
         {
-            this.FuelCapacity = 25;
+            this.TotalDist = this.FuelCapacity;
         }
 
         public void Shoot(string side)
         {
-            if (side == "left")
+            if (this.IsAtShooting == false)
             {
-                if (this.IsAtShooting == false)
+                this.Weapon.Bullet.PositionY = this.PositionY;
+                this.IsAtShooting = true;
+
+                if (side == "left")
                 {
-                    this.PositionAtTheMomentOfShooting = this.PositionY;
                     this.Weapon.Bullet.PositionX = 1;
-                    this.IsAtShooting = true;
                 }
-
-                this.Weapon.Bullet.PositionX += this.Weapon.Speed;
-
-                if (this.Weapon.Bullet.PositionX + this.Weapon.Speed >= Console.WindowWidth)
+                else
                 {
-                    this.IsAtShooting = false;
-                }
-            }
-            else if (side == "right")
-            {
-                if (this.IsAtShooting == false)
-                {
-                    this.PositionAtTheMomentOfShooting = this.PositionY;
                     this.Weapon.Bullet.PositionX = Console.WindowWidth - 1;
-                    this.IsAtShooting = true;
-                }
-
-                this.Weapon.Bullet.PositionX -= this.Weapon.Speed;
-
-                if (this.Weapon.Bullet.PositionX + this.Weapon.Speed < 0)
-                {
-                    this.IsAtShooting = false;
                 }
             }
         }
-
 
         public void Move(string direction)
         {
             if (direction == "down")
             {
-                if (this.PositionY + this.Speed < Console.WindowHeight)
+                if (this.PositionY + this.Speed < Console.WindowHeight - 2)
                 {
                     this.PositionY++;
                     this.TotalDist += this.Speed;
-                    this.FuelCapacity -= this.Speed;
 
-                    if (this.FuelCapacity <= 0)
+                    if (this.TotalDist >= FuelCapacity)
                     {
                         Refuel();
                     }
@@ -134,13 +111,12 @@ namespace SpaceshipBattle.Entities
             //up
             else
             {
-                if (this.PositionY + this.Speed > 0)
+                if (this.PositionY + this.Speed > 3)
                 {
                     this.PositionY--;
                     this.TotalDist += this.Speed;
-                    this.FuelCapacity -= this.Speed;
 
-                    if (this.FuelCapacity <= 0)
+                    if (this.TotalDist >= FuelCapacity)
                     {
                         Refuel();
                     }
@@ -148,11 +124,10 @@ namespace SpaceshipBattle.Entities
             }
         }
 
-        public void TakeDamage(int hitPoints)
+        public void TakeDamageToPlayer(IPlayer player)
         {
-            this.Health -= hitPoints;
+            player.Spaceship.Health -= this.Weapon.Power;
         }
-
 
         public override string ToString()
         {

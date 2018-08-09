@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Core
     {
         public GameController()
         {
-            
+
         }
 
         private void RemoveScrollBars()
@@ -24,16 +24,6 @@ namespace SpaceshipBattle.Core
             Console.SetCursorPosition(x, y);
             Console.Write(symbol);
         }
-
-        //private void DrawFirstPlayer(IPlayer player)
-        //{
-        //    PrintAtPosition(0, player.Spaceship. PositionY , '|');
-        //}
-
-        //private void DrawSecondPlayer(IPlayer player)
-        //{
-        //    PrintAtPosition(Console.WindowWidth - 1, player.Spaceship.PositionY, '|');
-        //}       
 
         private void SetInitialPositions(IPlayer player)
         {
@@ -57,7 +47,7 @@ namespace SpaceshipBattle.Core
             Console.Write("Hitted");
         }
 
-       public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
+        public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             RemoveScrollBars();
             SetInitialPositions(firstPlayer);
@@ -71,75 +61,67 @@ namespace SpaceshipBattle.Core
                     CommandParser(firstPlayer, secondPlayer, keyInfo);
                 }
 
-                if (firstPlayer.Spaceship.IsAtShooting == true)
-                {
-                    firstPlayer.Spaceship.Weapon.Bullet.PositionY = firstPlayer.Spaceship.PositionAtTheMomentOfShooting;
+                ManageShooting(firstPlayer, secondPlayer);
 
-                    firstPlayer.Spaceship.Shoot("left");
-
-                    HitPlayer(firstPlayer, secondPlayer);
-                }
-
-                if (secondPlayer.Spaceship.IsAtShooting == true)
-                {
-                    secondPlayer.Spaceship.Weapon.Bullet.PositionY = secondPlayer.Spaceship.PositionAtTheMomentOfShooting;
-
-                    secondPlayer.Spaceship.Weapon.Bullet.PositionX -= 3;
-                    if (secondPlayer.Spaceship.Weapon.Bullet.PositionX - 3 <= 0)
-                    {
-                        secondPlayer.Spaceship.IsAtShooting = false;
-                    }
-
-                    HitPlayer(firstPlayer, secondPlayer);
-
-                }
                 Console.Clear();
 
                 DrawShip.DrawShipPlayerOne(firstPlayer, firstPlayer.Spaceship.Design);
                 DrawShip.DrawShipPlayerTwo(secondPlayer, secondPlayer.Spaceship.Design);
 
-                DrawFirstPlayerBullet(firstPlayer);
-                DrawSecondPlayerBullet(secondPlayer);
+                DrawBullet(firstPlayer, 'A');
+                DrawBullet(secondPlayer, 'B');
+
 
                 PrintResult(firstPlayer, secondPlayer);
                 Thread.Sleep(30);
             }
         }
 
-        private void DrawSecondPlayerBullet(IPlayer secondPlayer)
-        {
-            if (secondPlayer.Spaceship.IsAtShooting)
-            {
-                PrintAtPosition(secondPlayer.Spaceship.Weapon.Bullet.PositionX, secondPlayer.Spaceship.Weapon.Bullet.PositionY, 'B');
-            }
-        }
-
-        private void DrawFirstPlayerBullet(IPlayer firstPlayer)
+        private void ManageShooting(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             if (firstPlayer.Spaceship.IsAtShooting)
             {
-                PrintAtPosition(firstPlayer.Spaceship.Weapon.Bullet.PositionX, firstPlayer.Spaceship.Weapon.Bullet.PositionY, 'A');
+                //move first player bullet
+                firstPlayer.Spaceship.Weapon.Bullet.PositionX += firstPlayer.Spaceship.Weapon.Speed;
+
+                bool firstPlBulletOutOfRange = firstPlayer.Spaceship.Weapon.Bullet.PositionX + firstPlayer.Spaceship.Weapon.Speed >= Console.WindowWidth;
+
+                if (firstPlBulletOutOfRange)
+                {
+                    TakeDamage(firstPlayer, secondPlayer);
+                    firstPlayer.Spaceship.IsAtShooting = false;
+                }
+            }
+
+            if (secondPlayer.Spaceship.IsAtShooting)
+            {
+                //move second player bullet
+                secondPlayer.Spaceship.Weapon.Bullet.PositionX -= secondPlayer.Spaceship.Weapon.Speed;
+
+                bool secondPlBulletOutOfRange = secondPlayer.Spaceship.Weapon.Bullet.PositionX - secondPlayer.Spaceship.Weapon.Speed <= 0;
+
+                if (secondPlBulletOutOfRange)
+                {
+                    TakeDamage(secondPlayer, firstPlayer);
+                    secondPlayer.Spaceship.IsAtShooting = false;
+                }
             }
         }
 
-        private void HitPlayer(IPlayer firstPlayer, IPlayer secondPlayer)
+        private void DrawBullet(IPlayer player, char symbol)
         {
-            if (firstPlayer.Spaceship.Weapon.Bullet.PositionX >= Console.WindowWidth - 3)
+            if (player.Spaceship.IsAtShooting)
             {
-                if (firstPlayer.Spaceship.Weapon.Bullet.PositionY == secondPlayer.Spaceship.PositionY)
-                {
-                    secondPlayer.Spaceship.TakeDamage(firstPlayer.Spaceship.Weapon.Damage);
-                    PrintHitted();
-                }
+                PrintAtPosition(player.Spaceship.Weapon.Bullet.PositionX, player.Spaceship.Weapon.Bullet.PositionY, symbol);
             }
+        }
 
-            if (secondPlayer.Spaceship.Weapon.Bullet.PositionX <= 3)
+        private void TakeDamage(IPlayer firstPlayer, IPlayer secondPlayer)
+        {
+            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY == secondPlayer.Spaceship.PositionY)
             {
-                if (secondPlayer.Spaceship.Weapon.Bullet.PositionY == firstPlayer.Spaceship.PositionY)
-                {
-                    firstPlayer.Spaceship.TakeDamage(secondPlayer.Spaceship.Weapon.Damage);
-                    PrintHitted();
-                }
+                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer);
+                PrintHitted();
             }
         }
 
@@ -153,7 +135,6 @@ namespace SpaceshipBattle.Core
             if (keyInfo.Key == ConsoleKey.S)
             {
                 firstPlayer.Spaceship.Move("down");
-
             }
 
             if (keyInfo.Key == ConsoleKey.UpArrow)
