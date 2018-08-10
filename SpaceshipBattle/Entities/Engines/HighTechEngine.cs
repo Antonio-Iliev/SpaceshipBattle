@@ -35,7 +35,7 @@ namespace SpaceshipBattle.Entities.Engines
             }
         }
 
-        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Thrust *100)/1000d);
+        public override double EngineEfficiencyCoef => (this.Power + this.Thrust * 100) / 1000d;
 
         public override string ToString()
         {

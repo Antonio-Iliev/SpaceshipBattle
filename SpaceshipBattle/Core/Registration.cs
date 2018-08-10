@@ -18,7 +18,7 @@ namespace SpaceshipBattle.Core
 
         private readonly string[] weapons = new string[] { "AK47", "Cannon", "Laser", "Plasma Weapon", };
 
-        private readonly string[] engines = new string[] { "Trabant Motor", "VW 1.9 TDI", "Ferrari F136 V8", "Bugatti Veyron W16",
+        private readonly string[] engines = new string[] { "Trabant Motor", "VW 1.9 TDI", "Ferrari V12 GT", "Bugatti W16",
                                                              "H2O Motor", "Ion X3", "Vasimir Plasma Engine" };
 
         private readonly string[] armors = new string[] { "Recycled Paper", "Brick cage", "Aerogel cover",

@@ -13,7 +13,7 @@ namespace SpaceshipBattle.Entities.Engines
 
         private int power;
         private FuelType fuelType;
-        
+
         protected SpaceshipEngine(string model, int price, int weight, int power, FuelType fuelType) : base(model, price, weight)
         {
             this.Power = power;
@@ -35,7 +35,7 @@ namespace SpaceshipBattle.Entities.Engines
                 this.power = value;
             }
         }
-        
+
         public FuelType FuelType
         {
             get
@@ -47,8 +47,8 @@ namespace SpaceshipBattle.Entities.Engines
                 this.fuelType = value;
             }
         }
-       
-        public abstract int EngineEfficiencyCoef { get; }
+
+        public abstract double EngineEfficiencyCoef { get; }
 
         public override string ToString()
         {
@@ -56,7 +56,7 @@ namespace SpaceshipBattle.Entities.Engines
             sb.AppendLine(base.ToString());
             sb.AppendLine($"Power: { this.Power}hp");
             sb.Append($"Fuel type: { this.FuelType}");
-            
+
             return sb.ToString();
         }
     }

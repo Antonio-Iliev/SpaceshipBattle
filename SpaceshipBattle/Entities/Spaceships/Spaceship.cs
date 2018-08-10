@@ -59,9 +59,7 @@ namespace SpaceshipBattle.Entities
 
         public IWeapon Weapon { get; set; }
 
-
-        //TODO
-        public int Speed => this.Engine.EngineEfficiencyCoef;
+        public int Speed => Math.Max(1, (int)Math.Round(this.Engine.EngineEfficiencyCoef - this.Weight / 2000d));
 
         public int PositionY { get; set; }
 
@@ -98,7 +96,7 @@ namespace SpaceshipBattle.Entities
             {
                 if (this.PositionY + this.Speed < Console.WindowHeight - 2)
                 {
-                    this.PositionY++;
+                    this.PositionY += this.Speed;
                     this.TotalDist += this.Speed;
 
                     if (this.TotalDist >= FuelCapacity)
@@ -110,9 +108,9 @@ namespace SpaceshipBattle.Entities
             //up
             else
             {
-                if (this.PositionY + this.Speed > 3)
+                if (this.PositionY - this.Speed > 1)
                 {
-                    this.PositionY--;
+                    this.PositionY -= this.Speed;
                     this.TotalDist += this.Speed;
 
                     if (this.TotalDist >= FuelCapacity)

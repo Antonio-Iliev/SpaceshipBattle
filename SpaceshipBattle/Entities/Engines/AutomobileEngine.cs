@@ -21,8 +21,7 @@ namespace SpaceshipBattle.Entities.Engines
         private int capacity;
         private int cylinderCount;
 
-        public AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount)
-            : base(model, price, weight, power, fuelType)
+        public AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount) : base(model, price, weight, power, fuelType)
         {
             this.Torque = torque;
             this.Capacity = capacity;
@@ -94,8 +93,8 @@ namespace SpaceshipBattle.Entities.Engines
             }
         }
 
-        public override int EngineEfficiencyCoef => (int)Math.Round((this.Power + this.Torque + this.Capacity / 10 + this.CylinderCount * 10) / 1000d);
-        
+        public override double EngineEfficiencyCoef => (this.Power + this.Torque + this.Capacity / 10 + this.CylinderCount * 10) / 1000d;
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
