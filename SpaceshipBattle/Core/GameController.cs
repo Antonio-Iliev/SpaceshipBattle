@@ -65,8 +65,8 @@ namespace SpaceshipBattle.Core
 
                 Console.Clear();
 
-                DrawShip.DrawShipPlayerOne(firstPlayer, firstPlayer.Spaceship.Design);
-                DrawShip.DrawShipPlayerTwo(secondPlayer, secondPlayer.Spaceship.Design);
+             //   DrawShip.DrawShipPlayerOne(firstPlayer, firstPlayer.Spaceship.Design);
+             //   DrawShip.DrawShipPlayerTwo(secondPlayer, secondPlayer.Spaceship.Design);
 
                 DrawBullet(firstPlayer, 'A');
                 DrawBullet(secondPlayer, 'B');

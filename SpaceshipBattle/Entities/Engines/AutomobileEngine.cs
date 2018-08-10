@@ -21,7 +21,8 @@ namespace SpaceshipBattle.Entities.Engines
         private int capacity;
         private int cylinderCount;
 
-        public AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount) : base(model, price, weight, power, fuelType)
+        public AutomobileEngine(string model, int price, int weight, int power, FuelType fuelType, int torque, int capacity, int cylinderCount)
+            : base(model, price, weight, power, fuelType)
         {
             this.Torque = torque;
             this.Capacity = capacity;

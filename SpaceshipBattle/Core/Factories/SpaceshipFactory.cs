@@ -9,16 +9,16 @@ namespace SpaceshipBattle.Core.Factories
 {
     class SpaceshipFactory : ISpaceshipFactory
     {
-        public ISpaceship CreateSpaceship(string model, IEngine engine, IArmour armour, IWeapon weapon, string[] design)
+        public ISpaceship CreateSpaceship(string model, IEngine engine, IArmour armour, IWeapon weapon)
         {
             switch (model)
             {
-                case "Dross":
-                    return new DrossMashupSpaceship(engine, armour, weapon, design);
-                case "Futuristic":
-                    return new FuturisticSpaceship(engine, armour, weapon, design);
+                case "Dross-Mashup Spaceship":
+                    return new DrossMashupSpaceship(engine, armour, weapon );
+                case "Futuristic Spaceship":
+                    return new FuturisticSpaceship(engine, armour, weapon);
 
-                default: throw new ArgumentException("There is no such model!");
+                default: throw new ArgumentException("There is no such spaceship!");
             }
         }
     }

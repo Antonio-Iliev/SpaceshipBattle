@@ -12,14 +12,14 @@ namespace SpaceshipBattle.Entities
     {
         private const int MinPriceValue = 1000;
         private const int MaxPriceValue = 10000;
-        private string[] design;
+       // private string[] design;
 
-        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design)
+        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon)
         {
             this.Engine = engine;
             this.Armour = armour;
             this.Weapon = weapon;
-            this.Design = design;
+           // this.Design = design;
         }
 
         public int Health { get; set; } = 100;
@@ -48,18 +48,18 @@ namespace SpaceshipBattle.Entities
 
         public IWeapon Weapon { get; set; }
 
-        public string[] Design
-        {
-            get => this.design;
-            private set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Design cannot be null");
-                }
-                this.design = value;
-            }
-        }
+        //public string[] Design
+        //{
+        //    get => this.design;
+        //    private set
+        //    {
+        //        if (value == null)
+        //        {
+        //            throw new ArgumentNullException("Design cannot be null");
+        //        }
+        //        this.design = value;
+        //    }
+        //}
 
         //TODO
         public int Speed => this.Engine.EngineEfficiencyCoef;

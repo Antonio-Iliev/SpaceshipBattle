@@ -27,7 +27,7 @@ namespace SpaceshipBattle.Core.Factories
                 case "Anti Matter Fields":
                     return new ProtectiveFields("Anti Matter Field", 5000, 450, 65, 0, 10, ArmourType.AntiMatter);
                 default:
-                    throw new ArgumentException("There is no such a model!");
+                    throw new ArgumentException("There is no such armour!");
             }
         }
     }

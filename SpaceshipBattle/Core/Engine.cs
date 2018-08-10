@@ -1,6 +1,7 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
 using SpaceshipBattle.Contracts;
 using SpaceshipBattle.Entities.Spaceships;
+using System;
 
 namespace SpaceshipBattle.Core
 {
@@ -9,11 +10,16 @@ namespace SpaceshipBattle.Core
         //TODO implement IPlayerCreator and IGameController
         private PlayerCreator playerCreator;
         private GameController gameController;
+        private Registration player1;
+        private Registration player2;
 
-        public Engine(PlayerCreator playerCreator, GameController gameController, IWriter writer, IReader reader)
+        public Engine(PlayerCreator playerCreator, GameController gameController, Registration player1, Registration player2, IWriter writer, IReader reader)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;
+            this.player1 = player1;
+            this.player2 = player2;
+
             this.Reader = reader;
             this.Writer = writer;
         }
@@ -23,33 +29,23 @@ namespace SpaceshipBattle.Core
 
         public void Start()
         {
-            Writer.Write("Please enter first player name: ");
-            string firstPlayerName = Reader.ReadLine();
-            Writer.Write("Select a spaceship model: ");
-            string spaceshipModel = Reader.ReadLine();
-            Writer.Write("Select an engine: ");
-            string engineModel = Reader.ReadLine();
-            Writer.Write("Select an armour: ");
-            string armourModel = Reader.ReadLine();
-            Writer.Write("Select a weapon: ");
-            string weaponModel = Reader.ReadLine();
-            string[] firstPlayerDesign = SpaceShipDesign.DrossLeft;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.SetWindowSize(120, 35);
+            Console.BufferHeight = Console.WindowHeight;
+            Console.BufferWidth = Console.WindowWidth;
 
-            IPlayer firstPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel, firstPlayerDesign);
 
-            Writer.Write("Please enter second player name: ");
-            string secondPlayerName = Reader.ReadLine();
-            Writer.Write("Select a spaceship model: ");
-            spaceshipModel = Reader.ReadLine();
-            Writer.Write("Select an engine: ");
-            engineModel = Reader.ReadLine();
-            Writer.Write("Select an armour: ");
-            armourModel = Reader.ReadLine();
-            Writer.Write("Select a weapon: ");
-            weaponModel = Reader.ReadLine();
-            string[] secondPlayerDesign = SpaceShipDesign.FuturisticRight;
+            player1.ChooseName();
+            player1.ChooseSpaceShip();
+            player1.ChooseComponent();
 
-            IPlayer secondPlayer = playerCreator.CreatePlayer(firstPlayerName, spaceshipModel, engineModel, armourModel, weaponModel, secondPlayerDesign);
+            player2.ChooseName();
+            player2.ChooseSpaceShip();
+            player2.ChooseComponent();
+
+            IPlayer firstPlayer = playerCreator.CreatePlayer(player1);
+            IPlayer secondPlayer = playerCreator.CreatePlayer(player2);
 
             gameController.Play(firstPlayer, secondPlayer);
         }

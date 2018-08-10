@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Entities
     public abstract class Item : IItem
     {
         private const int MinModelLength = 2;
-        private const int MaxModelLength = 15;
+        private const int MaxModelLength = 40;
         private const int MinPriceValue = 1000;
         private const int MaxPriceValue = 5000;
         private const int MinWeightValue = 0;

@@ -16,5 +16,22 @@ namespace SpaceshipBattle.Core.Providers
         {
             Console.WriteLine(message);
         }
+
+        public void WriteTextCenter(int col, int row, string text)
+        {
+            Console.SetCursorPosition(col - (text.Length / 2), row);
+            Console.Write(text);
+        }
+
+        public void WriteMenu(int col, int row, string textMenu)
+        {
+                Console.SetCursorPosition(col - (textMenu.Length / 2) - 3, row);
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.Write(">> " + textMenu + " <<");
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.BackgroundColor = ConsoleColor.Black;
+        }
     }
 }

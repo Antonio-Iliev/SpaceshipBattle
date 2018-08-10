@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Entities.Spaceships
 {
     public class FuturisticSpaceship : Spaceship
     {
-        public FuturisticSpaceship(IEngine engine, IArmour armour, IWeapon weapon, string[] design) : base(engine, armour, weapon, design)
+        public FuturisticSpaceship(IEngine engine, IArmour armour, IWeapon weapon) : base(engine, armour, weapon)
         {
         }
 
