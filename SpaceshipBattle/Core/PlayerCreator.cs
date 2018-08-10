@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Core
 {
-    public class PlayerCreator
+    public class PlayerCreator : IPlayerCreator
     {
         private IEngineFactory engineFactory;
         private IArmourFactory armourFactory;

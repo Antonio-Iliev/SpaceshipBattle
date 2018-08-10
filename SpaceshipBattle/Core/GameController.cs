@@ -6,6 +6,7 @@ namespace SpaceshipBattle.Core
 {
     public class GameController
     {
+        //TODO implement IGameController
         public GameController()
         {
 

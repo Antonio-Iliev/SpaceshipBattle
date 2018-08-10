@@ -7,7 +7,6 @@ namespace SpaceshipBattle.Core
 {
     public class Engine : Contracts.Providers.IEngine
     {
-        //TODO implement IPlayerCreator and IGameController
         private PlayerCreator playerCreator;
         private GameController gameController;
         private Registration player1;
@@ -39,10 +38,12 @@ namespace SpaceshipBattle.Core
             player1.ChooseName();
             player1.ChooseSpaceShip();
             player1.ChooseComponent();
+            Writer.WriteColorTextCenter(">>> " + player1.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
 
             player2.ChooseName();
             player2.ChooseSpaceShip();
             player2.ChooseComponent();
+            Writer.WriteColorTextCenter(">>> " + player2.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
 
             IPlayer firstPlayer = playerCreator.CreatePlayer(player1);
             IPlayer secondPlayer = playerCreator.CreatePlayer(player2);
