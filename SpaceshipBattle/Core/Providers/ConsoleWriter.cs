@@ -37,13 +37,17 @@ namespace SpaceshipBattle.Core.Providers
 
         public void WriteColorTextCenter(string message)
         {
+            message = message.PadLeft(message.Length + 1);
+            message = message.PadRight(message.Length + 1);
             int positionRow = (Console.WindowHeight / 2) - 5;
             int positionCol = (Console.WindowWidth / 2);
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkGreen;
 
-            WriteTextCenter(positionCol, positionRow, message);
+            WriteTextCenter(positionCol, positionRow++, new string(' ', message.Length));
+            WriteTextCenter(positionCol, positionRow++, message);
+            WriteTextCenter(positionCol, positionRow++, new string(' ', message.Length));
 
             Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
 

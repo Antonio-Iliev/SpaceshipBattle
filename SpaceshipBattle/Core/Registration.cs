@@ -47,7 +47,25 @@ namespace SpaceshipBattle.Core
 
             Console.SetCursorPosition(positionCol - 10, positionRow + 1);
             Writer.Write(">>>> ");
-            parametersForPlayer.Add("name", Reader.ReadLine());
+
+            string nameOfPlayer = Reader.ReadLine();
+            bool isValid = false;
+            while (!isValid)
+            {
+                if (String.IsNullOrEmpty(nameOfPlayer) || String.IsNullOrWhiteSpace(nameOfPlayer)
+                    || nameOfPlayer.Length < 3 || nameOfPlayer.Length > 35)
+                {
+                    Console.SetCursorPosition(positionCol - 5, positionRow + 1);
+                    Writer.Write("   ");
+                    Console.SetCursorPosition(positionCol - 5, positionRow + 1);
+                    nameOfPlayer = Reader.ReadLine();
+                }
+                else
+                {
+                    parametersForPlayer.Add("name", nameOfPlayer);
+                    isValid = true;
+                }
+            }
             Console.Clear();
         }
 
