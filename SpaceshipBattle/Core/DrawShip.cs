@@ -1,5 +1,6 @@
 ﻿using SpaceshipBattle.Contracts;
 using SpaceshipBattle.Contracts.Entities;
+using SpaceshipBattle.Entities.Spaceships;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,21 @@ namespace SpaceshipBattle.Core
     public static class DrawShip
     {
 
-        public static void DrawShipPlayerOne(IPlayer player, string[] shipDesign)
+        public static void DrawShipPlayerOne(IPlayer player)
         {
-            int ofsetRow = shipDesign.Length / -2;
+            List<string> shipDesign = new List<string>();
+
+            switch (player.Spaceship.Model)
+            {
+                case "Dross-Mashup Spaceship":
+                    shipDesign.AddRange(SpaceShipDesign.DrossLeft);
+                    break;
+                case "Futuristic Spaceship":
+                    shipDesign.AddRange(SpaceShipDesign.FuturisticLeft);
+                    break;
+            }
+
+            int ofsetRow = shipDesign.Count / -2;
             foreach (string element in shipDesign)
             {
                 Console.SetCursorPosition(0, player.Spaceship.PositionY + ofsetRow++);
@@ -19,9 +32,21 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        public static void DrawShipPlayerTwo(IPlayer player, string[] shipDesign)
+        public static void DrawShipPlayerTwo(IPlayer player)
         {
-            int ofsetRow = shipDesign.Length / -2; ;
+            List<string> shipDesign = new List<string>();
+
+            switch (player.Spaceship.Model)
+            {
+                case "Dross-Mashup Spaceship":
+                    shipDesign.AddRange(SpaceShipDesign.DrossaRight);
+                    break;
+                case "Futuristic Spaceship":
+                    shipDesign.AddRange(SpaceShipDesign.FuturisticRight);
+                    break;
+            }
+
+            int ofsetRow = shipDesign.Count / -2; ;
             foreach (string element in shipDesign)
             {
                 int offset = element.Length;

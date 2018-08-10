@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities.Spaceships
 {
-    public class SpaceShipDesign
+    public static class SpaceShipDesign
     {
-        public static string[] DrossLeft  => new string[] { "Z)", " |||>", ": |[][]((0)-]", " |||>", "Z)" };
+        public static IEnumerable<string> DrossLeft  => new string[] { "Z)", " |||>", ": |[][]((0)-]", " |||>", "Z)" };
         public static string[] DrossaRight => new string[] { "(Z", "<||| ", "[-(000[][]| :", "<||| ", "(Z" };
 
         public static string[] FuturisticLeft => new string[] { "  { >", @"  {} \\\\\)", "zZ {########]]]]", "  {} /////)", "  { >", };

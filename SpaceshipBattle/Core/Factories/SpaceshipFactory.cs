@@ -14,9 +14,9 @@ namespace SpaceshipBattle.Core.Factories
             switch (model)
             {
                 case "Dross-Mashup Spaceship":
-                    return new DrossMashupSpaceship(engine, armour, weapon );
+                    return new DrossMashupSpaceship(engine, armour, weapon, model);
                 case "Futuristic Spaceship":
-                    return new FuturisticSpaceship(engine, armour, weapon);
+                    return new FuturisticSpaceship(engine, armour, weapon, model);
 
                 default: throw new ArgumentException("There is no such spaceship!");
             }

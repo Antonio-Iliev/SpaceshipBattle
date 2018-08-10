@@ -33,6 +33,8 @@ namespace SpaceshipBattle.Contracts
 
         void TakeDamageToPlayer(IPlayer player);
 
-       // string[] Design { get; }
+        string Model { get; }
+
+       //string[] Design { get; }
     }
 }
