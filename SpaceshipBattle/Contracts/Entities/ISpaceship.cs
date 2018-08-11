@@ -19,7 +19,7 @@ namespace SpaceshipBattle.Contracts
 
         bool IsAtShooting { get; set; }
 
-        IEngine Engine { get; }
+        ISpaceshipEngine Engine { get; }
 
         IWeapon Weapon { get; }
 

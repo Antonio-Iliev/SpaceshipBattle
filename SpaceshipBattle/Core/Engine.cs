@@ -5,7 +5,7 @@ using System;
 
 namespace SpaceshipBattle.Core
 {
-    public class Engine : Contracts.Providers.IEngine
+    public class Engine : IEngine
     {
         private PlayerCreator playerCreator;
         private GameController gameController;

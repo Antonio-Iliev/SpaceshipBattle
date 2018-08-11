@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities.Engines
 {
-    public abstract class SpaceshipEngine : Item, IEngine
+    public abstract class SpaceshipEngine : Item, ISpaceshipEngine
     {
         private const int MinPowerValue = 1;
         private const int MaxPowerValue = 10000;

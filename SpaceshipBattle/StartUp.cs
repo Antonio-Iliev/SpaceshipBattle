@@ -9,10 +9,10 @@ namespace SpaceshipBattle
 
         public static void Main()
         {
-            PlayerCreator playerCreator = new PlayerCreator();
-            GameController gameController = new GameController();
             IWriter writer = new ConsoleWriter();
             IReader reader = new ConsoleReader();
+            PlayerCreator playerCreator = new PlayerCreator();
+            GameController gameController = new GameController(writer, reader);
             Registration player1 = new Registration(reader, writer);
             Registration player2 = new Registration(reader, writer);
 

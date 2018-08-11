@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Contracts.Entities.Engines
 {
-    public interface IHighTechEngine : IEngine
+    public interface IHighTechEngine : ISpaceshipEngine
     {
         int Thrust { get; }
     }

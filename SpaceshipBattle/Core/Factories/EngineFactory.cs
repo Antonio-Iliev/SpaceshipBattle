@@ -7,7 +7,7 @@ namespace SpaceshipBattle.Core.Factories
 {
     public class EngineFactory : IEngineFactory
     {
-        public IEngine CreateEngine(string model)
+        public ISpaceshipEngine CreateEngine(string model)
         {
             switch (model)
             {

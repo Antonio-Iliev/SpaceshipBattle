@@ -121,7 +121,7 @@ namespace SpaceshipBattle.Core
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                Thread.Sleep(100);
+                Thread.Sleep(30);
                 Console.Clear();
             }
 

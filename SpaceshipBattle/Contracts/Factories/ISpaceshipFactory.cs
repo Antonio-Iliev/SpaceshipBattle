@@ -7,6 +7,6 @@ namespace SpaceshipBattle.Contracts.Factories
 {
    public interface ISpaceshipFactory 
     {
-        ISpaceship CreateSpaceship(string model, IEngine engine, IArmour armour, IWeapon weapon);
+        ISpaceship CreateSpaceship(string model, ISpaceshipEngine engine, IArmour armour, IWeapon weapon);
     }
 }

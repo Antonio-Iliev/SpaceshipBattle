@@ -14,7 +14,7 @@ namespace SpaceshipBattle.Entities
         private const int MaxPriceValue = 10000;
         private string model;
 
-        public Spaceship(IEngine engine, IArmour armour, IWeapon weapon, string model)
+        public Spaceship(ISpaceshipEngine engine, IArmour armour, IWeapon weapon, string model)
         {
             this.Engine = engine;
             this.Armour = armour;
@@ -51,13 +51,13 @@ namespace SpaceshipBattle.Entities
 
         public int Weight => this.Engine.Weight + this.Armour.Weight + this.Weapon.Weight;
 
-        public virtual int FuelCapacity { get; private set; }
+        public virtual int FuelCapacity { get; protected set; }
 
-        public IEngine Engine { get; set; }
+        public ISpaceshipEngine Engine { get; private set; }
 
-        public IArmour Armour { get; set; }
+        public IArmour Armour { get; private set; }
 
-        public IWeapon Weapon { get; set; }
+        public IWeapon Weapon { get; private set; }
 
         public int Speed => Math.Max(1, (int)Math.Round(this.Engine.EngineEfficiencyCoef - this.Weight / 2000d));
 
@@ -65,7 +65,7 @@ namespace SpaceshipBattle.Entities
 
         public bool IsAtShooting { get; set; } = false;
 
-        public int TotalDist { get; set; } = 0;
+        public int TotalDist { get; private set; } = 0;
 
         public void Refuel()
         {
@@ -123,7 +123,20 @@ namespace SpaceshipBattle.Entities
 
         public void TakeDamageToPlayer(IPlayer player)
         {
-            player.Spaceship.Health -= this.Weapon.Power;
+            if (player.Spaceship.Armour.ArmourCoefficient > 0)
+            {
+                player.Spaceship.Armour.ArmourCoefficient -= this.Weapon.Power;
+
+                if (player.Spaceship.Armour.ArmourCoefficient < 0)
+                {
+                    player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
+                    player.Spaceship.Armour.ArmourCoefficient = 0;
+                }
+            }
+            else
+            {
+                player.Spaceship.Health -= this.Weapon.Power;
+            }
         }
 
         public override string ToString()

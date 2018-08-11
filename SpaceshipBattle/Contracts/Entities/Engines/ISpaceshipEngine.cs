@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Contracts
 {
-    public interface IEngine : IItem
+    public interface ISpaceshipEngine : IItem
     {
         int Power { get; }
 

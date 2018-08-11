@@ -32,6 +32,8 @@ namespace SpaceshipBattle.Entities.Armour
 
         public ArmourType ArmourType { get; set; }
 
+        public abstract int ArmourCoefficient { get; set; }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

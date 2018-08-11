@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Core.Factories
 {
     class SpaceshipFactory : ISpaceshipFactory
     {
-        public ISpaceship CreateSpaceship(string model, IEngine engine, IArmour armour, IWeapon weapon)
+        public ISpaceship CreateSpaceship(string model, ISpaceshipEngine engine, IArmour armour, IWeapon weapon)
         {
             switch (model)
             {

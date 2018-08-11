@@ -37,7 +37,7 @@ namespace SpaceshipBattle.Core
             armourModel = playerParameters.ParametersForPlayer["armour"];
             weaponModel = playerParameters.ParametersForPlayer["weapon"];
 
-            IEngine engine = engineFactory.CreateEngine(engineModel);
+            ISpaceshipEngine engine = engineFactory.CreateEngine(engineModel);
             IArmour armour = armourFactory.CreateArmour(armourModel);
             IWeapon weapon = weaponFactory.CreateWeapon(weaponModel);
             weapon.Bullet = bulletFactory.CreateBullet();

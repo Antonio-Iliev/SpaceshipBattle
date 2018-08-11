@@ -18,6 +18,7 @@ namespace SpaceshipBattle.Entities.Armours
         {
             this.Hardness = hardness;
             this.Toughness = toughness;
+            this.ArmourCoefficient = this.Points + this.Hardness + this.Toughness;
         }
 
         public int Hardness
@@ -45,7 +46,7 @@ namespace SpaceshipBattle.Entities.Armours
             }
         }
 
-        public int ArmourCoefficient { get => this.Points + this.hardness + this.toughness; }
+        public override int ArmourCoefficient { get; set; }
 
         public override string ToString()
         {

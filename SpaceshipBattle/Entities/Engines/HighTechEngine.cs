@@ -25,7 +25,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 return this.thrust;
             }
-            set
+            private set
             {
                 if (value < MinThrustValue || thrust > MaxThrustValue)
                 {

@@ -16,6 +16,7 @@ namespace SpaceshipBattle.Entities.Armours
         {
             this.Reflection = reflection;
             this.Refraction = refraction;
+            this.ArmourCoefficient = this.Points + this.Reflection - this.Refraction;
         }
 
         public int Reflection
@@ -43,7 +44,7 @@ namespace SpaceshipBattle.Entities.Armours
             }
         }
 
-        public int ArmourCoefficient { get => this.Points + this.reflection - this.refraction; }
+        public override int ArmourCoefficient { get; set; }
 
         public override string ToString()
         {

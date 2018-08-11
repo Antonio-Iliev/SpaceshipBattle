@@ -2,6 +2,6 @@
 {
     public interface IEngineFactory
     {
-        IEngine CreateEngine(string model);
+        ISpaceshipEngine CreateEngine(string model);
     }
 }

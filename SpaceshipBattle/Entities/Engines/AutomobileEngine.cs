@@ -50,7 +50,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 return this.capacity;
             }
-            set
+            private set
             {
                 if (value < MinCapacityValue || value > MaxCapacityValue)
                 {
@@ -67,7 +67,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 return this.torque;
             }
-            set
+            private set
             {
                 if (value < MinTorqueValue || value > MaxTorqueValue)
                 {
@@ -83,7 +83,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 return this.cylinderCount;
             }
-            set
+            private set
             {
                 if (value < MinCylinderCountValue || value > MaxCylinderCountValue)
                 {

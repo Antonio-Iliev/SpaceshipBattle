@@ -18,6 +18,16 @@ namespace SpaceshipBattle.Core.Providers
             Console.WriteLine(message);
         }
 
+        public void Write(char symbol)
+        {
+            Console.Write(symbol);
+        }
+
+        public void WriteLine(char symbol)
+        {
+            Console.WriteLine(symbol);
+        }
+
         public void WriteTextCenter(int col, int row, string text)
         {
             Console.SetCursorPosition(col - (text.Length / 2), row);

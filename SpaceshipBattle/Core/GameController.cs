@@ -1,4 +1,5 @@
 ﻿using SpaceshipBattle.Contracts;
+using SpaceshipBattle.Contracts.Providers;
 using System;
 using System.Threading;
 
@@ -6,10 +7,17 @@ namespace SpaceshipBattle.Core
 {
     public class GameController
     {
-        //TODO implement IGameController
-        public GameController()
-        {
+        private IWriter writer;
+        private IReader reader;
+        private bool hasWinner = false;
+        private string winnerName = string.Empty;
 
+        //TODO implement IGameController
+        //TODO change console with reader and writer
+        public GameController(IWriter writer, IReader reader)
+        {
+            this.writer = writer;
+            this.reader = reader;
         }
 
         private void RemoveScrollBars()
@@ -38,14 +46,23 @@ namespace SpaceshipBattle.Core
 
         private void PrintResult(IPlayer firstPlayer, IPlayer secondPlayer)
         {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 1, 0);
-            Console.Write("{0}-{1}", firstPlayer.Spaceship.Health, secondPlayer.Spaceship.Health);
+            //first player
+            Console.SetCursorPosition(1, 0);
+            Console.Write("Armour:{0}", firstPlayer.Spaceship.Armour.ArmourCoefficient);
+            Console.SetCursorPosition(1, 1);
+            Console.Write("Health:{0}", firstPlayer.Spaceship.Health);
+
+            //second player
+            Console.SetCursorPosition(Console.WindowWidth - 11, 0);
+            Console.Write("Armour:{0}", secondPlayer.Spaceship.Armour.ArmourCoefficient);
+            Console.SetCursorPosition(Console.WindowWidth - 11, 1);
+            Console.Write("Health:{0}", secondPlayer.Spaceship.Health);
         }
 
-        private void PrintHitted()
+        private void PrintHitted(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             Console.SetCursorPosition(Console.WindowWidth / 2 - 1, 2);
-            Console.Write("Hitted");
+            Console.Write($"{firstPlayer.Name} hitted {secondPlayer.Name} and took {firstPlayer.Spaceship.Weapon.Power} damage to");
         }
 
         public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
@@ -62,20 +79,26 @@ namespace SpaceshipBattle.Core
                     CommandParser(firstPlayer, secondPlayer, keyInfo);
                 }
 
+                Console.Clear();
+                
                 ManageShooting(firstPlayer, secondPlayer);
 
-                Console.Clear();
-
+                if (hasWinner)
+                {
+                    break;
+                }
+                
                 DrawShip.DrawShipPlayerOne(firstPlayer);
                 DrawShip.DrawShipPlayerTwo(secondPlayer);
 
                 DrawBullet(firstPlayer, 'A');
                 DrawBullet(secondPlayer, 'B');
 
-
                 PrintResult(firstPlayer, secondPlayer);
-                Thread.Sleep(30);
+                Thread.Sleep(35);
             }
+
+            writer.WriteColorTextCenter($"{winnerName} wins!");
         }
 
         private void ManageShooting(IPlayer firstPlayer, IPlayer secondPlayer)
@@ -122,10 +145,16 @@ namespace SpaceshipBattle.Core
             if (firstPlayer.Spaceship.Weapon.Bullet.PositionY == secondPlayer.Spaceship.PositionY)
             {
                 firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer);
-                PrintHitted();
             }
-        }
+            
+            if (secondPlayer.Spaceship.Health <= 0)
+            {
+                hasWinner = true;
+                winnerName = firstPlayer.Name;
+            }
 
+        }
+        
         private void CommandParser(IPlayer firstPlayer, IPlayer secondPlayer, ConsoleKeyInfo keyInfo)
         {
             if (keyInfo.Key == ConsoleKey.W)
