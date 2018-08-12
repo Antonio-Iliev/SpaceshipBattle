@@ -17,16 +17,23 @@ namespace SpaceshipBattle.Core
         private readonly string[] spaceshipNames = new string[] { "Dross-Mashup Spaceship", "Futuristic Spaceship" };
         private readonly string[] componentsInSpaceship = new string[] { "Weapon", "Engine", "Armour" };
 
-        private readonly Dictionary<string, int> weapons = new Dictionary<string, int>
-                        { { "AK47", 2000 }, {"Cannon", 3000 }, {"Laser", 2500 }, {"Plasma Weapon", 4000 } };
+        private readonly Dictionary<string, int> drossMashupWeapons = new Dictionary<string, int>
+                        { { "AK47", 2000 }, {"Cannon", 3000 } };
 
-        private readonly Dictionary<string, int> engines = new Dictionary<string, int>
-        { { "Trabant Motor", 1000 }, {"VW 1.9 TDI", 1500 }, {"Ferrari V12 GT", 3500 }, {"Bugatti W16", 4000 },
-            { "H2O Motor", 1000 }, {"Ion X3", 2000 }, {"Vasimir Plasma Engine", 3500 } };
+        private readonly Dictionary<string, int> futuristicWeapons = new Dictionary<string, int>
+                        { {"Laser", 2500 }, {"Plasma Weapon", 4000 } };
 
-        private readonly Dictionary<string, int> armors = new Dictionary<string, int>
-        {{ "Recycled Paper", 1000 }, {"Brick cage",1500 }, {"Aerogel cover",2000 }, {"Fullerenes Armour", 3500 },
-            { "Switz Armour", 2500 }, {"Plasma Field", 1800 }, {"Anti Matter Fields", 5000 } };
+        private readonly Dictionary<string, int> drossMashupEngines = new Dictionary<string, int>
+        { { "Trabant Motor", 1000 }, {"VW 1.9 TDI", 1500 }, {"Ferrari V12 GT", 3500 }, {"Bugatti W16", 4000 } };
+
+        private readonly Dictionary<string, int> futuristicEngines = new Dictionary<string, int>
+        { { "H2O Motor", 1000 }, {"Ion X3", 2000 }, {"Vasimir Plasma Engine", 3500 } };
+
+        private readonly Dictionary<string, int> drossMashupArmours = new Dictionary<string, int>
+        {{ "Recycled Paper", 1000 }, {"Brick cage",1500 }, {"Aerogel cover",2000 }, {"Bubble Field", 1600 },  {"Plasma Field", 3800 } };
+
+        private readonly Dictionary<string, int> futuristicArmours = new Dictionary<string, int>
+        {{"Aerogel cover",2000 },  {"Fullerenes Armour", 3500 }, { "Switz Armour", 2500 }, {"Plasma Field", 3800 }, {"Anti Matter Fields", 5000 } };
 
         private Dictionary<string, string> parametersForPlayer = new Dictionary<string, string>();
 
@@ -222,6 +229,8 @@ namespace SpaceshipBattle.Core
 
         private string ChooseWeapon()
         {
+            Dictionary<string, int> weapons = SelectElementsByShipType("weapon");
+
             this.positionRow = (Console.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
@@ -261,19 +270,16 @@ namespace SpaceshipBattle.Core
                 int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (availableМoney - weapons.Values.ElementAt(i) >= 0)
+                    string str = weapons.Keys.ElementAt(i) + "  - cost: " + weapons.Values.ElementAt(i) + " GC";
+                    if (focusPosition == i)
                     {
-                        string str = weapons.Keys.ElementAt(i) + "  - cost: " + weapons.Values.ElementAt(i) + " GC";
-                        if (focusPosition == i)
-                        {
-                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                        }
-                        else
-                        {
-                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                        }
-                        elementRow++;
+                        Writer.WriteMenu(positionCol, positionRow + elementRow, str);
                     }
+                    else
+                    {
+                        Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                    }
+                    elementRow++;
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
@@ -284,6 +290,8 @@ namespace SpaceshipBattle.Core
 
         private string ChooseEngine()
         {
+            Dictionary<string, int> engines = SelectElementsByShipType("engine");
+
             this.positionRow = (Console.WindowHeight / 2) - rowOffset - (engines.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
@@ -323,19 +331,16 @@ namespace SpaceshipBattle.Core
                 int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (availableМoney - engines.Values.ElementAt(i) >= 0)
+                    string str = engines.Keys.ElementAt(i) + "  - cost: " + engines.Values.ElementAt(i) + " GC";
+                    if (focusPosition == i)
                     {
-                        string str = engines.Keys.ElementAt(i) + "  - cost: " + engines.Values.ElementAt(i) + " GC";
-                        if (focusPosition == i)
-                        {
-                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                        }
-                        else
-                        {
-                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                        }
-                        elementRow++;
+                        Writer.WriteMenu(positionCol, positionRow + elementRow, str);
                     }
+                    else
+                    {
+                        Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                    }
+                    elementRow++;
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
@@ -346,10 +351,12 @@ namespace SpaceshipBattle.Core
 
         private string ChooseArmour()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (armors.Count / 2);
+            Dictionary<string, int> armours = SelectElementsByShipType("armour");
+
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (armours.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = armors.Count;
+            int lengthOfElements = armours.Count;
             int focusPosition = 0;
 
             while (true)
@@ -374,8 +381,8 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        availableМoney -= armors.Values.ElementAt(focusPosition);
-                        return armors.Keys.ElementAt(focusPosition);
+                        availableМoney -= armours.Values.ElementAt(focusPosition);
+                        return armours.Keys.ElementAt(focusPosition);
                     }
                 }
 
@@ -385,19 +392,16 @@ namespace SpaceshipBattle.Core
                 int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (availableМoney - armors.Values.ElementAt(i) >= 0)
+                    string str = armours.Keys.ElementAt(i) + "  - cost: " + armours.Values.ElementAt(i) + " GC";
+                    if (focusPosition == i)
                     {
-                        string str = armors.Keys.ElementAt(i) + "  - cost: " + armors.Values.ElementAt(i) + " GC";
-                        if (focusPosition == i)
-                        {
-                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                        }
-                        else
-                        {
-                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                        }
-                        elementRow++;
+                        Writer.WriteMenu(positionCol, positionRow + elementRow, str);
                     }
+                    else
+                    {
+                        Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                    }
+                    elementRow++;
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
@@ -406,5 +410,58 @@ namespace SpaceshipBattle.Core
             }
         }
 
+        private Dictionary<string, int> SelectElementsByShipType(string element)
+        {
+            if (this.ParametersForPlayer.Keys.Contains("ship"))
+            {
+                switch (this.ParametersForPlayer["ship"])
+                {
+                    case "Dross-Mashup Spaceship":
+                        switch (element)
+                        {
+                            case "armour":
+                                return SelectElementsByPrice(drossMashupArmours);
+                            case "weapon":
+                                return SelectElementsByPrice(drossMashupWeapons);
+                            case "engine":
+                                return SelectElementsByPrice(drossMashupEngines);
+                            default:
+                                return null;
+                        }
+                    case "Futuristic Spaceship":
+                        switch (element)
+                        {
+                            case "armour":
+                                return SelectElementsByPrice(futuristicArmours);
+                            case "weapon":
+                                return SelectElementsByPrice(futuristicWeapons);
+                            case "engine":
+                                return SelectElementsByPrice(futuristicEngines);
+                            default:
+                                return null;
+                        }
+                    default:
+                        return null;
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("The ship is not selected!");
+            }
+        }
+
+        private Dictionary<string, int> SelectElementsByPrice(Dictionary<string, int> shipType)
+        {
+            Dictionary<string, int> elements = new Dictionary<string, int>();
+
+            foreach (var element in shipType)
+            {
+                if (availableМoney - element.Value >= 0)
+                {
+                    elements.Add(element.Key, element.Value);
+                }
+            }
+            return new Dictionary<string, int>(elements);
+        }
     }
 }
