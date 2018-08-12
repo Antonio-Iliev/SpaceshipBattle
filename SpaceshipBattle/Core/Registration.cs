@@ -1,28 +1,32 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace SpaceshipBattle.Core
 {
-    public class Registration
+    public class Registration : IRegistration
     {
         private int positionRow;
         private int positionCol;
-        private int rowOffset = 5;
+        private int rowOffset = 4;
         private int colOffset = 0;
+        private int availableМoney = 10000;
 
         private readonly string[] spaceshipNames = new string[] { "Dross-Mashup Spaceship", "Futuristic Spaceship" };
-
         private readonly string[] componentsInSpaceship = new string[] { "Weapon", "Engine", "Armour" };
 
-        private readonly string[] weapons = new string[] { "AK47", "Cannon", "Laser", "Plasma Weapon", };
+        private readonly Dictionary<string, int> weapons = new Dictionary<string, int>
+                        { { "AK47", 2000 }, {"Cannon", 3000 }, {"Laser", 2500 }, {"Plasma Weapon", 4000 } };
 
-        private readonly string[] engines = new string[] { "Trabant Motor", "VW 1.9 TDI", "Ferrari V12 GT", "Bugatti W16",
-                                                             "H2O Motor", "Ion X3", "Vasimir Plasma Engine" };
+        private readonly Dictionary<string, int> engines = new Dictionary<string, int>
+        { { "Trabant Motor", 1000 }, {"VW 1.9 TDI", 1500 }, {"Ferrari V12 GT", 3500 }, {"Bugatti W16", 4000 },
+            { "H2O Motor", 1000 }, {"Ion X3", 2000 }, {"Vasimir Plasma Engine", 3500 } };
 
-        private readonly string[] armors = new string[] { "Recycled Paper", "Brick cage", "Aerogel cover",
-                                                            "Fullerenes Armour", "Switz Armour", "Plasma Field", "Anti Matter Fields" };
+        private readonly Dictionary<string, int> armors = new Dictionary<string, int>
+        {{ "Recycled Paper", 1000 }, {"Brick cage",1500 }, {"Aerogel cover",2000 }, {"Fullerenes Armour", 3500 },
+            { "Switz Armour", 2500 }, {"Plasma Field", 1800 }, {"Anti Matter Fields", 5000 } };
 
         private Dictionary<string, string> parametersForPlayer = new Dictionary<string, string>();
 
@@ -32,8 +36,8 @@ namespace SpaceshipBattle.Core
             this.Writer = writer;
         }
 
-        private IReader Reader { get; set; }
-        private IWriter Writer { get; set; }
+        public IReader Reader { get; set; }
+        public IWriter Writer { get; set; }
 
         public Dictionary<string, string> ParametersForPlayer { get => new Dictionary<string, string>(this.parametersForPlayer); }
 
@@ -218,10 +222,10 @@ namespace SpaceshipBattle.Core
 
         private string ChooseWeapon()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (weapons.Length / 2);
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = weapons.Length;
+            int lengthOfElements = weapons.Count;
             int focusPosition = 0;
 
             while (true)
@@ -246,24 +250,30 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        return weapons[focusPosition];
+                        availableМoney -= weapons.Values.ElementAt(focusPosition);
+                        return weapons.Keys.ElementAt(focusPosition);
                     }
                 }
 
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your weapon of destruction:");
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_________________________");
 
+                int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (focusPosition == i)
+                    if (availableМoney - weapons.Values.ElementAt(i) >= 0)
                     {
-                        Writer.WriteMenu(positionCol, positionRow + 1 + i, weapons[i]);
+                        string str = weapons.Keys.ElementAt(i) + "  - cost: " + weapons.Values.ElementAt(i) + " GC";
+                        if (focusPosition == i)
+                        {
+                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
+                        }
+                        else
+                        {
+                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                        }
+                        elementRow++;
                     }
-                    else
-                    {
-                        Writer.WriteTextCenter(positionCol, positionRow + 1 + i, weapons[i]);
-                    }
-
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
@@ -274,10 +284,10 @@ namespace SpaceshipBattle.Core
 
         private string ChooseEngine()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (engines.Length / 2);
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (engines.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = engines.Length;
+            int lengthOfElements = engines.Count;
             int focusPosition = 0;
 
             while (true)
@@ -302,22 +312,29 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        return engines[focusPosition];
+                        availableМoney -= engines.Values.ElementAt(focusPosition);
+                        return engines.Keys.ElementAt(focusPosition);
                     }
                 }
 
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your flying power (engine):");
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
+                int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (focusPosition == i)
+                    if (availableМoney - engines.Values.ElementAt(i) >= 0)
                     {
-                        Writer.WriteMenu(positionCol, positionRow + 1 + i, engines[i]);
-                    }
-                    else
-                    {
-                        Writer.WriteTextCenter(positionCol, positionRow + 1 + i, engines[i]);
+                        string str = engines.Keys.ElementAt(i) + "  - cost: " + engines.Values.ElementAt(i) + " GC";
+                        if (focusPosition == i)
+                        {
+                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
+                        }
+                        else
+                        {
+                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                        }
+                        elementRow++;
                     }
                 }
 
@@ -329,10 +346,10 @@ namespace SpaceshipBattle.Core
 
         private string ChooseArmour()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (armors.Length / 2);
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (armors.Count / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = armors.Length;
+            int lengthOfElements = armors.Count;
             int focusPosition = 0;
 
             while (true)
@@ -357,22 +374,29 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        return armors[focusPosition];
+                        availableМoney -= armors.Values.ElementAt(focusPosition);
+                        return armors.Keys.ElementAt(focusPosition);
                     }
                 }
 
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your impenetrable skin (armour):");
                 Writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
+                int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
                 {
-                    if (focusPosition == i)
+                    if (availableМoney - armors.Values.ElementAt(i) >= 0)
                     {
-                        Writer.WriteMenu(positionCol, positionRow + 1 + i, armors[i]);
-                    }
-                    else
-                    {
-                        Writer.WriteTextCenter(positionCol, positionRow + 1 + i, armors[i]);
+                        string str = armors.Keys.ElementAt(i) + "  - cost: " + armors.Values.ElementAt(i) + " GC";
+                        if (focusPosition == i)
+                        {
+                            Writer.WriteMenu(positionCol, positionRow + elementRow, str);
+                        }
+                        else
+                        {
+                            Writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
+                        }
+                        elementRow++;
                     }
                 }
 
