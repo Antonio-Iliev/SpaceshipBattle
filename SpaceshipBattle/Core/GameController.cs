@@ -61,8 +61,13 @@ namespace SpaceshipBattle.Core
 
         private void PrintHitted(IPlayer firstPlayer, IPlayer secondPlayer)
         {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 1, 2);
-            Console.Write($"{firstPlayer.Name} hitted {secondPlayer.Name} and took {firstPlayer.Spaceship.Weapon.Power} damage to");
+            int time = 100;
+            while (time >= 0)
+            {
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 1, 2);
+                Console.Write($"{firstPlayer.Name} hit {secondPlayer.Name} for {firstPlayer.Spaceship.Weapon.Power} damage");
+                time--;
+            }
         }
 
         public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
@@ -80,14 +85,14 @@ namespace SpaceshipBattle.Core
                 }
 
                 Console.Clear();
-                
+
                 ManageShooting(firstPlayer, secondPlayer);
 
                 if (hasWinner)
                 {
                     break;
                 }
-                
+
                 DrawShip.DrawShipPlayerOne(firstPlayer);
                 DrawShip.DrawShipPlayerTwo(secondPlayer);
 
@@ -109,7 +114,6 @@ namespace SpaceshipBattle.Core
                 firstPlayer.Spaceship.Weapon.Bullet.PositionX += firstPlayer.Spaceship.Weapon.Speed;
 
                 bool firstPlBulletOutOfRange = firstPlayer.Spaceship.Weapon.Bullet.PositionX + firstPlayer.Spaceship.Weapon.Speed >= Console.WindowWidth;
-
                 if (firstPlBulletOutOfRange)
                 {
                     TakeDamage(firstPlayer, secondPlayer);
@@ -142,9 +146,10 @@ namespace SpaceshipBattle.Core
 
         private void TakeDamage(IPlayer firstPlayer, IPlayer secondPlayer)
         {
-            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY == secondPlayer.Spaceship.PositionY)
+            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - 2 && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + 2)
             {
                 firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer);
+                PrintHitted(firstPlayer, secondPlayer);
             }
             
             if (secondPlayer.Spaceship.Health <= 0)
@@ -154,7 +159,7 @@ namespace SpaceshipBattle.Core
             }
 
         }
-        
+
         private void CommandParser(IPlayer firstPlayer, IPlayer secondPlayer, ConsoleKeyInfo keyInfo)
         {
             if (keyInfo.Key == ConsoleKey.W)

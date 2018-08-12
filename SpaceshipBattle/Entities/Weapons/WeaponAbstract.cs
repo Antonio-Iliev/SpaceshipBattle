@@ -20,10 +20,7 @@ namespace SpaceshipBattle.Entities.Weapons
         public int ClipCapacity { get; }
         public int RemainingClips { get; private set; }               
 
-        public IBullet Bullet { get; set; }
-
-        public int Damage => throw new NotImplementedException();
-
-        
+        public IBullet Bullet { get; set; }      
+                
     }
 }

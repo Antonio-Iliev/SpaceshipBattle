@@ -12,8 +12,7 @@ namespace SpaceshipBattle.Contracts
 
         //TODO
         IBullet Bullet { get; set; }
-
-        int Damage { get; }
+        
         
     }
 }
