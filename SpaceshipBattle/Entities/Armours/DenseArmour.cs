@@ -46,7 +46,7 @@ namespace SpaceshipBattle.Entities.Armours
             }
         }
 
-        public override int ArmourCoefficient { get; set; }
+        public override int ArmourCoefficient { get => this.Points + this.hardness + this.toughness; }
 
         public override string ToString()
         {
