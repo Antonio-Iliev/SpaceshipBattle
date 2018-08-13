@@ -68,10 +68,11 @@ namespace SpaceshipBattle.Core
                 {
                     Console.SetCursorPosition(positionCol - 5, positionRow + 1);
                     Writer.Write("   ");
-                    Console.SetCursorPosition(positionCol - 5, positionRow + 2);
+
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Writer.Write("Name must be between 3 and 35 characters");
+                    Writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
                     Console.ForegroundColor = ConsoleColor.Cyan;
+
                     Console.SetCursorPosition(positionCol - 5, positionRow + 1);
                     nameOfPlayer = Reader.ReadLine();
                 }

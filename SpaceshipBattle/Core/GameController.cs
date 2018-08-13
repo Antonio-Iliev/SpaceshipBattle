@@ -111,7 +111,7 @@ namespace SpaceshipBattle.Core
             if (firstPlayer.Spaceship.IsAtShooting)
             {
                 //move first player bullet
-                firstPlayer.Spaceship.Weapon.Bullet.PositionX += firstPlayer.Spaceship.Weapon.Speed;
+                firstPlayer.Spaceship.Weapon.Bullet.PositionX += firstPlayer.Spaceship.Weapon.Speed * 3;
 
                 bool firstPlBulletOutOfRange = firstPlayer.Spaceship.Weapon.Bullet.PositionX + firstPlayer.Spaceship.Weapon.Speed >= Console.WindowWidth;
                 if (firstPlBulletOutOfRange)
@@ -124,7 +124,7 @@ namespace SpaceshipBattle.Core
             if (secondPlayer.Spaceship.IsAtShooting)
             {
                 //move second player bullet
-                secondPlayer.Spaceship.Weapon.Bullet.PositionX -= secondPlayer.Spaceship.Weapon.Speed;
+                secondPlayer.Spaceship.Weapon.Bullet.PositionX -= secondPlayer.Spaceship.Weapon.Speed * 3;
 
                 bool secondPlBulletOutOfRange = secondPlayer.Spaceship.Weapon.Bullet.PositionX - secondPlayer.Spaceship.Weapon.Speed <= 0;
 
@@ -198,19 +198,3 @@ namespace SpaceshipBattle.Core
         }
     }
 }
-/*
-|__xxxxxxxxxxxxxxxx__________________________________ |
-|                1-0                  |y
-|                                     |y
-|                                     |y
-||         *                         *|y
-||                                   *|y
-||                                   *|y
-||                                   *|y
-|                                     |
-|                                     |
-|                                     |
-|                                     |
-|                                     |
-|_____________________________________|_
-*/
