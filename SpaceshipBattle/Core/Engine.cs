@@ -34,21 +34,27 @@ namespace SpaceshipBattle.Core
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
 
+            try
+            {
+                player1.ChooseName();
+                player1.ChooseSpaceShip();
+                player1.ChooseComponent();
+                Writer.WriteColorTextCenter(">>> " + player1.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
 
-            player1.ChooseName();
-            player1.ChooseSpaceShip();
-            player1.ChooseComponent();
-            Writer.WriteColorTextCenter(">>> " + player1.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
+                player2.ChooseName();
+                player2.ChooseSpaceShip();
+                player2.ChooseComponent();
+                Writer.WriteColorTextCenter(">>> " + player2.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
 
-            player2.ChooseName();
-            player2.ChooseSpaceShip();
-            player2.ChooseComponent();
-            Writer.WriteColorTextCenter(">>> " + player2.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
+                IPlayer firstPlayer = playerCreator.CreatePlayer(player1);
+                IPlayer secondPlayer = playerCreator.CreatePlayer(player2);
 
-            IPlayer firstPlayer = playerCreator.CreatePlayer(player1);
-            IPlayer secondPlayer = playerCreator.CreatePlayer(player2);
-
-            gameController.Play(firstPlayer, secondPlayer);
+                gameController.Play(firstPlayer, secondPlayer);
+            }
+            catch (Exception ex)
+            {
+                Writer.WriteColorTextCenter(ex.Message);
+            }               
         }
     }
 }

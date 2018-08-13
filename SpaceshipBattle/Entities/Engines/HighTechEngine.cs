@@ -12,7 +12,7 @@ namespace SpaceshipBattle.Entities.Engines
         private const int MaxThrustValue = 100;
 
         private int thrust;
-
+        
         public HighTechEngine(string model, int price, int weight, int power, FuelType fuelType, int thrust) : base(model, price, weight, power, fuelType)
         {
             this.Thrust = thrust;
@@ -29,7 +29,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 if (value < MinThrustValue || thrust > MaxThrustValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The thrust of engine cannot be less than {MinThrustValue } or more than {MaxThrustValue}.");
+                    throw new ArgumentOutOfRangeException($"The thrust of engine cannot be less than {MinThrustValue} or more than {MaxThrustValue}.");
                 }
                 this.thrust = value;
             }

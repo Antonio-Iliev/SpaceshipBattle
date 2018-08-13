@@ -4,10 +4,8 @@ using System.Text;
 
 namespace SpaceshipBattle.Contracts
 {
-    public interface IBullet
+   public interface IGameController
     {
-        int PositionX { get; set; }
-
-        int PositionY { get; set; }
+        void Play(IPlayer firstPlayer, IPlayer secondPlayer);
     }
 }

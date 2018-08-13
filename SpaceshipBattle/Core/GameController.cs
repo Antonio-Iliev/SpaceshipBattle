@@ -5,15 +5,13 @@ using System.Threading;
 
 namespace SpaceshipBattle.Core
 {
-    public class GameController
+    public class GameController : IGameController
     {
         private IWriter writer;
         private IReader reader;
         private bool hasWinner = false;
         private string winnerName = string.Empty;
 
-        //TODO implement IGameController
-        //TODO change console with reader and writer
         public GameController(IWriter writer, IReader reader)
         {
             this.writer = writer;
@@ -31,7 +29,7 @@ namespace SpaceshipBattle.Core
         private void PrintAtPosition(int x, int y, char symbol)
         {
             Console.SetCursorPosition(x, y);
-            Console.Write(symbol);
+            writer.Write(symbol.ToString());
         }
 
         private void SetInitialPositions(IPlayer player)
@@ -47,27 +45,16 @@ namespace SpaceshipBattle.Core
         private void PrintResult(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             //first player
-            Console.SetCursorPosition(1, 0);
-            Console.Write("Armour:{0}", firstPlayer.Spaceship.Armour.ArmourCoefficient);
-            Console.SetCursorPosition(1, 1);
-            Console.Write("Health:{0}", firstPlayer.Spaceship.Health);
+            Console.SetCursorPosition(10, 0);
+            writer.Write($"Armour:{firstPlayer.Spaceship.Armour.ArmourCoefficient}");
+            Console.SetCursorPosition(10, 1);
+            writer.Write($"Health:{firstPlayer.Spaceship.Health}");
 
             //second player
-            Console.SetCursorPosition(Console.WindowWidth - 11, 0);
-            Console.Write("Armour:{0}", secondPlayer.Spaceship.Armour.ArmourCoefficient);
-            Console.SetCursorPosition(Console.WindowWidth - 11, 1);
-            Console.Write("Health:{0}", secondPlayer.Spaceship.Health);
-        }
-
-        private void PrintHitted(IPlayer firstPlayer, IPlayer secondPlayer)
-        {
-            int time = 100;
-            while (time >= 0)
-            {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 1, 2);
-                Console.Write($"{firstPlayer.Name} hit {secondPlayer.Name} for {firstPlayer.Spaceship.Weapon.Power} damage");
-                time--;
-            }
+            Console.SetCursorPosition(Console.WindowWidth - 20, 0);
+            writer.Write($"Armour:{secondPlayer.Spaceship.Armour.ArmourCoefficient}");
+            Console.SetCursorPosition(Console.WindowWidth - 20, 1);
+            writer.Write($"Health:{secondPlayer.Spaceship.Health}");
         }
 
         public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
@@ -100,7 +87,7 @@ namespace SpaceshipBattle.Core
                 DrawBullet(secondPlayer, 'B');
 
                 PrintResult(firstPlayer, secondPlayer);
-                Thread.Sleep(35);
+                Thread.Sleep(45);
             }
 
             writer.WriteColorTextCenter($"{winnerName} wins!");
@@ -150,11 +137,11 @@ namespace SpaceshipBattle.Core
             {
                 firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
             }
-            else if(firstPlayer.Spaceship.Weapon.Model == "Plasma Weapon" || firstPlayer.Spaceship.Weapon.Model == "Cannon")
+            else if (firstPlayer.Spaceship.Weapon.Model == "Plasma Weapon" || firstPlayer.Spaceship.Weapon.Model == "Cannon")
             {
                 firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
             }
-            
+
             if (secondPlayer.Spaceship.Health <= 0)
             {
                 hasWinner = true;

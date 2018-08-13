@@ -10,7 +10,6 @@ namespace SpaceshipBattle.Contracts
 
         int ClipCapacity { get; }
 
-        //TODO
         IBullet Bullet { get; set; }
 
         int DealDamage( IPlayer firstPlayer, IPlayer secondPlayer);

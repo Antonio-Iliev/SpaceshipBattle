@@ -30,7 +30,7 @@ namespace SpaceshipBattle.Entities.Engines
             {
                 if (value < MinPowerValue || value > MaxPowerValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The power of engine cannot be less than {MinPowerValue } or more than {MaxPowerValue}.");
+                    throw new ArgumentOutOfRangeException($"The power of engine cannot be less than {MinPowerValue} or more than {MaxPowerValue}.");
                 }
                 this.power = value;
             }
