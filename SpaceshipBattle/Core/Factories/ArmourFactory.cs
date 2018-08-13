@@ -21,9 +21,11 @@ namespace SpaceshipBattle.Core.Factories
                 case "Fullerenes Armour":
                     return new DenseArmour("Fullerenes Armour", 3500, 200, 40, 7, 3, ArmourType.Carbon);
                 case "Switz Armour":
-                    return new DenseArmour("Switz Armour", 2500, 2500, 35, 3, 2, ArmourType.Steel);
+                    return new DenseArmour("Switz Armour", 2500, 800, 35, 3, 2, ArmourType.Steel);
+                case "Bubble Field":
+                    return new ProtectiveFields("Bubble Field", 1600, 100, 12, 4, 1, ArmourType.Plasma);
                 case "Plasma Field":
-                    return new ProtectiveFields("Plasma Field", 1800, 100, 35, 2, 8, ArmourType.Plasma);
+                    return new ProtectiveFields("Plasma Field", 2800, 100, 35, 2, 8, ArmourType.Plasma);
                 case "Anti Matter Fields":
                     return new ProtectiveFields("Anti Matter Field", 5000, 450, 65, 0, 10, ArmourType.AntiMatter);
                 default:
