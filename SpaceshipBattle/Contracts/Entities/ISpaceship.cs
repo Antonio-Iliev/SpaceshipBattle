@@ -31,7 +31,7 @@ namespace SpaceshipBattle.Contracts
 
         void Move(string direction);
 
-        void TakeDamageToPlayer(IPlayer player);
+        void TakeDamageToPlayer(IPlayer player, int damage);
 
         string Model { get; }
 

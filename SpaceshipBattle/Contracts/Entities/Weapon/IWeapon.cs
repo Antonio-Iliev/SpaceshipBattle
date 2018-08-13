@@ -12,7 +12,7 @@ namespace SpaceshipBattle.Contracts
 
         //TODO
         IBullet Bullet { get; set; }
-        
-        
+
+        int DealDamage( IPlayer firstPlayer, IPlayer secondPlayer);
     }
 }

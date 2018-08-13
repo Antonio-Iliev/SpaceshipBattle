@@ -148,8 +148,11 @@ namespace SpaceshipBattle.Core
         {
             if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - 2 && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + 2)
             {
-                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer);
-                PrintHitted(firstPlayer, secondPlayer);
+                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
+            }
+            else if(firstPlayer.Spaceship.Weapon.Model == "Plasma Weapon" || firstPlayer.Spaceship.Weapon.Model == "Cannon")
+            {
+                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
             }
             
             if (secondPlayer.Spaceship.Health <= 0)

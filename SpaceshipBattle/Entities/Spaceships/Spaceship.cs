@@ -121,22 +121,25 @@ namespace SpaceshipBattle.Entities
             }
         }
 
-        public void TakeDamageToPlayer(IPlayer player)
-        {
-            if (player.Spaceship.Armour.ArmourCoefficient > 0)
-            {
-                player.Spaceship.Armour.ArmourCoefficient -= this.Weapon.Power;
-
-                if (player.Spaceship.Armour.ArmourCoefficient < 0)
+        public void TakeDamageToPlayer(IPlayer player, int damage)
+        {           
+            
+                if (player.Spaceship.Armour.ArmourCoefficient > 0 )
                 {
-                    player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
-                    player.Spaceship.Armour.ArmourCoefficient = 0;
+                    player.Spaceship.Armour.ArmourCoefficient -= damage;
+
+                    if (player.Spaceship.Armour.ArmourCoefficient < 0)
+                    {
+                        player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
+                        player.Spaceship.Armour.ArmourCoefficient = 0;
+                    }
                 }
-            }
-            else
-            {
-                player.Spaceship.Health -= this.Weapon.Power;
-            }
+                else
+                {
+                    player.Spaceship.Health -= damage;
+                }
+            
+            
         }
 
         public override string ToString()
