@@ -7,7 +7,6 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities
 {
-    //2 вида кораба - единият с 2 оръжия,  а другият с 1 и с повече health
     public abstract class Spaceship : ISpaceship
     {
         private const int MinPriceValue = 1000;
