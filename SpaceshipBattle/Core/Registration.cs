@@ -1,4 +1,5 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
+using SpaceshipBattle.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,32 +49,36 @@ namespace SpaceshipBattle.Core
 
         public Dictionary<string, string> ParametersForPlayer { get => new Dictionary<string, string>(this.parametersForPlayer); }
 
+        //Choosing player name
         public void ChooseName()
         {
             this.positionRow = (Console.WindowHeight / 2) - rowOffset;
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
 
+            // Additional information for user
             Writer.WriteTextCenter(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
             Writer.WriteTextCenter(this.positionCol, this.positionRow++, "Enter your name:");
 
-            Console.SetCursorPosition(positionCol - 10, positionRow + 1);
-            Writer.Write(">>>> ");
+            Writer.WriteTextAtPosition(positionCol - 10, positionRow + 1, ">>>> ");
 
             string nameOfPlayer = Reader.ReadLine();
             bool isValid = false;
             while (!isValid)
             {
+                // Checks whether the player's name is valid
                 if (String.IsNullOrEmpty(nameOfPlayer) || String.IsNullOrWhiteSpace(nameOfPlayer)
                     || nameOfPlayer.Length < 3 || nameOfPlayer.Length > 35)
                 {
-                    Console.SetCursorPosition(positionCol - 5, positionRow + 1);
-                    Writer.Write(new string(' ', nameOfPlayer.Length));
 
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    // Clean invalid name
+                    Writer.WriteTextAtPosition(positionCol - 5, positionRow + 1, new string(' ', nameOfPlayer.Length));
+
+                    // Show warning message
+                    Writer.SetTextColor(Colors.Red);
                     Writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Writer.SetTextColor(Colors.Cyan);
 
-                    Console.SetCursorPosition(positionCol - 5, positionRow + 1);
+                    Writer.WriteTextAtPosition(positionCol - 5, positionRow + 1);
                     nameOfPlayer = Reader.ReadLine();
                 }
                 else
@@ -82,7 +87,7 @@ namespace SpaceshipBattle.Core
                     isValid = true;
                 }
             }
-            Console.Clear();
+            Writer.ClearScreen();
         }
 
         public void ChooseSpaceShip()

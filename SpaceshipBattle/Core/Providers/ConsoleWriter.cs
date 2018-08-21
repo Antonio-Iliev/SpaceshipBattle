@@ -1,4 +1,5 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
+using SpaceshipBattle.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -66,6 +67,22 @@ namespace SpaceshipBattle.Core.Providers
 
             Thread.Sleep(3000);
             Console.Clear();
+        }
+
+        public void ClearScreen()
+        {
+            Console.Clear();
+        }
+
+        public void WriteTextAtPosition(int col, int row, string text)
+        {
+            Console.SetCursorPosition(col, row);
+            Console.Write(text);
+        }
+
+        public void SetTextColor(Colors color)
+        {
+            Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), color.ToString());
         }
     }
 }

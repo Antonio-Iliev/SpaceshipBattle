@@ -1,4 +1,6 @@
-﻿namespace SpaceshipBattle.Contracts.Providers
+﻿using SpaceshipBattle.Core.Common;
+
+namespace SpaceshipBattle.Contracts.Providers
 {
     public interface IWriter
     {
@@ -11,5 +13,11 @@
         void WriteMenu(int col, int row, string textMenu);
 
         void WriteColorTextCenter(string message);
+
+        void ClearScreen();
+
+        void WriteTextAtPosition(int col, int row, string text = "");
+
+        void SetTextColor(Colors color);
     }
 }
