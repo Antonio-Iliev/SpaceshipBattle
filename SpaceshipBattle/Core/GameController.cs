@@ -1,5 +1,6 @@
 ﻿using SpaceshipBattle.Contracts;
 using SpaceshipBattle.Contracts.Providers;
+using SpaceshipBattle.Core.Common;
 using System;
 using System.Threading;
 
@@ -8,7 +9,7 @@ namespace SpaceshipBattle.Core
     public class GameController : IGameController
     {
         private IWriter writer;
-        private IReader reader;
+        private readonly IReader reader;
         private bool hasWinner = false;
         private string winnerName = string.Empty;
 
@@ -131,23 +132,16 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        private void TakeDamage(IPlayer firstPlayer, IPlayer secondPlayer)
+        private void TakeDamage(IPlayer playerShooting, IPlayer playerShot)
         {
-            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - 2 && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + 2)
-            {
-                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
-            }
-            else if (firstPlayer.Spaceship.Weapon.Model == "Plasma Weapon" || firstPlayer.Spaceship.Weapon.Model == "Cannon")
-            {
-                firstPlayer.Spaceship.TakeDamageToPlayer(secondPlayer, firstPlayer.Spaceship.Weapon.DealDamage(firstPlayer, secondPlayer));
-            }
+            var dealDamage = playerShooting.Spaceship.Weapon.DealDamage(playerShooting.Spaceship.Weapon.Bullet.PositionY, playerShot.Spaceship.PositionY);
+            playerShooting.Spaceship.TakeDamageToPlayer(playerShot, dealDamage);
 
-            if (secondPlayer.Spaceship.Health <= 0)
+            if (playerShot.Spaceship.Health <= 0)
             {
                 hasWinner = true;
-                winnerName = firstPlayer.Name;
+                winnerName = playerShooting.Name;
             }
-
         }
 
         private void CommandParser(IPlayer firstPlayer, IPlayer secondPlayer, ConsoleKeyInfo keyInfo)

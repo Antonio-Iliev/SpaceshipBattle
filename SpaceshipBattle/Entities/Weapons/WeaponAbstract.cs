@@ -24,7 +24,7 @@ namespace SpaceshipBattle.Entities.Weapons
         public abstract int Damage { get; set; }
 
 
-        public virtual int DealDamage(IPlayer firstPlayer, IPlayer secondPlayer)
+        public virtual int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
             return Power;
         }

@@ -12,6 +12,6 @@ namespace SpaceshipBattle.Contracts
 
         IBullet Bullet { get; set; }
 
-        int DealDamage( IPlayer firstPlayer, IPlayer secondPlayer);
+        int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition);
     }
 }

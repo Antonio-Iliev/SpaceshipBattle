@@ -19,13 +19,18 @@ namespace SpaceshipBattle.Entities.Weapons
         public override int Damage { get; set; }
 
 
-        public override int DealDamage(IPlayer firstPlayer, IPlayer secondPlayer)
+        public override int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
-            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - 2 && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + 2)
+            var topSpaceShipPositoon = shotPlayerPosition - 2;
+            var bottomSpaceShipPosition = shotPlayerPosition + 2;
+
+            if (shootingPlayerBulletPosition >= topSpaceShipPositoon
+               && shootingPlayerBulletPosition <= bottomSpaceShipPosition)
             {
                 return damage = Power;
             }
-            else if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - (this.SplashArea + 2) && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + this.SplashArea + 2)
+            else if (shootingPlayerBulletPosition >= topSpaceShipPositoon - this.SplashArea
+                && shootingPlayerBulletPosition <= bottomSpaceShipPosition + this.SplashArea)
             {
                 return damage = Power / 2;
             }

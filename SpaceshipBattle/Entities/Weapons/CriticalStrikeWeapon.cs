@@ -7,7 +7,7 @@ namespace SpaceshipBattle.Entities.Weapons
 {
     class CriticalStrikeWeapon : WeaponAbstract, ICriticalStrikeWeapon
     {
-        
+
         public CriticalStrikeWeapon(string model, int price, int weight, int power, int speed, int clipCapacity, int criticalStrikeChance) : base(model, price, weight, power, speed, clipCapacity)
         {
             CriticalStrikeChance = criticalStrikeChance;
@@ -18,13 +18,16 @@ namespace SpaceshipBattle.Entities.Weapons
         public int CriticalStrikeChance
         { get; protected set; }
 
-        public override int DealDamage(IPlayer firstPlayer, IPlayer secondPlayer)
+        public override int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
-            if (firstPlayer.Spaceship.Weapon.Bullet.PositionY >= secondPlayer.Spaceship.PositionY - 2 && firstPlayer.Spaceship.Weapon.Bullet.PositionY <= secondPlayer.Spaceship.PositionY + 2)
+            var topSpaceShipPositoon = shotPlayerPosition - 2;
+            var bottomSpaceShipPosition = shotPlayerPosition + 2;
+
+            if (shootingPlayerBulletPosition >= topSpaceShipPositoon && shootingPlayerBulletPosition <= bottomSpaceShipPosition)
             {
                 Random gen = new Random();
                 return damage = gen.Next(100) <= this.CriticalStrikeChance ? this.Power + (this.Power / 2) : this.Power;
-                
+
             }
             else
             {
