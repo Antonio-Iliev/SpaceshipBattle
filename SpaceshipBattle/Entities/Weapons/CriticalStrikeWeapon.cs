@@ -20,6 +20,7 @@ namespace SpaceshipBattle.Entities.Weapons
 
         public override int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
+            //Assign min/max positions of the ship
             var topSpaceShipPositoon = shotPlayerPosition - 2;
             var bottomSpaceShipPosition = shotPlayerPosition + 2;
 
@@ -27,7 +28,6 @@ namespace SpaceshipBattle.Entities.Weapons
             {
                 Random gen = new Random();
                 return damage = gen.Next(100) <= this.CriticalStrikeChance ? this.Power + (this.Power / 2) : this.Power;
-
             }
             else
             {

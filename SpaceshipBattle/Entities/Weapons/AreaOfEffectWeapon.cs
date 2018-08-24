@@ -21,6 +21,7 @@ namespace SpaceshipBattle.Entities.Weapons
 
         public override int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
+            //Assign min/max positions of the ship
             var topSpaceShipPositoon = shotPlayerPosition - 2;
             var bottomSpaceShipPosition = shotPlayerPosition + 2;
 

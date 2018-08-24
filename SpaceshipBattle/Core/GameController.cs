@@ -134,7 +134,10 @@ namespace SpaceshipBattle.Core
 
         private void TakeDamage(IPlayer playerShooting, IPlayer playerShot)
         {
+            //Calculate the damage to be dealt
             var dealDamage = playerShooting.Spaceship.Weapon.DealDamage(playerShooting.Spaceship.Weapon.Bullet.PositionY, playerShot.Spaceship.PositionY);
+
+            //Take the damage from the ship
             playerShooting.Spaceship.TakeDamageToPlayer(playerShot, dealDamage);
 
             if (playerShot.Spaceship.Health <= 0)
