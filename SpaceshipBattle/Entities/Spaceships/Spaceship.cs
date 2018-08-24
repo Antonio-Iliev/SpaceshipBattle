@@ -71,74 +71,76 @@ namespace SpaceshipBattle.Entities
             this.TotalDist = this.FuelCapacity;
         }
 
-        public void Shoot(string side)
+        private void PrepareToShoot()
+        {
+            this.Weapon.Bullet.PositionY = this.PositionY;
+            this.IsAtShooting = true;
+        }
+
+        public void ShootFromLeftSide()
         {
             if (this.IsAtShooting == false)
             {
-                this.Weapon.Bullet.PositionY = this.PositionY;
-                this.IsAtShooting = true;
+                PrepareToShoot();
 
-                if (side == "left")
+                this.Weapon.Bullet.PositionX = 1;
+            }
+        }
+
+        public void ShootFromRightSide()
+        {
+            if (this.IsAtShooting == false)
+            {
+                PrepareToShoot();
+
+                this.Weapon.Bullet.PositionX = Console.WindowWidth - 1;
+            }
+        }
+
+        public void MoveDown( )
+        {
+            if (this.PositionY + this.Speed < Console.WindowHeight - 2)
+            {
+                this.PositionY += this.Speed;
+                this.TotalDist += this.Speed;
+
+                if (this.TotalDist >= FuelCapacity)
                 {
-                    this.Weapon.Bullet.PositionX = 1;
-                }
-                else
-                {
-                    this.Weapon.Bullet.PositionX = Console.WindowWidth - 1;
+                    Refuel();
                 }
             }
         }
 
-        public void Move(string direction)
+        public void MoveUp()
         {
-            if (direction == "down")
+            if (this.PositionY - this.Speed > 1)
             {
-                if (this.PositionY + this.Speed < Console.WindowHeight - 2)
-                {
-                    this.PositionY += this.Speed;
-                    this.TotalDist += this.Speed;
+                this.PositionY -= this.Speed;
+                this.TotalDist += this.Speed;
 
-                    if (this.TotalDist >= FuelCapacity)
-                    {
-                        Refuel();
-                    }
-                }
-            }
-            //up
-            else
-            {
-                if (this.PositionY - this.Speed > 1)
+                if (this.TotalDist >= FuelCapacity)
                 {
-                    this.PositionY -= this.Speed;
-                    this.TotalDist += this.Speed;
-
-                    if (this.TotalDist >= FuelCapacity)
-                    {
-                        Refuel();
-                    }
+                    Refuel();
                 }
             }
         }
 
         public void TakeDamageToPlayer(IPlayer player, int damage)
-        {           
-            
-                if (player.Spaceship.Armour.ArmourCoefficient > 0 )
-                {
-                    player.Spaceship.Armour.ArmourCoefficient -= damage;
+        {
+            if (player.Spaceship.Armour.ArmourCoefficient > 0)
+            {
+                player.Spaceship.Armour.ArmourCoefficient -= damage;
 
-                    if (player.Spaceship.Armour.ArmourCoefficient < 0)
-                    {
-                        player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
-                        player.Spaceship.Armour.ArmourCoefficient = 0;
-                    }
-                }
-                else
+                if (player.Spaceship.Armour.ArmourCoefficient < 0)
                 {
-                    player.Spaceship.Health -= damage;
+                    player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
+                    player.Spaceship.Armour.ArmourCoefficient = 0;
                 }
-            
-            
+            }
+            else
+            {
+                player.Spaceship.Health -= damage;
+            }
         }
 
         public override string ToString()

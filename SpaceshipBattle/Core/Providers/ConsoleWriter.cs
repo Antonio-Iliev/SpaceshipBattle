@@ -84,5 +84,33 @@ namespace SpaceshipBattle.Core.Providers
         {
             Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), color.ToString());
         }
+
+        public void SetWindowSize(int width, int height)
+        {
+            Console.SetWindowSize(width, height);
+        }
+
+        public void SetCursorPosition(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+        }
+
+        public bool KeyAvailable()
+        {
+            return Console.KeyAvailable;
+        }
+
+        //TODO: Ask trainers
+        public int GetWindowHeight()
+        {
+            return Console.WindowHeight;
+        }
+
+        public int GetWindowWidth()
+        {
+            return Console.WindowWidth;
+        }
+
+
     }
 }

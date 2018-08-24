@@ -2,7 +2,7 @@
 
 namespace SpaceshipBattle.Contracts.Factories
 {
-    interface IWeaponFactory
+    public interface IWeaponFactory
     {
         IWeapon CreateWeapon(string model);
     }

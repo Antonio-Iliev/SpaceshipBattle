@@ -6,6 +6,8 @@ namespace SpaceshipBattle.Contracts.Providers
     {
         void Write(string message);
 
+        void Write(char symbol);
+
         void WriteLine(string message);
 
         void WriteTextCenter(int col, int row, string text);
@@ -19,5 +21,15 @@ namespace SpaceshipBattle.Contracts.Providers
         void WriteTextAtPosition(int col, int row, string text = "");
 
         void SetTextColor(Colors color);
+
+        void SetWindowSize(int width, int height);
+
+        void SetCursorPosition(int x, int y);
+
+        bool KeyAvailable();
+
+        int GetWindowHeight();
+
+        int GetWindowWidth();
     }
 }

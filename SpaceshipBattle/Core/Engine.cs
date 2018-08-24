@@ -7,12 +7,12 @@ namespace SpaceshipBattle.Core
 {
     public class Engine : IEngine
     {
-        private PlayerCreator playerCreator;
-        private GameController gameController;
+        private IPlayerCreator playerCreator;
+        private IGameController gameController;
         private Registration player1;
         private Registration player2;
 
-        public Engine(PlayerCreator playerCreator, GameController gameController, Registration player1, Registration player2, IWriter writer, IReader reader)
+        public Engine(IPlayerCreator playerCreator, IGameController gameController, Registration player1, Registration player2, IWriter writer, IReader reader)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;

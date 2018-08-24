@@ -17,14 +17,14 @@ namespace SpaceshipBattle.Core
         private IPlayerFactory playerFactory;
         private IBulletFactory bulletFactory;
 
-        public PlayerCreator()
+        public PlayerCreator(IPlayerFactory playerFactory, IEngineFactory engineFactory, IArmourFactory armourFactory, IWeaponFactory weaponFactory, ISpaceshipFactory spaceshipFactory, IBulletFactory bulletFactory)
         {
-            this.engineFactory = new EngineFactory();
-            this.armourFactory = new ArmourFactory();
-            this.weaponFactory = new WeaponFactory();
-            this.spaceshipFactory = new SpaceshipFactory();
-            this.playerFactory = new PlayerFactory();
-            this.bulletFactory = new BulletFactory();
+            this.playerFactory = playerFactory;
+            this.engineFactory = engineFactory;
+            this.armourFactory = armourFactory;
+            this.weaponFactory = weaponFactory;
+            this.spaceshipFactory = spaceshipFactory;
+            this.bulletFactory = bulletFactory;
         }
 
         public IPlayer CreatePlayer(Registration playerParameters)

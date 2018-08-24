@@ -25,12 +25,16 @@ namespace SpaceshipBattle.Contracts
 
         IArmour Armour { get; }
 
-        void Shoot(string side);
+        void ShootFromLeftSide();
+
+        void ShootFromRightSide();
 
         void Refuel();
 
-        void Move(string direction);
+        void MoveUp();
 
+        void MoveDown();
+        
         void TakeDamageToPlayer(IPlayer player, int damage);
 
         string Model { get; }
