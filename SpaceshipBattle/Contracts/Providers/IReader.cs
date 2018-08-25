@@ -1,7 +1,10 @@
-﻿namespace SpaceshipBattle.Contracts.Providers
+﻿using System;
+
+namespace SpaceshipBattle.Contracts.Providers
 {
     public interface IReader
     {
         string ReadLine();
+        ConsoleKeyInfo ReadKey();
     }
 }

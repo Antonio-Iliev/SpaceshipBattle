@@ -4,6 +4,6 @@ namespace SpaceshipBattle.Core
 {
     public interface IPlayerCreator
     {
-        IPlayer CreatePlayer(Registration playerParameters);
+        IPlayer CreatePlayer(IRegistration playerParameters);
     }
 }

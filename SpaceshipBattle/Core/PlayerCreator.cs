@@ -27,7 +27,7 @@ namespace SpaceshipBattle.Core
             this.bulletFactory = bulletFactory;
         }
 
-        public IPlayer CreatePlayer(Registration playerParameters)
+        public IPlayer CreatePlayer(IRegistration playerParameters)
         {
             string name, spaceshipModel, engineModel, armourModel, weaponModel;
 

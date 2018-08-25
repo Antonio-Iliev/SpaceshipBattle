@@ -9,13 +9,13 @@ namespace SpaceshipBattle.Core
     public class GameController : IGameController
     {
         private IWriter writer;
-        private readonly IConsoleReader reader;
+        private readonly IReader reader;
         private bool hasWinner = false;
         private string winnerName = string.Empty;
         private  int windowWidth = 120;
         private  int windowHeight = 35;
 
-        public GameController(IWriter writer, IConsoleReader reader)
+        public GameController(IWriter writer, IReader reader)
         {
             this.writer = writer;
             this.reader = reader;
@@ -74,7 +74,7 @@ namespace SpaceshipBattle.Core
             {
                 if (writer.KeyAvailable())
                 {
-                    ConsoleKeyInfo keyInfo = reader.ReadKey();
+                    ConsoleKeyInfo keyInfo = reader. ReadKey();
                     CommandParser(firstPlayer, secondPlayer, keyInfo);
                 }
 

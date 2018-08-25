@@ -6,4 +6,8 @@
     <StartupObject>SpaceshipBattle.StartUp</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
 </Project>

@@ -73,16 +73,18 @@ namespace SpaceshipBattle.Core
                     // Clean invalid name
                     Writer.WriteTextAtPosition(positionCol - 5, positionRow + 1, new string(' ', nameOfPlayer.Length));
 
-                    // Show warning message
+                    // Show warning message if player assign invalid name
                     Writer.SetTextColor(Colors.Red);
                     Writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
                     Writer.SetTextColor(Colors.Cyan);
 
+                    // Assign new player name
                     Writer.WriteTextAtPosition(positionCol - 5, positionRow + 1);
                     nameOfPlayer = Reader.ReadLine();
                 }
                 else
                 {
+                    // Add player name to commands
                     parametersForPlayer.Add("name", nameOfPlayer);
                     isValid = true;
                 }

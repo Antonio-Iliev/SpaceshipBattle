@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Core.Providers
 {
-    public class ConsoleReader : IConsoleReader
+    public class ConsoleReader : IReader
     {
         public string ReadLine()
         {

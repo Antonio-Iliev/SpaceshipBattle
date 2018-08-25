@@ -9,10 +9,16 @@ namespace SpaceshipBattle.Core
     {
         private IPlayerCreator playerCreator;
         private IGameController gameController;
-        private Registration player1;
-        private Registration player2;
+        private IRegistration player1;
+        private IRegistration player2;
 
-        public Engine(IPlayerCreator playerCreator, IGameController gameController, Registration player1, Registration player2, IWriter writer, IReader reader)
+        public Engine
+            (IPlayerCreator playerCreator,
+             IGameController gameController, 
+             IRegistration player1, 
+             IRegistration player2, 
+             IWriter writer,
+             IReader reader)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;
@@ -54,7 +60,7 @@ namespace SpaceshipBattle.Core
             catch (Exception ex)
             {
                 Writer.WriteColorTextCenter(ex.Message);
-            }               
+            }
         }
     }
 }
