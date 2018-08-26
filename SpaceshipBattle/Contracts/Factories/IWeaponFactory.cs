@@ -1,4 +1,5 @@
 ﻿using SpaceshipBattle.Contracts;
+using System.Windows.Input;
 
 namespace SpaceshipBattle.Contracts.Factories
 {

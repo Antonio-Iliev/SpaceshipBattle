@@ -39,7 +39,7 @@ namespace SpaceshipBattle.Core
 
             ISpaceshipEngine engine = engineFactory.CreateEngine(engineModel);
             IArmour armour = armourFactory.CreateArmour(armourModel);
-            IWeapon weapon = weaponFactory.CreateWeapon(weaponModel);
+            IWeapon weapon = weaponFactory.CreateWeapon(weaponModel.ToLower());
             weapon.Bullet = bulletFactory.CreateBullet();
             ISpaceship spaceship = spaceshipFactory.CreateSpaceship(spaceshipModel, engine, armour, weapon );
             IPlayer player = playerFactory.CreatePlayer(name, spaceship);
