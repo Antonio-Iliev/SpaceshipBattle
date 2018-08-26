@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Contracts
     {
         int Health { get; set; }
 
-        int TotalDist { get; }
+        int TotalDist { get; set; }
 
         int FuelCapacity { get; }
 
@@ -25,15 +25,7 @@ namespace SpaceshipBattle.Contracts
 
         IArmour Armour { get; }
 
-        void ShootFromLeftSide();
-
-        void ShootFromRightSide();
-
         void Refuel();
-
-        void MoveUp();
-
-        void MoveDown();
         
         void TakeDamageToPlayer(IPlayer player, int damage);
 
