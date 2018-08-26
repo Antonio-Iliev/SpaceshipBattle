@@ -11,6 +11,8 @@ using System.Collections.Generic;
 
 using System.Text;
 using SpaceshipBattle.DataBase;
+using SpaceshipBattle.Core.RegistrationEntities;
+using SpaceshipBattle.Core.Registration;
 
 namespace SpaceshipBattle.Injector
 {
@@ -41,6 +43,8 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<Registration>().As<IRegistration>();
             builder.RegisterType<PlayerCreator>().As<IPlayerCreator>();
             builder.RegisterType<GameController>().As<IGameController>();
+            builder.RegisterType<SelectingSpaceship>().As<ISelectingSpaceship>();
+
         }
 
         private void RegisterProvidersComponents(ContainerBuilder builder)

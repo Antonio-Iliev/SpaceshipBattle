@@ -1,94 +1,49 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
-using SpaceshipBattle.Core.Common;
 using SpaceshipBattle.DataBase;
+using SpaceshipBattle.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
+using System.Text;
 
-namespace SpaceshipBattle.Core
+namespace SpaceshipBattle.Core.Registration
 {
-    public class Registration : IRegistration
+    public class SelectingSpaceship : ISelectingSpaceship
     {
+        private readonly IApplicationInterface applicationInterface;
+        private readonly IDataBase dataBase;
+        private readonly IWriter writer;
         private int positionRow;
         private int positionCol;
         private int rowOffset = 4;
         private int colOffset = 0;
-        private int availableМoney = 10000;
+        private Dictionary<string, string> parameters;
+        private int playerAvailableМoney = 10000;
 
-
-        private Dictionary<string, string> parametersForPlayer;
-        private readonly IDataBase dataBase;
-        private readonly IApplicationInterface applicationInterface;
-        private readonly IReader reader;
-        private readonly IWriter writer;
-
-        public Registration(IReader reader, IWriter writer, IDataBase dataBase, IApplicationInterface applicationInterface)
+        public SelectingSpaceship(IApplicationInterface applicationInterface, IDataBase dataBase, IWriter writer)
         {
-            this.reader = reader;
-            this.writer = writer;
-            this.dataBase = dataBase;
             this.applicationInterface = applicationInterface;
+            this.dataBase = dataBase;
+            this.writer = writer;
         }
 
-        public Dictionary<string, string> ParametersForPlayer { get => new Dictionary<string, string>(this.parametersForPlayer); }
-
-        public string RegistrationForPlayer()
+        public int PlayerAvailableМoney
         {
-            parametersForPlayer = new Dictionary<string, string>();
-
-            ChooseName();
-            ChooseSpaceShip();
-            ChooseComponent();
-
-            return $" >>> " + parametersForPlayer["name"] + ". <<<< -You are ready for fight!!!";
-        }
-
-        //Choosing player name
-        public void ChooseName()
-        {
-            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset;
-            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
-
-            // Additional information for user
-            writer.WriteTextCenter(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
-            writer.WriteTextCenter(this.positionCol, this.positionRow++, "Enter your name:");
-
-            writer.WriteTextAtPosition(positionCol - 10, positionRow + 1, ">>>> ");
-
-            string nameOfPlayer = reader.ReadLine();
-            bool isValid = false;
-            while (!isValid)
+            get => this.playerAvailableМoney;
+            private set
             {
-                // Checks whether the player's name is valid
-                if (String.IsNullOrEmpty(nameOfPlayer) || String.IsNullOrWhiteSpace(nameOfPlayer)
-                    || nameOfPlayer.Length < 3 || nameOfPlayer.Length > 35)
+                if (value < 0)
                 {
-
-                    // Clean invalid name
-                    writer.WriteTextAtPosition(positionCol - 5, positionRow + 1, new string(' ', nameOfPlayer.Length));
-
-                    // Show warning message if player assign invalid name
-                    writer.SetTextColor(Colors.Red);
-                    writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
-                    writer.SetTextColor(Colors.Cyan);
-
-                    // Assign new player name
-                    writer.WriteTextAtPosition(positionCol - 5, positionRow + 1);
-                    nameOfPlayer = reader.ReadLine();
+                    throw new ArgumentOutOfRangeException("Player can not hold a loan!");
                 }
-                else
-                {
-                    // Add player name to commands
-                    parametersForPlayer.Add("name", nameOfPlayer);
-                    isValid = true;
-                }
+                this.playerAvailableМoney = value;
             }
-            writer.ClearScreen();
         }
 
-        public void ChooseSpaceShip()
+        public Dictionary<string, string> ChooseSpaceShip()
         {
+
+            this.parameters = new Dictionary<string, string>();
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
@@ -117,10 +72,12 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        parametersForPlayer.Add("ship", this.dataBase.SpaceshipNames[focusPosition]);
+                        parameters.Add("ship", this.dataBase.SpaceshipNames[focusPosition]);
                         writer.ClearScreen();
-                        return;
+                        return parameters.AppendDictionary(ChooseComponent());
                     }
+
+
                 }
 
                 writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your Spaceship:");
@@ -146,7 +103,7 @@ namespace SpaceshipBattle.Core
 
         }
 
-        public void ChooseComponent()
+        public Dictionary<string, string> ChooseComponent()
         {
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (this.dataBase.ComponentsInSpaceship.Length / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
@@ -180,18 +137,18 @@ namespace SpaceshipBattle.Core
                         switch (componet)
                         {
                             case "weapon":
-                                parametersForPlayer.Add(componet, ChooseWeapon());
+                                parameters.Add(componet, ChooseWeapon());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
                                 break;
 
                             case "engine":
-                                parametersForPlayer.Add(componet, ChooseEngine());
+                                parameters.Add(componet, ChooseEngine());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
                                 break;
                             case "armour":
-                                parametersForPlayer.Add(componet, ChooseArmour());
+                                parameters.Add(componet, ChooseArmour());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
 
@@ -205,7 +162,7 @@ namespace SpaceshipBattle.Core
                 if (componentList.Count == 0)
                 {
                     writer.ClearScreen();
-                    return;
+                    return parameters;
                 }
                 else
                 {
@@ -263,7 +220,7 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        availableМoney -= weapons.Values.ElementAt(focusPosition);
+                        playerAvailableМoney -= weapons.Values.ElementAt(focusPosition);
                         return weapons.Keys.ElementAt(focusPosition);
                     }
                 }
@@ -324,7 +281,7 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        availableМoney -= engines.Values.ElementAt(focusPosition);
+                        playerAvailableМoney -= engines.Values.ElementAt(focusPosition);
                         return engines.Keys.ElementAt(focusPosition);
                     }
                 }
@@ -385,7 +342,7 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        availableМoney -= armours.Values.ElementAt(focusPosition);
+                        playerAvailableМoney -= armours.Values.ElementAt(focusPosition);
                         return armours.Keys.ElementAt(focusPosition);
                     }
                 }
@@ -416,9 +373,9 @@ namespace SpaceshipBattle.Core
 
         private Dictionary<string, int> SelectElementsByShipType(string element)
         {
-            if (this.parametersForPlayer.Keys.Contains("ship"))
+            if (this.parameters.Keys.Contains("ship"))
             {
-                switch (this.parametersForPlayer["ship"])
+                switch (this.parameters["ship"])
                 {
                     case "Dross-Mashup Spaceship":
                         switch (element)
@@ -460,7 +417,7 @@ namespace SpaceshipBattle.Core
 
             foreach (var element in shipType)
             {
-                if (availableМoney - element.Value >= 0)
+                if (playerAvailableМoney - element.Value >= 0)
                 {
                     elements.Add(element.Key, element.Value);
                 }
