@@ -1,23 +1,19 @@
-﻿using System.Reflection;
-using Autofac;
+﻿using Autofac;
 using SpaceshipBattle.Contracts;
 using SpaceshipBattle.Contracts.Factories;
 using SpaceshipBattle.Contracts.Providers;
 using SpaceshipBattle.Core;
 using SpaceshipBattle.Core.Factories;
 using SpaceshipBattle.Core.Providers;
-using System;
-using System.Collections.Generic;
-
-using System.Text;
 using SpaceshipBattle.DataBase;
 using SpaceshipBattle.Core.RegistrationEntities;
 using SpaceshipBattle.Core.Registration;
 using SpaceshipBattle.Core.Services;
+using SpaceshipBattle.Core.Services.ArmorServices;
 
 namespace SpaceshipBattle.Injector
 {
-    class ConteinerInjector : Autofac.Module
+    class ContainerInjector : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -32,6 +28,14 @@ namespace SpaceshipBattle.Injector
         {
             builder.RegisterType<EngineFactory>().As<IEngineFactory>();
             builder.RegisterType<ArmourFactory>().As<IArmourFactory>();
+            builder.RegisterType<CreateAerogelCoverService>().Named<IArmorService>("aerogel cover");
+            builder.RegisterType<CreateAntiMatterFieldService>().Named<IArmorService>("anti matter field");
+            builder.RegisterType<CreateBrickCageService>().Named<IArmorService>("brick cage");
+            builder.RegisterType<CreateBubbleFieldService>().Named<IArmorService>("bubble field");
+            builder.RegisterType<CreateFullerenesArmourService>().Named<IArmorService>("fullerenes armour");
+            builder.RegisterType<CreatePlasmaFieldService>().Named<IArmorService>("plasma field");
+            builder.RegisterType<CreateAntiMatterFieldService>().Named<IArmorService>("recycled paper");
+            builder.RegisterType<CreateSwitzArmourService>().Named<IArmorService>("switz rmour");
             builder.RegisterType<WeaponFactory>().As<IWeaponFactory>();
             builder.RegisterType<CreateAK47Service>().Named<IWeaponService>("ak47");
             builder.RegisterType<CreateCannonService>().Named<IWeaponService>("cannon");

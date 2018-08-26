@@ -19,9 +19,6 @@ namespace SpaceshipBattle.Core.Factories
 
         public IWeapon CreateWeapon(string model)
         {
-            // resolve a concrete implementation of ICommand through its 'name'
-            // e.g. "createtable" -> instance of type `CreateTableCommand`
-
             var command = this.autofacContext.ResolveNamed<IWeaponService>(model.ToLower());
             return command.CreateWeapon();
         }

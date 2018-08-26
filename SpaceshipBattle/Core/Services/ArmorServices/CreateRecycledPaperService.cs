@@ -1,9 +1,6 @@
 ﻿using SpaceshipBattle.Contracts;
 using SpaceshipBattle.Entities.Armours;
 using SpaceshipBattle.Entities.Armours.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceshipBattle.Core.Services.ArmorServices
 {
@@ -18,7 +15,7 @@ namespace SpaceshipBattle.Core.Services.ArmorServices
         private const ArmourType armorType = ArmourType.Paper;
         public IArmour CreateArmor()
         {
-            return new DenseArmour(armorModel, price, weight, points, hardness, toughness, ArmourType.Paper);
+            return new DenseArmour(armorModel, price, weight, points, hardness, toughness, armorType);
         }
     }
 }
