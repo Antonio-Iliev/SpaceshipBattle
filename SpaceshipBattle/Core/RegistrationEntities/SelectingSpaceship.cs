@@ -13,18 +13,20 @@ namespace SpaceshipBattle.Core.Registration
         private readonly IApplicationInterface applicationInterface;
         private readonly IDataBase dataBase;
         private readonly IWriter writer;
+        private readonly IReader reader;
         private int positionRow;
         private int positionCol;
         private int rowOffset = 4;
         private int colOffset = 0;
         private Dictionary<string, string> parameters;
-        private int playerAvailableМoney = 10000;
+        private int playerAvailableМoney;
 
-        public SelectingSpaceship(IApplicationInterface applicationInterface, IDataBase dataBase, IWriter writer)
+        public SelectingSpaceship(IApplicationInterface applicationInterface, IDataBase dataBase, IWriter writer, IReader reader)
         {
             this.applicationInterface = applicationInterface;
             this.dataBase = dataBase;
             this.writer = writer;
+            this.reader = reader;
         }
 
         public int PlayerAvailableМoney
@@ -44,6 +46,8 @@ namespace SpaceshipBattle.Core.Registration
         {
 
             this.parameters = new Dictionary<string, string>();
+            playerAvailableМoney = 10000;
+
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
@@ -52,7 +56,7 @@ namespace SpaceshipBattle.Core.Registration
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (reader.KeyAvailable())
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -80,8 +84,8 @@ namespace SpaceshipBattle.Core.Registration
 
                 }
 
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your Spaceship:");
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "__________________");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your Spaceship:");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "__________________");
 
                 for (int i = 0; i < lengthOfElements; i++)
                 {
@@ -95,10 +99,10 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
-                Console.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
+                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
 
-                applicationInterface.FreezeScreen(100);
-                writer.ClearScreen();
+                this.applicationInterface.FreezeScreen(100);
+                this.writer.ClearScreen();
             }
 
         }
@@ -113,7 +117,7 @@ namespace SpaceshipBattle.Core.Registration
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (reader.KeyAvailable())
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -155,13 +159,13 @@ namespace SpaceshipBattle.Core.Registration
                                 break;
                         }
 
-                        writer.ClearScreen();
+                        this.writer.ClearScreen();
                     }
                 }
 
                 if (componentList.Count == 0)
                 {
-                    writer.ClearScreen();
+                    this.writer.ClearScreen();
                     return parameters;
                 }
                 else
@@ -181,9 +185,9 @@ namespace SpaceshipBattle.Core.Registration
                         }
                     }
 
-                    Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                    applicationInterface.FreezeScreen(100);
-                    writer.ClearScreen();
+                    this.writer.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
+                    this.applicationInterface.FreezeScreen(100);
+                    this.writer.ClearScreen();
                 }
             }
         }
@@ -200,7 +204,7 @@ namespace SpaceshipBattle.Core.Registration
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (reader.KeyAvailable())
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -225,8 +229,8 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your weapon of destruction:");
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_________________________");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your weapon of destruction:");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_________________________");
 
                 int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
@@ -243,9 +247,9 @@ namespace SpaceshipBattle.Core.Registration
                     elementRow++;
                 }
 
-                Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                applicationInterface.FreezeScreen(100);
-                writer.ClearScreen();
+                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
+                this.applicationInterface.FreezeScreen(100);
+                this.writer.ClearScreen();
             }
         }
 
@@ -261,7 +265,7 @@ namespace SpaceshipBattle.Core.Registration
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (reader.KeyAvailable())
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -304,9 +308,9 @@ namespace SpaceshipBattle.Core.Registration
                     elementRow++;
                 }
 
-                Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                applicationInterface.FreezeScreen(100);
-                writer.ClearScreen();
+                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
+                this.applicationInterface.FreezeScreen(100);
+                this.writer.ClearScreen();
             }
         }
 
@@ -322,7 +326,7 @@ namespace SpaceshipBattle.Core.Registration
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (reader.KeyAvailable())
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -347,8 +351,8 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your impenetrable skin (armour):");
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your impenetrable skin (armour):");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
                 int elementRow = 1;
                 for (int i = 0; i < lengthOfElements; i++)
@@ -365,9 +369,9 @@ namespace SpaceshipBattle.Core.Registration
                     elementRow++;
                 }
 
-                Console.SetCursorPosition(applicationInterface.WindowWidth - 1, Console.WindowHeight - 1);
-                applicationInterface.FreezeScreen(100);
-                writer.ClearScreen();
+                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
+                this.applicationInterface.FreezeScreen(100);
+                this.writer.ClearScreen();
             }
         }
 

@@ -80,7 +80,7 @@ namespace SpaceshipBattle.Core.RegistrationEntities
                     writer.SetTextColor(Colors.Cyan);
 
                     // Assign new player name
-                    writer.WriteTextAtPosition(positionCol - 5, positionRow + 1);
+                    writer.SetCursorPosition(positionCol - 5, positionRow + 1);
                     nameOfPlayer = reader.ReadLine();
                 }
                 else

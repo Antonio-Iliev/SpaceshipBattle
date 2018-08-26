@@ -6,5 +6,6 @@ namespace SpaceshipBattle.Contracts.Providers
     {
         string ReadLine();
         ConsoleKeyInfo ReadKey();
+        bool KeyAvailable();
     }
 }
