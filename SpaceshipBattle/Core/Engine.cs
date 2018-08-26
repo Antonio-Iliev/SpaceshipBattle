@@ -9,24 +9,21 @@ namespace SpaceshipBattle.Core
     {
         private IPlayerCreator playerCreator;
         private IGameController gameController;
-        private IRegistration player1;
+        private IRegistration player;
         private IRegistration player2;
         private readonly IApplicationInterface applicationInterface;
 
         public Engine
             (IPlayerCreator playerCreator,
-             IGameController gameController, 
-             IRegistration player1, 
-             IRegistration player2, 
+             IGameController gameController,
+             IRegistration player,
              IWriter writer,
              IReader reader,
              IApplicationInterface applicationInterface)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;
-            this.player1 = player1;
-            this.player2 = player2;
-
+            this.player = player;
             this.Reader = reader;
             this.applicationInterface = applicationInterface;
             this.Writer = writer;
@@ -41,18 +38,13 @@ namespace SpaceshipBattle.Core
 
             try
             {
-                player1.ChooseName();
-                player1.ChooseSpaceShip();
-                player1.ChooseComponent();
-                Writer.WriteColorTextCenter(">>> " + player1.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
+                var registrationPlayer1 = player.RegistrationForPlayer();
+                Writer.WriteColorTextCenter(registrationPlayer1);
+                IPlayer firstPlayer = playerCreator.CreatePlayer(player);
 
-                player2.ChooseName();
-                player2.ChooseSpaceShip();
-                player2.ChooseComponent();
-                Writer.WriteColorTextCenter(">>> " + player2.ParametersForPlayer["name"] + ". <<<<  -  You are ready for fight!!!");
-
-                IPlayer firstPlayer = playerCreator.CreatePlayer(player1);
-                IPlayer secondPlayer = playerCreator.CreatePlayer(player2);
+                var registrationPlayer2 = player.RegistrationForPlayer();
+                Writer.WriteColorTextCenter(registrationPlayer2);
+                IPlayer secondPlayer = playerCreator.CreatePlayer(player);
 
                 gameController.Play(firstPlayer, secondPlayer);
             }

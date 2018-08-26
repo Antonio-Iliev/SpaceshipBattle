@@ -16,26 +16,39 @@ namespace SpaceshipBattle.Core
         private int colOffset = 0;
         private int availableМoney = 10000;
 
-        
-        private Dictionary<string, string> parametersForPlayer = new Dictionary<string, string>();
+
+        private Dictionary<string, string> parametersForPlayer;
         private readonly IDataBase dataBase;
+        private readonly IApplicationInterface applicationInterface;
         private readonly IReader reader;
         private readonly IWriter writer;
 
-        public Registration(IReader reader, IWriter writer, IDataBase dataBase)
+        public Registration(IReader reader, IWriter writer, IDataBase dataBase, IApplicationInterface applicationInterface)
         {
             this.reader = reader;
             this.writer = writer;
             this.dataBase = dataBase;
+            this.applicationInterface = applicationInterface;
         }
 
         public Dictionary<string, string> ParametersForPlayer { get => new Dictionary<string, string>(this.parametersForPlayer); }
 
+        public string RegistrationForPlayer()
+        {
+            parametersForPlayer = new Dictionary<string, string>();
+
+            ChooseName();
+            ChooseSpaceShip();
+            ChooseComponent();
+
+            return $" >>> " + parametersForPlayer["name"] + ". <<<< -You are ready for fight!!!";
+        }
+
         //Choosing player name
         public void ChooseName()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset;
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset;
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
             // Additional information for user
             writer.WriteTextCenter(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
@@ -76,8 +89,8 @@ namespace SpaceshipBattle.Core
 
         public void ChooseSpaceShip()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
             int lengthOfElements = this.dataBase.SpaceshipNames.Length;
@@ -125,17 +138,18 @@ namespace SpaceshipBattle.Core
                     }
                 }
 
-                Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                Thread.Sleep(100);
-                Console.Clear();
+                Console.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
+
+                applicationInterface.FreezeScreen(100);
+                writer.ClearScreen();
             }
 
         }
 
         public void ChooseComponent()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (this.dataBase.ComponentsInSpaceship.Length / 2);
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (this.dataBase.ComponentsInSpaceship.Length / 2);
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
             List<string> componentList = new List<string>(this.dataBase.ComponentsInSpaceship);
@@ -169,28 +183,28 @@ namespace SpaceshipBattle.Core
                                 parametersForPlayer.Add(componet, ChooseWeapon());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
-                                Console.Clear();
                                 break;
 
                             case "engine":
                                 parametersForPlayer.Add(componet, ChooseEngine());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
-                                Console.Clear();
                                 break;
                             case "armour":
                                 parametersForPlayer.Add(componet, ChooseArmour());
                                 componentList.Remove(componentList[focusPosition]);
                                 focusPosition = 0;
-                                Console.Clear();
+
                                 break;
                         }
+
+                        writer.ClearScreen();
                     }
                 }
 
                 if (componentList.Count == 0)
                 {
-                    Console.Clear();
+                    writer.ClearScreen();
                     return;
                 }
                 else
@@ -211,8 +225,8 @@ namespace SpaceshipBattle.Core
                     }
 
                     Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                    Thread.Sleep(100);
-                    Console.Clear();
+                    applicationInterface.FreezeScreen(100);
+                    writer.ClearScreen();
                 }
             }
         }
@@ -221,8 +235,8 @@ namespace SpaceshipBattle.Core
         {
             Dictionary<string, int> weapons = SelectElementsByShipType("weapon");
 
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
             int lengthOfElements = weapons.Count;
             int focusPosition = 0;
@@ -273,8 +287,8 @@ namespace SpaceshipBattle.Core
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                Thread.Sleep(100);
-                Console.Clear();
+                applicationInterface.FreezeScreen(100);
+                writer.ClearScreen();
             }
         }
 
@@ -282,8 +296,8 @@ namespace SpaceshipBattle.Core
         {
             Dictionary<string, int> engines = SelectElementsByShipType("engine");
 
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (engines.Count / 2);
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (engines.Count / 2);
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
             int lengthOfElements = engines.Count;
             int focusPosition = 0;
@@ -334,8 +348,8 @@ namespace SpaceshipBattle.Core
                 }
 
                 Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                Thread.Sleep(100);
-                Console.Clear();
+                applicationInterface.FreezeScreen(100);
+                writer.ClearScreen();
             }
         }
 
@@ -343,8 +357,8 @@ namespace SpaceshipBattle.Core
         {
             Dictionary<string, int> armours = SelectElementsByShipType("armour");
 
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (armours.Count / 2);
-            this.positionCol = (Console.WindowWidth / 2) - colOffset;
+            this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (armours.Count / 2);
+            this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
             int lengthOfElements = armours.Count;
             int focusPosition = 0;
@@ -394,17 +408,17 @@ namespace SpaceshipBattle.Core
                     elementRow++;
                 }
 
-                Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                Thread.Sleep(100);
-                Console.Clear();
+                Console.SetCursorPosition(applicationInterface.WindowWidth - 1, Console.WindowHeight - 1);
+                applicationInterface.FreezeScreen(100);
+                writer.ClearScreen();
             }
         }
 
         private Dictionary<string, int> SelectElementsByShipType(string element)
         {
-            if (this.ParametersForPlayer.Keys.Contains("ship"))
+            if (this.parametersForPlayer.Keys.Contains("ship"))
             {
-                switch (this.ParametersForPlayer["ship"])
+                switch (this.parametersForPlayer["ship"])
                 {
                     case "Dross-Mashup Spaceship":
                         switch (element)

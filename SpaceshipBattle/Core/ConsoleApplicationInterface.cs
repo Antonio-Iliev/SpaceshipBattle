@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpaceshipBattle.Core
 {
@@ -13,6 +14,14 @@ namespace SpaceshipBattle.Core
             Console.SetWindowSize(120, 35);
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
+        }
+
+        public int WindowHeight { get => Console.WindowHeight; }
+        public int WindowWidth { get => Console.WindowWidth; }
+
+        public void FreezeScreen(int inMiliseconds)
+        {
+            Thread.Sleep(inMiliseconds);
         }
     }
 }
