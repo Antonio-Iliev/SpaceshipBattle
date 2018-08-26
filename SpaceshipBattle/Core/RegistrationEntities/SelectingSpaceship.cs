@@ -99,7 +99,8 @@ namespace SpaceshipBattle.Core.Registration
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your Spaceship:");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "__________________");
 
-                menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
+                // Draw menu for Spaceship
+                this.menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
 
             }
 
@@ -169,11 +170,12 @@ namespace SpaceshipBattle.Core.Registration
                 else
                 {
                     // info message
-                    writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose component for your ship:");
-                    writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_____________________");
+                    this.writer.WriteTextCenter(this.positionCol, this.positionRow - 4, "You have " + playerAvailableМoney + " GC");
+                    this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose component for your ship:");
+                    this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_____________________");
 
                     // Draw Menu for ship components
-                    menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
+                    this.menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
                 }
             }
         }
@@ -215,11 +217,12 @@ namespace SpaceshipBattle.Core.Registration
                 }
 
                 // info message
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 4, "You have " + playerAvailableМoney + " GC");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your weapon of destruction:");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_________________________");
 
                 // Draw weapon menu
-                menu.DrawMenu(weapons, this.positionCol, this.positionRow, focusPosition);
+                this.menu.DrawMenu(weapons, this.positionCol, this.positionRow, focusPosition);
             }
         }
 
@@ -260,11 +263,12 @@ namespace SpaceshipBattle.Core.Registration
                 }
 
                 // info message
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your flying power (engine):");
-                writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 4, "You have " + playerAvailableМoney + " GC");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your flying power (engine):");
+                this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
                 // Draw engine menu
-                menu.DrawMenu(engines, this.positionCol, this.positionRow, focusPosition);
+                this.menu.DrawMenu(engines, this.positionCol, this.positionRow, focusPosition);
 
             }
         }
@@ -310,7 +314,7 @@ namespace SpaceshipBattle.Core.Registration
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
                 // Draw armour menu
-                menu.DrawMenu(armours, this.positionCol, this.positionRow, focusPosition);
+                this.menu.DrawMenu(armours, this.positionCol, this.positionRow, focusPosition);
             }
         }
     }

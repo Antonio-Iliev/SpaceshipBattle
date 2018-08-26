@@ -41,7 +41,7 @@ namespace SpaceshipBattle.Core.Factories
     //        case "Plasma Field":
     //            return new ProtectiveFields("Plasma Field", 2800, 100, 35, 2, 8, ArmourType.Plasma);
     //        case "Anti Matter Fields":
-    //            return new ProtectiveFields("Anti Matter Field", 5000, 450, 65, 0, 10, ArmourType.AntiMatter);
+    //            return new ProtectiveFields("Anti Matter Field", 4000, 450, 65, 0, 10, ArmourType.AntiMatter);
     //        default:
     //            throw new ArgumentException("There is no such armour!");
     //    }

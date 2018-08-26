@@ -42,10 +42,10 @@ namespace SpaceshipBattle.Core.RegistrationEntities
 
         public string RegistrationForPlayer()
         {
-            parametersForPlayer = new Dictionary<string, string>();
+            this.parametersForPlayer = new Dictionary<string, string>();
 
             ChooseName();
-            parametersForPlayer.AppendDictionary(selectingSpaceship.ChooseSpaceShip());
+            this.parametersForPlayer.AppendDictionary(selectingSpaceship.ChooseSpaceShip());
 
             return $" >>> " + parametersForPlayer["name"] + ". <<<< -You are ready for fight!!!";
         }
@@ -57,10 +57,10 @@ namespace SpaceshipBattle.Core.RegistrationEntities
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
             // Additional information for user
-            writer.WriteTextCenter(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
-            writer.WriteTextCenter(this.positionCol, this.positionRow++, "Enter your name:");
+            this.writer.WriteTextCenter(this.positionCol, this.positionRow++, $"Welcome to space fight arena!");
+            this.writer.WriteTextCenter(this.positionCol, this.positionRow++, "Enter your name:");
 
-            writer.WriteTextAtPosition(positionCol - 10, positionRow + 1, ">>>> ");
+            this.writer.WriteTextAtPosition(positionCol - 10, positionRow + 1, ">>>> ");
 
             string nameOfPlayer = reader.ReadLine();
             bool isValid = false;
@@ -72,29 +72,27 @@ namespace SpaceshipBattle.Core.RegistrationEntities
                 {
 
                     // Clean invalid name
-                    writer.WriteTextAtPosition(positionCol - 5, positionRow + 1, new string(' ', nameOfPlayer.Length));
+                    this.writer.WriteTextAtPosition(positionCol - 5, positionRow + 1, new string(' ', nameOfPlayer.Length));
 
                     // Show warning message if player assign invalid name
-                    writer.SetTextColor(Colors.Red);
-                    writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
-                    writer.SetTextColor(Colors.Cyan);
+                    this.writer.SetTextColor(Colors.Red);
+                    this.writer.WriteTextCenter(positionCol, positionRow + 3, "Name must be between 3 and 35 characters");
+                    this.writer.SetTextColor(Colors.Cyan);
 
                     // Assign new player name
-                    writer.SetCursorPosition(positionCol - 5, positionRow + 1);
+                    this.writer.SetCursorPosition(positionCol - 5, positionRow + 1);
                     nameOfPlayer = reader.ReadLine();
                 }
                 else
                 {
                     // Add player name to commands
-                    parametersForPlayer.Add("name", nameOfPlayer);
+                    this.parametersForPlayer.Add("name", nameOfPlayer);
                     isValid = true;
                 }
             }
-            writer.ClearScreen();
+            this.writer.ClearScreen();
 
             return "Player name is set!";
         }
-
-
     }
 }
