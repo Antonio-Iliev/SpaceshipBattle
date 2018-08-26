@@ -65,7 +65,7 @@ namespace SpaceshipBattle.Core.Providers
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             Console.Clear();
         }
 

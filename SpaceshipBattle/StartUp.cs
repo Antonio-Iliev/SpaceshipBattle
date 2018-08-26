@@ -12,13 +12,14 @@ namespace SpaceshipBattle
     {
         public static void Main()
         {
-
+            // Set Autofac
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
 
             var conteiner = builder.Build();
             var engine = conteiner.Resolve<IEngine>();
 
+            // Run
             engine.Start();
 
         }

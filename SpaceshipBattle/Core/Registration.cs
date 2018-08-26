@@ -1,5 +1,6 @@
 ﻿using SpaceshipBattle.Contracts.Providers;
 using SpaceshipBattle.Core.Common;
+using SpaceshipBattle.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,33 +16,15 @@ namespace SpaceshipBattle.Core
         private int colOffset = 0;
         private int availableМoney = 10000;
 
-        private readonly string[] spaceshipNames = new string[] { "Dross-Mashup Spaceship", "Futuristic Spaceship" };
-        private readonly string[] componentsInSpaceship = new string[] { "Weapon", "Engine", "Armour" };
-
-        private readonly Dictionary<string, int> drossMashupWeapons = new Dictionary<string, int>
-                        { { "AK47", 2000 }, {"Cannon", 3000 } };
-
-        private readonly Dictionary<string, int> futuristicWeapons = new Dictionary<string, int>
-                        { {"Laser", 2500 }, {"Plasma Weapon", 4000 } };
-
-        private readonly Dictionary<string, int> drossMashupEngines = new Dictionary<string, int>
-        { { "Trabant Motor", 1000 }, {"VW 1.9 TDI", 1500 }, {"Ferrari V12 GT", 3500 }, {"Bugatti W16", 4000 } };
-
-        private readonly Dictionary<string, int> futuristicEngines = new Dictionary<string, int>
-        { { "H2O Motor", 1000 }, {"Ion X3", 2000 }, {"Vasimir Plasma Engine", 3500 } };
-
-        private readonly Dictionary<string, int> drossMashupArmours = new Dictionary<string, int>
-        {{ "Recycled Paper", 1000 }, {"Brick cage",1500 }, {"Aerogel cover",2000 }, {"Bubble Field", 1600 },  {"Plasma Field", 3800 } };
-
-        private readonly Dictionary<string, int> futuristicArmours = new Dictionary<string, int>
-        {{"Aerogel cover",2000 },  {"Fullerenes Armour", 3500 }, { "Switz Armour", 2500 }, {"Plasma Field", 3800 }, {"Anti Matter Fields", 5000 } };
-
+        
         private Dictionary<string, string> parametersForPlayer = new Dictionary<string, string>();
+        private readonly IDataBase dataBase;
 
-        public Registration(IReader reader, IWriter writer)
+        public Registration(IReader reader, IWriter writer, IDataBase dataBase)
         {
             this.Reader = reader;
             this.Writer = writer;
+            this.dataBase = dataBase;
         }
 
         public IReader Reader { get; set; }
@@ -94,11 +77,11 @@ namespace SpaceshipBattle.Core
 
         public void ChooseSpaceShip()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (spaceshipNames.Length / 2);
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
-            int lengthOfElements = spaceshipNames.Length;
+            int lengthOfElements = this.dataBase.SpaceshipNames.Length;
 
             while (true)
             {
@@ -122,7 +105,7 @@ namespace SpaceshipBattle.Core
                     }
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        parametersForPlayer.Add("ship", this.spaceshipNames[focusPosition]);
+                        parametersForPlayer.Add("ship", this.dataBase.SpaceshipNames[focusPosition]);
                         Console.Clear();
                         return;
                     }
@@ -135,11 +118,11 @@ namespace SpaceshipBattle.Core
                 {
                     if (focusPosition == i)
                     {
-                        Writer.WriteMenu(positionCol, positionRow + 1 + i, spaceshipNames[i]);
+                        Writer.WriteMenu(positionCol, positionRow + 1 + i, this.dataBase.SpaceshipNames[i]);
                     }
                     else
                     {
-                        Writer.WriteTextCenter(positionCol, positionRow + 1 + i, spaceshipNames[i]);
+                        Writer.WriteTextCenter(positionCol, positionRow + 1 + i, this.dataBase.SpaceshipNames[i]);
                     }
                 }
 
@@ -152,11 +135,11 @@ namespace SpaceshipBattle.Core
 
         public void ChooseComponent()
         {
-            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (componentsInSpaceship.Length / 2);
+            this.positionRow = (Console.WindowHeight / 2) - rowOffset - (this.dataBase.ComponentsInSpaceship.Length / 2);
             this.positionCol = (Console.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
-            List<string> componentList = new List<string>(componentsInSpaceship);
+            List<string> componentList = new List<string>(this.dataBase.ComponentsInSpaceship);
 
             while (true)
             {
@@ -428,11 +411,11 @@ namespace SpaceshipBattle.Core
                         switch (element)
                         {
                             case "armour":
-                                return SelectElementsByPrice(drossMashupArmours);
+                                return SelectElementsByPrice(this.dataBase.DrossMashupArmours);
                             case "weapon":
-                                return SelectElementsByPrice(drossMashupWeapons);
+                                return SelectElementsByPrice(this.dataBase.DrossMashupWeapons);
                             case "engine":
-                                return SelectElementsByPrice(drossMashupEngines);
+                                return SelectElementsByPrice(this.dataBase.DrossMashupEngines);
                             default:
                                 return null;
                         }
@@ -440,11 +423,11 @@ namespace SpaceshipBattle.Core
                         switch (element)
                         {
                             case "armour":
-                                return SelectElementsByPrice(futuristicArmours);
+                                return SelectElementsByPrice(this.dataBase.FuturisticArmours);
                             case "weapon":
-                                return SelectElementsByPrice(futuristicWeapons);
+                                return SelectElementsByPrice(this.dataBase.FuturisticWeapons);
                             case "engine":
-                                return SelectElementsByPrice(futuristicEngines);
+                                return SelectElementsByPrice(this.dataBase.FuturisticEngines);
                             default:
                                 return null;
                         }

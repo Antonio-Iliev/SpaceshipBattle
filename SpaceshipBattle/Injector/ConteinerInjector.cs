@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 
 using System.Text;
+using SpaceshipBattle.DataBase;
 
 namespace SpaceshipBattle.Injector
 {
@@ -46,6 +47,7 @@ namespace SpaceshipBattle.Injector
         {
             builder.RegisterType<ConsoleWriter>().As<IWriter>();
             builder.RegisterType<ConsoleReader>().As<IReader>();
+            builder.RegisterType<LocalDataBase>().As<IDataBase>();
         }
     }
 }
