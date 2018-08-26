@@ -44,6 +44,7 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<PlayerCreator>().As<IPlayerCreator>();
             builder.RegisterType<GameController>().As<IGameController>();
             builder.RegisterType<SelectingSpaceship>().As<ISelectingSpaceship>();
+            builder.RegisterType<FilterComponents>().As<IFilterComponents>();
 
         }
 

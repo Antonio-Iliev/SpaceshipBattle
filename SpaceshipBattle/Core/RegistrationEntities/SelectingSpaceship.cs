@@ -15,6 +15,7 @@ namespace SpaceshipBattle.Core.Registration
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly IMenu menu;
+        private readonly IFilterComponents filterComponents;
         private int positionRow;
         private int positionCol;
         private int rowOffset = 4;
@@ -24,16 +25,18 @@ namespace SpaceshipBattle.Core.Registration
 
         public SelectingSpaceship(
             IApplicationInterface applicationInterface,
-            IDataBase dataBase, 
-            IWriter writer, 
+            IDataBase dataBase,
+            IWriter writer,
             IReader reader,
-            IMenu menu)
+            IMenu menu,
+            IFilterComponents filterComponents)
         {
             this.applicationInterface = applicationInterface;
             this.dataBase = dataBase;
             this.writer = writer;
             this.reader = reader;
             this.menu = menu;
+            this.filterComponents = filterComponents;
         }
 
         public int PlayerAvailableМoney
@@ -63,12 +66,12 @@ namespace SpaceshipBattle.Core.Registration
             var componentList = this.dataBase.SpaceshipNames;
             int lengthOfElements = this.dataBase.SpaceshipNames.Length;
 
-            
+
             while (true)
             {
                 if (reader.KeyAvailable())
                 {
-                   ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
 
                     if (keyInfo.Key == ConsoleKey.UpArrow)
                     {
@@ -177,7 +180,7 @@ namespace SpaceshipBattle.Core.Registration
 
         private string ChooseWeapon()
         {
-            Dictionary<string, int> weapons = SelectElementsByShipType("weapon");
+            Dictionary<string, int> weapons = this.filterComponents.SelectElementsByShipType(this.parameters, "weapon", playerAvailableМoney);
 
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
@@ -222,7 +225,7 @@ namespace SpaceshipBattle.Core.Registration
 
         private string ChooseEngine()
         {
-            Dictionary<string, int> engines = SelectElementsByShipType("engine");
+            Dictionary<string, int> engines = this.filterComponents.SelectElementsByShipType(this.parameters, "engine", playerAvailableМoney);
 
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (engines.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
@@ -268,7 +271,7 @@ namespace SpaceshipBattle.Core.Registration
 
         private string ChooseArmour()
         {
-            Dictionary<string, int> armours = SelectElementsByShipType("armour");
+            Dictionary<string, int> armours = this.filterComponents.SelectElementsByShipType(this.parameters, "armour", playerAvailableМoney);
 
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (armours.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
@@ -309,60 +312,6 @@ namespace SpaceshipBattle.Core.Registration
                 // Draw armour menu
                 menu.DrawMenu(armours, this.positionCol, this.positionRow, focusPosition);
             }
-        }
-
-        private Dictionary<string, int> SelectElementsByShipType(string element)
-        {
-            if (this.parameters.Keys.Contains("ship"))
-            {
-                switch (this.parameters["ship"])
-                {
-                    case "Dross-Mashup Spaceship":
-                        switch (element)
-                        {
-                            case "armour":
-                                return SelectElementsByPrice(this.dataBase.DrossMashupArmours);
-                            case "weapon":
-                                return SelectElementsByPrice(this.dataBase.DrossMashupWeapons);
-                            case "engine":
-                                return SelectElementsByPrice(this.dataBase.DrossMashupEngines);
-                            default:
-                                return null;
-                        }
-                    case "Futuristic Spaceship":
-                        switch (element)
-                        {
-                            case "armour":
-                                return SelectElementsByPrice(this.dataBase.FuturisticArmours);
-                            case "weapon":
-                                return SelectElementsByPrice(this.dataBase.FuturisticWeapons);
-                            case "engine":
-                                return SelectElementsByPrice(this.dataBase.FuturisticEngines);
-                            default:
-                                return null;
-                        }
-                    default:
-                        return null;
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException("The ship is not selected!");
-            }
-        }
-
-        private Dictionary<string, int> SelectElementsByPrice(Dictionary<string, int> shipType)
-        {
-            Dictionary<string, int> elements = new Dictionary<string, int>();
-
-            foreach (var element in shipType)
-            {
-                if (playerAvailableМoney - element.Value >= 0)
-                {
-                    elements.Add(element.Key, element.Value);
-                }
-            }
-            return new Dictionary<string, int>(elements);
         }
     }
 }
