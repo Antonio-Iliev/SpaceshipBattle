@@ -49,7 +49,7 @@ namespace SpaceshipBattle.Core
             }
             catch (Exception ex)
             {
-                Writer.WriteColorTextCenter(ex.Message);
+                Writer.WriteLine(ex.Message);
             }
         }
     }
