@@ -14,6 +14,7 @@ namespace SpaceshipBattle.Core.Registration
         private readonly IDataBase dataBase;
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly IMenu menu;
         private int positionRow;
         private int positionCol;
         private int rowOffset = 4;
@@ -21,12 +22,18 @@ namespace SpaceshipBattle.Core.Registration
         private Dictionary<string, string> parameters;
         private int playerAvailableМoney;
 
-        public SelectingSpaceship(IApplicationInterface applicationInterface, IDataBase dataBase, IWriter writer, IReader reader)
+        public SelectingSpaceship(
+            IApplicationInterface applicationInterface,
+            IDataBase dataBase, 
+            IWriter writer, 
+            IReader reader,
+            IMenu menu)
         {
             this.applicationInterface = applicationInterface;
             this.dataBase = dataBase;
             this.writer = writer;
             this.reader = reader;
+            this.menu = menu;
         }
 
         public int PlayerAvailableМoney
@@ -45,6 +52,7 @@ namespace SpaceshipBattle.Core.Registration
         public Dictionary<string, string> ChooseSpaceShip()
         {
 
+            // Arrange
             this.parameters = new Dictionary<string, string>();
             playerAvailableМoney = 10000;
 
@@ -52,8 +60,10 @@ namespace SpaceshipBattle.Core.Registration
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
+            var componentList = this.dataBase.SpaceshipNames;
             int lengthOfElements = this.dataBase.SpaceshipNames.Length;
 
+            
             while (true)
             {
                 if (reader.KeyAvailable())
@@ -80,29 +90,14 @@ namespace SpaceshipBattle.Core.Registration
                         writer.ClearScreen();
                         return parameters.AppendDictionary(ChooseComponent());
                     }
-
-
                 }
 
+                // write info message
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your Spaceship:");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "__________________");
 
-                for (int i = 0; i < lengthOfElements; i++)
-                {
-                    if (focusPosition == i)
-                    {
-                        writer.WriteMenu(positionCol, positionRow + 1 + i, this.dataBase.SpaceshipNames[i]);
-                    }
-                    else
-                    {
-                        writer.WriteTextCenter(positionCol, positionRow + 1 + i, this.dataBase.SpaceshipNames[i]);
-                    }
-                }
+                menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
 
-                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
-
-                this.applicationInterface.FreezeScreen(100);
-                this.writer.ClearScreen();
             }
 
         }
@@ -170,24 +165,12 @@ namespace SpaceshipBattle.Core.Registration
                 }
                 else
                 {
+                    // info message
                     writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose component for your ship:");
                     writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_____________________");
 
-                    for (int i = 0; i < componentList.Count; i++)
-                    {
-                        if (focusPosition == i)
-                        {
-                            writer.WriteMenu(positionCol, positionRow + 1 + i, componentList[i]);
-                        }
-                        else
-                        {
-                            writer.WriteTextCenter(positionCol, positionRow + 1 + i, componentList[i]);
-                        }
-                    }
-
-                    this.writer.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
-                    this.applicationInterface.FreezeScreen(100);
-                    this.writer.ClearScreen();
+                    // Draw Menu for ship components
+                    menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
                 }
             }
         }
@@ -199,7 +182,6 @@ namespace SpaceshipBattle.Core.Registration
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (weapons.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = weapons.Count;
             int focusPosition = 0;
 
             while (true)
@@ -217,7 +199,7 @@ namespace SpaceshipBattle.Core.Registration
                     }
                     if (keyInfo.Key == ConsoleKey.DownArrow)
                     {
-                        if (focusPosition < lengthOfElements - 1)
+                        if (focusPosition < weapons.Count - 1)
                         {
                             focusPosition++;
                         }
@@ -229,27 +211,12 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
+                // info message
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your weapon of destruction:");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "_________________________");
 
-                int elementRow = 1;
-                for (int i = 0; i < lengthOfElements; i++)
-                {
-                    string str = weapons.Keys.ElementAt(i) + "  - cost: " + weapons.Values.ElementAt(i) + " GC";
-                    if (focusPosition == i)
-                    {
-                        writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                    }
-                    else
-                    {
-                        writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                    }
-                    elementRow++;
-                }
-
-                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
-                this.applicationInterface.FreezeScreen(100);
-                this.writer.ClearScreen();
+                // Draw weapon menu
+                menu.DrawMenu(weapons, this.positionCol, this.positionRow, focusPosition);
             }
         }
 
@@ -260,7 +227,6 @@ namespace SpaceshipBattle.Core.Registration
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (engines.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = engines.Count;
             int focusPosition = 0;
 
             while (true)
@@ -278,7 +244,7 @@ namespace SpaceshipBattle.Core.Registration
                     }
                     if (keyInfo.Key == ConsoleKey.DownArrow)
                     {
-                        if (focusPosition < lengthOfElements - 1)
+                        if (focusPosition < engines.Count - 1)
                         {
                             focusPosition++;
                         }
@@ -290,27 +256,13 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
+                // info message
                 writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your flying power (engine):");
                 writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
-                int elementRow = 1;
-                for (int i = 0; i < lengthOfElements; i++)
-                {
-                    string str = engines.Keys.ElementAt(i) + "  - cost: " + engines.Values.ElementAt(i) + " GC";
-                    if (focusPosition == i)
-                    {
-                        writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                    }
-                    else
-                    {
-                        writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                    }
-                    elementRow++;
-                }
+                // Draw engine menu
+                menu.DrawMenu(engines, this.positionCol, this.positionRow, focusPosition);
 
-                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
-                this.applicationInterface.FreezeScreen(100);
-                this.writer.ClearScreen();
             }
         }
 
@@ -321,7 +273,6 @@ namespace SpaceshipBattle.Core.Registration
             this.positionRow = (applicationInterface.WindowHeight / 2) - rowOffset - (armours.Count / 2);
             this.positionCol = (applicationInterface.WindowWidth / 2) - colOffset;
 
-            int lengthOfElements = armours.Count;
             int focusPosition = 0;
 
             while (true)
@@ -339,7 +290,7 @@ namespace SpaceshipBattle.Core.Registration
                     }
                     if (keyInfo.Key == ConsoleKey.DownArrow)
                     {
-                        if (focusPosition < lengthOfElements - 1)
+                        if (focusPosition < armours.Count - 1)
                         {
                             focusPosition++;
                         }
@@ -351,27 +302,12 @@ namespace SpaceshipBattle.Core.Registration
                     }
                 }
 
+                // info message
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 2, "Choose your impenetrable skin (armour):");
                 this.writer.WriteTextCenter(this.positionCol, this.positionRow - 1, "___________________________");
 
-                int elementRow = 1;
-                for (int i = 0; i < lengthOfElements; i++)
-                {
-                    string str = armours.Keys.ElementAt(i) + "  - cost: " + armours.Values.ElementAt(i) + " GC";
-                    if (focusPosition == i)
-                    {
-                        writer.WriteMenu(positionCol, positionRow + elementRow, str);
-                    }
-                    else
-                    {
-                        writer.WriteTextCenter(positionCol, positionRow + elementRow, str);
-                    }
-                    elementRow++;
-                }
-
-                this.writer.SetCursorPosition(applicationInterface.WindowWidth - 1, applicationInterface.WindowHeight - 1);
-                this.applicationInterface.FreezeScreen(100);
-                this.writer.ClearScreen();
+                // Draw armour menu
+                menu.DrawMenu(armours, this.positionCol, this.positionRow, focusPosition);
             }
         }
 

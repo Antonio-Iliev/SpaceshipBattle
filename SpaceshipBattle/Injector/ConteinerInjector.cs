@@ -53,6 +53,7 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<ConsoleReader>().As<IReader>();
             builder.RegisterType<LocalDataBase>().As<IDataBase>();
             builder.RegisterType<ConsoleApplicationInterface>().As<IApplicationInterface>();
+            builder.RegisterType<Menu>().As<IMenu>();
         }
     }
 }
