@@ -9,8 +9,6 @@ namespace SpaceshipBattle.Core
 
         string RegistrationForPlayer();
 
-        void ChooseName();
-        void ChooseSpaceShip();
-        void ChooseComponent();
+        string ChooseName();
     }
 }

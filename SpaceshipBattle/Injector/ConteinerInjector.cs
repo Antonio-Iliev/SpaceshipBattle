@@ -11,7 +11,8 @@ using System.Collections.Generic;
 
 using System.Text;
 using SpaceshipBattle.DataBase;
-using SpaceshipBattle.Core.Services;
+using SpaceshipBattle.Core.RegistrationEntities;
+using SpaceshipBattle.Core.Registration;
 
 namespace SpaceshipBattle.Injector
 {
@@ -31,10 +32,6 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<EngineFactory>().As<IEngineFactory>();
             builder.RegisterType<ArmourFactory>().As<IArmourFactory>();
             builder.RegisterType<WeaponFactory>().As<IWeaponFactory>();
-            builder.RegisterType<CreateAK47Service>().Named<IService>("ak47");
-            builder.RegisterType<CreateCannonService>().Named<IService>("cannon");
-            builder.RegisterType<CreateLaserService>().Named<IService>("laser");
-            builder.RegisterType<CreatePlasmaWeaponService>().Named<IService>("plasmaweapon");
             builder.RegisterType<SpaceshipFactory>().As<ISpaceshipFactory>();
             builder.RegisterType<BulletFactory>().As<IBulletFactory>();
             builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();
@@ -46,6 +43,8 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<Registration>().As<IRegistration>();
             builder.RegisterType<PlayerCreator>().As<IPlayerCreator>();
             builder.RegisterType<GameController>().As<IGameController>();
+            builder.RegisterType<SelectingSpaceship>().As<ISelectingSpaceship>();
+
         }
 
         private void RegisterProvidersComponents(ContainerBuilder builder)

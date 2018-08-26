@@ -10,7 +10,6 @@ namespace SpaceshipBattle.Core
         private IPlayerCreator playerCreator;
         private IGameController gameController;
         private IRegistration player;
-        private IRegistration player2;
         private readonly IApplicationInterface applicationInterface;
 
         public Engine

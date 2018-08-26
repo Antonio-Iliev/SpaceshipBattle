@@ -16,7 +16,11 @@ namespace SpaceshipBattle.Core.Providers
         public ConsoleKeyInfo ReadKey()
         {
            return Console.ReadKey();
+        }
 
+        public bool KeyAvailable()
+        {
+            return Console.KeyAvailable;
         }
     }
 }
