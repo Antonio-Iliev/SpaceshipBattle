@@ -4,7 +4,7 @@ using SpaceshipBattle.Entities.Weapons;
 
 namespace SpaceshipBattle.Core.Services
 {
-    public class CreateCannonService : IService
+    public class CreateCannonService : IWeaponService
     {
         private const string weaponModel = "Cannon";
         private const int price = 3000;

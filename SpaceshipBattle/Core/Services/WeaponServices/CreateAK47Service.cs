@@ -3,7 +3,7 @@ using SpaceshipBattle.Entities.Weapons;
 
 namespace SpaceshipBattle.Core.Services
 {
-    public class CreateAK47Service : IService
+    public class CreateAK47Service : IWeaponService
     {
         private const string weaponModel = "AK470";
         private const int price = 2000;

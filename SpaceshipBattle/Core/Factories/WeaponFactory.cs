@@ -22,7 +22,7 @@ namespace SpaceshipBattle.Core.Factories
             // resolve a concrete implementation of ICommand through its 'name'
             // e.g. "createtable" -> instance of type `CreateTableCommand`
 
-            var command = this.autofacContext.ResolveNamed<IService>(model.ToLower());
+            var command = this.autofacContext.ResolveNamed<IWeaponService>(model.ToLower());
             return command.CreateWeapon();
         }
         //switch (model)

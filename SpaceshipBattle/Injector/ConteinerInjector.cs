@@ -13,6 +13,7 @@ using System.Text;
 using SpaceshipBattle.DataBase;
 using SpaceshipBattle.Core.RegistrationEntities;
 using SpaceshipBattle.Core.Registration;
+using SpaceshipBattle.Core.Services;
 
 namespace SpaceshipBattle.Injector
 {
@@ -32,6 +33,10 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<EngineFactory>().As<IEngineFactory>();
             builder.RegisterType<ArmourFactory>().As<IArmourFactory>();
             builder.RegisterType<WeaponFactory>().As<IWeaponFactory>();
+            builder.RegisterType<CreateAK47Service>().Named<IWeaponService>("ak47");
+            builder.RegisterType<CreateCannonService>().Named<IWeaponService>("cannon");
+            builder.RegisterType<CreateLaserService>().Named<IWeaponService>("laser");
+            builder.RegisterType<CreatePlasmaWeaponService>().Named<IWeaponService>("plasmaweapon");
             builder.RegisterType<SpaceshipFactory>().As<ISpaceshipFactory>();
             builder.RegisterType<BulletFactory>().As<IBulletFactory>();
             builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();

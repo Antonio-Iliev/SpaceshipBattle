@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceshipBattle.Core.Services
+namespace SpaceshipBattle.Core.Services.ArmorServices
 {
-    public interface IService
+    public interface IArmorService
     {
-        IWeapon CreateWeapon();
+        IArmour CreateArmor();
     }
 }
