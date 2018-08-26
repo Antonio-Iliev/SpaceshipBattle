@@ -64,67 +64,13 @@ namespace SpaceshipBattle.Entities
 
         public bool IsAtShooting { get; set; } = false;
 
-        public int TotalDist { get; private set; } = 0;
+        public int TotalDist { get; set; } = 0;
 
         public void Refuel()
         {
             this.TotalDist = this.FuelCapacity;
         }
-
-        private void PrepareToShoot()
-        {
-            this.Weapon.Bullet.PositionY = this.PositionY;
-            this.IsAtShooting = true;
-        }
-
-        public void ShootFromLeftSide()
-        {
-            if (this.IsAtShooting == false)
-            {
-                PrepareToShoot();
-
-                this.Weapon.Bullet.PositionX = 1;
-            }
-        }
-
-        public void ShootFromRightSide()
-        {
-            if (this.IsAtShooting == false)
-            {
-                PrepareToShoot();
-
-                this.Weapon.Bullet.PositionX = Console.WindowWidth - 1;
-            }
-        }
-
-        public void MoveDown( )
-        {
-            if (this.PositionY + this.Speed < Console.WindowHeight - 2)
-            {
-                this.PositionY += this.Speed;
-                this.TotalDist += this.Speed;
-
-                if (this.TotalDist >= FuelCapacity)
-                {
-                    Refuel();
-                }
-            }
-        }
-
-        public void MoveUp()
-        {
-            if (this.PositionY - this.Speed > 1)
-            {
-                this.PositionY -= this.Speed;
-                this.TotalDist += this.Speed;
-
-                if (this.TotalDist >= FuelCapacity)
-                {
-                    Refuel();
-                }
-            }
-        }
-
+                       
         public void TakeDamageToPlayer(IPlayer player, int damage)
         {
             if (player.Spaceship.Armour.ArmourCoefficient > 0)
@@ -133,7 +79,7 @@ namespace SpaceshipBattle.Entities
 
                 if (player.Spaceship.Armour.ArmourCoefficient < 0)
                 {
-                    player.Spaceship.Health += player.Spaceship.Armour.ArmourCoefficient;
+                    player.Spaceship.Health -= player.Spaceship.Armour.ArmourCoefficient;
                     player.Spaceship.Armour.ArmourCoefficient = 0;
                 }
             }
