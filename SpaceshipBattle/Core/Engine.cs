@@ -11,6 +11,7 @@ namespace SpaceshipBattle.Core
         private IGameController gameController;
         private IRegistration player1;
         private IRegistration player2;
+        private readonly IApplicationInterface applicationInterface;
 
         public Engine
             (IPlayerCreator playerCreator,
@@ -18,7 +19,8 @@ namespace SpaceshipBattle.Core
              IRegistration player1, 
              IRegistration player2, 
              IWriter writer,
-             IReader reader)
+             IReader reader,
+             IApplicationInterface applicationInterface)
         {
             this.playerCreator = playerCreator;
             this.gameController = gameController;
@@ -26,6 +28,7 @@ namespace SpaceshipBattle.Core
             this.player2 = player2;
 
             this.Reader = reader;
+            this.applicationInterface = applicationInterface;
             this.Writer = writer;
         }
 
@@ -34,11 +37,7 @@ namespace SpaceshipBattle.Core
 
         public void Start()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetWindowSize(120, 35);
-            Console.BufferHeight = Console.WindowHeight;
-            Console.BufferWidth = Console.WindowWidth;
+            applicationInterface.SetGameDisplay();
 
             try
             {

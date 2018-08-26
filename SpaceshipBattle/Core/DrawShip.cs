@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Core
 {
     public static class DrawShip
     {
-
+         
         public static void DrawShipPlayerOne(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
