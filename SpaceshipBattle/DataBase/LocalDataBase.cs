@@ -29,7 +29,7 @@ namespace SpaceshipBattle.DataBase
         public readonly List<string> switzArmour = new List<string>() { "Switz Armour", "2500", "800", "35", "3", "2", "Steel" };
         public readonly List<string> bubbleFieldArmour = new List<string>() { "Bubble Field", "1600", "100", "12", "4", "1", "Plasma" };
         public readonly List<string> plasmaFieldArmour = new List<string>() { "Plasma Field", "2800", "100", "35", "2", "8", "Plasma" };
-        public readonly List<string> antiMatterFieldArmour = new List<string>() { "Anti Matter Field", "5000", "450", "65", "0", "10", "AntiMatter" };
+        public readonly List<string> antiMatterFieldArmour = new List<string>() { "Anti Matter Field", "4000", "450", "65", "0", "10", "AntiMatter" };
 
 
         // Different Spaceships
@@ -60,7 +60,7 @@ namespace SpaceshipBattle.DataBase
 
         // Armours witch can use in Futuristic Spaceships
         public Dictionary<string, int> FuturisticArmours { get; } = new Dictionary<string, int>
-        {{"Aerogel cover",2000 },  {"Fullerenes Armour", 3500 }, { "Switz Armour", 2500 }, {"Plasma Field", 3800 }, {"Anti Matter Fields", 5000 } };
+        {{"Aerogel cover",2000 },  {"Fullerenes Armour", 3500 }, { "Switz Armour", 2500 }, {"Plasma Field", 3800 }, {"Anti Matter Fields", 4000 } };
 
 
     }
