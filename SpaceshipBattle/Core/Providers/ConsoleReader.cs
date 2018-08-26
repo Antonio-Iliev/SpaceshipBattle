@@ -22,5 +22,6 @@ namespace SpaceshipBattle.Core.Providers
         {
             return Console.KeyAvailable;
         }
+
     }
 }

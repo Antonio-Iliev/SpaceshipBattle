@@ -6,5 +6,6 @@ namespace SpaceshipBattle.DataBase
 {
     public class AdapterDataBase
     {
+
     }
 }

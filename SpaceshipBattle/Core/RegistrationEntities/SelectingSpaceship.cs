@@ -58,7 +58,7 @@ namespace SpaceshipBattle.Core.Registration
             {
                 if (reader.KeyAvailable())
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                   ConsoleKeyInfo keyInfo = Console.ReadKey();
 
                     if (keyInfo.Key == ConsoleKey.UpArrow)
                     {
