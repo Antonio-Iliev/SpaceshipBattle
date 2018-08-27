@@ -19,7 +19,7 @@ namespace SpaceshipBattle.DataBase
         public readonly List<string> bugattiEngine = new List<string>() { "Bugatti W16", "4000", "400", "1001", "Petrol", "1250", "8000", "16" };
         public readonly List<string> h2oMotorEngine = new List<string>() { "H2O Motor", "1000", "220", "980", "Water", "1" };
         public readonly List<string> ionEngine = new List<string>() { "Ion X3", "2000", "400", "2120", "Ion", "2" };
-        public readonly List<string> vasimirPlasmaEngine = new List<string>() { "Vasimir Plasma Engine ", "3500", "600", "2860", "Plasma", "6" };
+        public readonly List<string> vasimirPlasmaEngine = new List<string>() { "Vasimir Plasma Engine", "3500", "600", "2860", "Plasma", "6" };
 
         // Armours
         public readonly List<string> recycledPaperArmour = new List<string>() { "Recycled Paper", "1000", "50", "20", "0", "2", "Paper" };
@@ -61,7 +61,5 @@ namespace SpaceshipBattle.DataBase
         // Armours witch can use in Futuristic Spaceships
         public Dictionary<string, int> FuturisticArmours { get; } = new Dictionary<string, int>
         {{"Aerogel cover",2000 },  {"Fullerenes Armour", 3500 }, { "Switz Armour", 2500 }, {"Plasma Field", 3800 }, {"Anti Matter Fields", 4000 } };
-
-
     }
 }
