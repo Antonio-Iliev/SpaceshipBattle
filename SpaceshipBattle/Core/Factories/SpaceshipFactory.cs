@@ -1,25 +1,24 @@
 ﻿using SpaceshipBattle.Contracts.Factories;
-using SpaceshipBattle.Entities.Spaceships;
 using SpaceshipBattle.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Autofac;
+using SpaceshipBattle.Core.Services.SpaceShipService;
 
 namespace SpaceshipBattle.Core.Factories
 {
     class SpaceshipFactory : ISpaceshipFactory
     {
-        public ISpaceship CreateSpaceship(string model, ISpaceshipEngine engine, IArmour armour, IWeapon weapon)
-        {
-            switch (model)
-            {
-                case "Dross-Mashup Spaceship":
-                    return new DrossMashupSpaceship(engine, armour, weapon, model);
-                case "Futuristic Spaceship":
-                    return new FuturisticSpaceship(engine, armour, weapon, model);
 
-                default: throw new ArgumentException("There is no such spaceship!");
-            }
+        private readonly IComponentContext autofacContext;
+
+        public SpaceshipFactory(IComponentContext autofacContext)
+        {
+            this.autofacContext = autofacContext;
+        }
+
+        public ISpaceShip CreateSpaceship(string model, ISpaceshipEngine engine, IArmour armour, IWeapon weapon)
+        {
+            var command = this.autofacContext.ResolveNamed<ISpaceShipService>(model.ToLower());
+            return command.CreateSpaceship(model, engine, armour, weapon);
         }
     }
 }

@@ -11,6 +11,7 @@ using SpaceshipBattle.Core.Registration;
 using SpaceshipBattle.Core.Services;
 using SpaceshipBattle.Core.Services.ArmorServices;
 using SpaceshipBattle.Core.Services.EngineServices;
+using SpaceshipBattle.Core.Services.SpaceShipService;
 
 namespace SpaceshipBattle.Injector
 {
@@ -43,13 +44,15 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<CreateFullerenesArmourService>().Named<IArmorService>("fullerenes armour");
             builder.RegisterType<CreatePlasmaFieldService>().Named<IArmorService>("plasma field");
             builder.RegisterType<CreateAntiMatterFieldService>().Named<IArmorService>("recycled paper");
-            builder.RegisterType<CreateSwitzArmourService>().Named<IArmorService>("switz rmour");
+            builder.RegisterType<CreateSwitzArmourService>().Named<IArmorService>("switz armour");
             builder.RegisterType<WeaponFactory>().As<IWeaponFactory>();
             builder.RegisterType<CreateAK47Service>().Named<IWeaponService>("ak47");
             builder.RegisterType<CreateCannonService>().Named<IWeaponService>("cannon");
             builder.RegisterType<CreateLaserService>().Named<IWeaponService>("laser");
-            builder.RegisterType<CreatePlasmaWeaponService>().Named<IWeaponService>("plasmaweapon");
+            builder.RegisterType<CreatePlasmaWeaponService>().Named<IWeaponService>("plasma weapon");
             builder.RegisterType<SpaceshipFactory>().As<ISpaceshipFactory>();
+            builder.RegisterType<CreateDrossMashupService>().Named<ISpaceShipService>("dross-mashup spaceship");
+            builder.RegisterType<CreateFuturisticSpaceshipService>().Named<ISpaceShipService>("futuristic spaceship");
             builder.RegisterType<BulletFactory>().As<IBulletFactory>();
             builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();
         }

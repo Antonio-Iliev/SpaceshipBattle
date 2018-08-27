@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Entities
 {
-    public abstract class Spaceship : ISpaceship
+    public abstract class Spaceship : ISpaceShip
     {
         private const int MinPriceValue = 1000;
         private const int MaxPriceValue = 10000;
@@ -72,7 +72,7 @@ namespace SpaceshipBattle.Entities
             this.TotalDist = this.FuelCapacity;
         }
                        
-        public int TakeDamageToPlayer(ISpaceship spaceship, int damage)
+        public int TakeDamageToPlayer(ISpaceShip spaceship, int damage)
         {            
             if (spaceship.Armour.ArmourCoefficient > 0)
             {
