@@ -2,7 +2,7 @@
 
 namespace SpaceshipBattle.Contracts.Entities.Weapon
 {
-    interface ICriticalStrikeWeapon
+    public interface ICriticalStrikeWeapon
     {
         int CriticalStrikeChance { get; }
     }

@@ -5,7 +5,7 @@ using System;
 
 namespace SpaceshipBattle.Entities.Weapons
 {
-    class CriticalStrikeWeapon : WeaponAbstract, ICriticalStrikeWeapon
+    public class CriticalStrikeWeapon : WeaponAbstract, ICriticalStrikeWeapon
     {
 
         public CriticalStrikeWeapon(string model, int price, int weight, int power, int speed, int clipCapacity, int criticalStrikeChance) : base(model, price, weight, power, speed, clipCapacity)

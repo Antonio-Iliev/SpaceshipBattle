@@ -2,7 +2,7 @@
 
 namespace SpaceshipBattle.Contracts.Entities.Weapon
 {
-    interface IAreaOfEffectWeapon
+    public interface IAreaOfEffectWeapon
     {
         int SplashArea { get; }
     }
