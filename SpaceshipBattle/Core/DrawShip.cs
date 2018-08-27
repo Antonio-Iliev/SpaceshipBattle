@@ -1,26 +1,31 @@
 ﻿using SpaceshipBattle.Contracts;
-using SpaceshipBattle.Contracts.Entities;
 using SpaceshipBattle.Entities.Spaceships;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceshipBattle.Core
 {
-    public static class DrawShip
+    public class DrawShip : IDrawShip
     {
-         
-        public static void DrawShipPlayerOne(IPlayer player)
+        private readonly ISpaceShipDesign spaceShipDesign;
+
+        public DrawShip(ISpaceShipDesign spaceShipDesign)
+        {
+            this.spaceShipDesign = spaceShipDesign;
+        }
+
+        // Draw left player 
+        public string DrawShipPlayerOne(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
 
             switch (player.Spaceship.Model)
             {
                 case "Dross-Mashup Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.DrossLeft);
+                    shipDesign.AddRange(spaceShipDesign.DrossLeft);
                     break;
                 case "Futuristic Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.FuturisticLeft);
+                    shipDesign.AddRange(spaceShipDesign.FuturisticLeft);
                     break;
             }
 
@@ -30,19 +35,22 @@ namespace SpaceshipBattle.Core
                 Console.SetCursorPosition(0, player.Spaceship.PositionY + ofsetRow++);
                 Console.Write(element);
             }
+
+            return $"Player One use {player.Spaceship.Model}";
         }
 
-        public static void DrawShipPlayerTwo(IPlayer player)
+        // Draw right player
+        public string DrawShipPlayerTwo(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
 
             switch (player.Spaceship.Model)
             {
                 case "Dross-Mashup Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.DrossaRight);
+                    shipDesign.AddRange(spaceShipDesign.DrossaRight);
                     break;
                 case "Futuristic Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.FuturisticRight);
+                    shipDesign.AddRange(spaceShipDesign.FuturisticRight);
                     break;
             }
 
@@ -53,7 +61,8 @@ namespace SpaceshipBattle.Core
                 Console.SetCursorPosition(Console.WindowWidth - offset, player.Spaceship.PositionY + ofsetRow++);
                 Console.Write(element);
             }
-        }
 
+            return $"Player Two use {player.Spaceship.Model}";
+        }
     }
 }

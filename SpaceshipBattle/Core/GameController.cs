@@ -11,16 +11,22 @@ namespace SpaceshipBattle.Core
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly IApplicationInterface appInterface;
+        private readonly IDrawShip drawShip;
         private bool hasWinner = false;
         private string winnerName = string.Empty;
         private IPlayer firstPlayer;
         private IPlayer secondPlayer;
 
-        public GameController(IWriter writer, IReader reader, IApplicationInterface appInterface) 
+        public GameController(
+            IWriter writer, 
+            IReader reader, 
+            IApplicationInterface appInterface,
+            IDrawShip drawShip) 
         {
             this.writer = writer;
             this.reader = reader;
             this.appInterface = appInterface;
+            this.drawShip = drawShip;
         }
 
         public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
@@ -49,8 +55,8 @@ namespace SpaceshipBattle.Core
                     break;
                 }
 
-                DrawShip.DrawShipPlayerOne(firstPlayer);
-                DrawShip.DrawShipPlayerTwo(secondPlayer);
+                drawShip.DrawShipPlayerOne(firstPlayer);
+                drawShip.DrawShipPlayerTwo(secondPlayer);
 
                 DrawBullet(firstPlayer, 'A');
                 DrawBullet(secondPlayer, 'B');

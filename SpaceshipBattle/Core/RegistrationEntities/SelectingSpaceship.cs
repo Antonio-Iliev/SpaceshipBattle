@@ -55,17 +55,16 @@ namespace SpaceshipBattle.Core.Registration
 
         public Dictionary<string, string> ChooseSpaceShip()
         {
+            int focusPosition = 0;
 
-            // Arrange
-            this.parameters = new Dictionary<string, string>();
             playerAvailableМoney = 10000;
+
+            this.parameters = new Dictionary<string, string>();
+            var componentList = this.dataBase.SpaceshipNames;
+            int lengthOfElements = this.dataBase.SpaceshipNames.Length;
 
             this.positionRow = (appInterface.WindowHeight / 2) - rowOffset - (this.dataBase.SpaceshipNames.Length / 2);
             this.positionCol = (appInterface.WindowWidth / 2) - colOffset;
-            int focusPosition = 0;
-
-            var componentList = this.dataBase.SpaceshipNames;
-            int lengthOfElements = this.dataBase.SpaceshipNames.Length;
 
             while (true)
             {
@@ -103,16 +102,16 @@ namespace SpaceshipBattle.Core.Registration
                 this.menu.DrawMenu(componentList, this.positionCol, this.positionRow, focusPosition);
 
             }
-
         }
 
         public Dictionary<string, string> ChooseComponent()
         {
-            this.positionRow = (appInterface.WindowHeight / 2) - rowOffset - (this.dataBase.ComponentsInSpaceship.Length / 2);
-            this.positionCol = (appInterface.WindowWidth / 2) - colOffset;
             int focusPosition = 0;
 
             List<string> componentList = new List<string>(this.dataBase.ComponentsInSpaceship);
+
+            this.positionRow = (appInterface.WindowHeight / 2) - rowOffset - (componentList.Count / 2);
+            this.positionCol = (appInterface.WindowWidth / 2) - colOffset;
 
             while (true)
             {

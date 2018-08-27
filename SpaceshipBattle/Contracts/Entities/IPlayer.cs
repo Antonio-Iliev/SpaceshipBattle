@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Contracts
     {
         string Name { get; }
 
-        ISpaceship Spaceship { get; }
+        ISpaceShip Spaceship { get; }
 
         int Money { get; }
 

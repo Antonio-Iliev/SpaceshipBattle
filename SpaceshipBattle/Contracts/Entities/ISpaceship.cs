@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceshipBattle.Contracts
 {
-    public interface ISpaceship
+    public interface ISpaceShip
     {
         int Health { get; set; }
 
@@ -27,7 +27,7 @@ namespace SpaceshipBattle.Contracts
 
         void Refuel();
         
-        int TakeDamageToPlayer(ISpaceship player, int damage);
+        int TakeDamageToPlayer(ISpaceShip player, int damage);
 
         string Model { get; }
 
