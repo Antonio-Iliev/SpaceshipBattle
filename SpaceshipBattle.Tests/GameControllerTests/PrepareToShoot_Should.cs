@@ -17,11 +17,12 @@ namespace SpaceshipBattle.Tests.GameControllerTests
             var writerMock = new Mock<IWriter>();
             var readerMock = new Mock<IReader>();
             var appInt = new Mock<IApplicationInterface>();
-                        
-            var gc = new GameControllerMock(writerMock.Object, readerMock.Object, appInt.Object);
+            var drawshipMock = new Mock<IDrawShip>();
+
+            var gc = new GameControllerMock(writerMock.Object, readerMock.Object, appInt.Object, drawshipMock.Object);
 
             var playerMock = new Mock<IPlayer>();
-            var spaceshipMock = new Mock<ISpaceship>();
+            var spaceshipMock = new Mock<ISpaceShip>();
 
             var spaceship = spaceshipMock.Object;
 

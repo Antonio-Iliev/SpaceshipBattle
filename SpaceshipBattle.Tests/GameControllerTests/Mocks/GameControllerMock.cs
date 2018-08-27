@@ -9,7 +9,7 @@ namespace SpaceshipBattle.Tests.GameControllerTests.Mocks
 {
     internal sealed class GameControllerMock : GameController
     {
-        public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface) : base(writer, reader, appInterface)
+        public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface, IDrawShip drawShip) : base(writer, reader, appInterface, drawShip)
         {
         }
 
