@@ -10,17 +10,18 @@ namespace SpaceshipBattle.Tests.EngineTests.AutomobileEngineTests
     public class ToString_Should
     {
         [TestMethod]
-        public void ContainsCapacity_WhenToStringIsCalled()
+        public void ReturnMessage_WhenToStringIsCalled()
         {
             //Arrange
-            var engine = new AutomobileEngine("engine", 2000,200,200, FuelType.Diesel, 200, 2000, 4);
-            
+            var engine = new AutomobileEngine("engine", 2000, 200, 200, FuelType.Diesel, 200, 2000, 4);
+
             //Act
             var result = engine.ToString();
 
             //Assert
-            StringAssert.Contains(result, "Capacity: 2000cc");            
-        }
+            StringAssert.Contains(result, "Fuel type: Diesel"
+                + Environment.NewLine + "Capacity: 2000cc" 
+                + Environment.NewLine + "Torque: 200N.m" );
+        }        
     }
-
 }
