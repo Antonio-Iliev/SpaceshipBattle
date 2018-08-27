@@ -13,8 +13,10 @@ namespace SpaceshipBattle.Core
         private readonly IApplicationInterface appInterface;
         private bool hasWinner = false;
         private string winnerName = string.Empty;
+        private IPlayer firstPlayer;
+        private IPlayer secondPlayer;
 
-        public GameController(IWriter writer, IReader reader, IApplicationInterface appInterface)
+        public GameController(IWriter writer, IReader reader, IApplicationInterface appInterface) 
         {
             this.writer = writer;
             this.reader = reader;
@@ -23,6 +25,9 @@ namespace SpaceshipBattle.Core
 
         public void Play(IPlayer firstPlayer, IPlayer secondPlayer)
         {
+            this.firstPlayer = firstPlayer;
+            this.secondPlayer = secondPlayer;
+
             appInterface.SetGameDisplay();
             SetInitialPositions(firstPlayer);
             SetInitialPositions(secondPlayer);
@@ -32,12 +37,12 @@ namespace SpaceshipBattle.Core
                 if (writer.KeyAvailable())
                 {
                     var keyInfo = reader.ReadKey();
-                    CommandParser(firstPlayer, secondPlayer, keyInfo);
+                    CommandParser(keyInfo);
                 }
 
                 writer.ClearScreen();
 
-                ManageShooting(firstPlayer, secondPlayer);
+                ManageShooting();
 
                 if (hasWinner)
                 {
@@ -50,7 +55,7 @@ namespace SpaceshipBattle.Core
                 DrawBullet(firstPlayer, 'A');
                 DrawBullet(secondPlayer, 'B');
 
-                PrintResult(firstPlayer, secondPlayer);
+                PrintResult();
                 appInterface.FreezeScreen(40);
             }
 
@@ -79,7 +84,7 @@ namespace SpaceshipBattle.Core
             PrintAtPosition(x, y, symbol);
         }
 
-        private void PrintResult(IPlayer firstPlayer, IPlayer secondPlayer)
+        private void PrintResult()
         {
             //first player
             PrintAtPosition(10, 0, $"Armour:{firstPlayer.Spaceship.Armour.ArmourCoefficient}");
@@ -88,10 +93,9 @@ namespace SpaceshipBattle.Core
             //second player
             PrintAtPosition(appInterface.WindowWidth - 20, 0, $"Armour:{secondPlayer.Spaceship.Armour.ArmourCoefficient}");
             PrintAtPosition(appInterface.WindowWidth - 20, 1, $"Health:{secondPlayer.Spaceship.Health}");
-
         }
 
-        private void ManageShooting(IPlayer firstPlayer, IPlayer secondPlayer)
+        private void ManageShooting()
         {
             if (firstPlayer.Spaceship.IsAtShooting)
             {
@@ -145,7 +149,7 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        private void MoveDown(IPlayer player)
+        protected void MoveDown(IPlayer player)
         {
             if (player.Spaceship.PositionY + player.Spaceship.Speed < appInterface.WindowHeight - 2)
             {
@@ -159,7 +163,7 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        private void MoveUp(IPlayer player)
+        protected void MoveUp(IPlayer player)
         {
             if (player.Spaceship.PositionY - player.Spaceship.Speed > 1)
             {
@@ -199,7 +203,7 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        private void CommandParser(IPlayer firstPlayer, IPlayer secondPlayer, ConsoleKeyInfo keyInfo)
+        private void CommandParser(ConsoleKeyInfo keyInfo)
         {
             if (keyInfo.Key == ConsoleKey.W)
             {

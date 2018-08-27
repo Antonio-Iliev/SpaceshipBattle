@@ -19,8 +19,7 @@ namespace SpaceshipBattle.Tests.EngineTests.AutomobileEngineTests
             var result = engine.ToString();
 
             //Assert
-            StringAssert.Contains(result, "Capacity: 2000cc");
-            
+            StringAssert.Contains(result, "Capacity: 2000cc");            
         }
     }
 
