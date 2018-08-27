@@ -10,6 +10,7 @@ using SpaceshipBattle.Core.RegistrationEntities;
 using SpaceshipBattle.Core.Registration;
 using SpaceshipBattle.Core.Services;
 using SpaceshipBattle.Core.Services.ArmorServices;
+using SpaceshipBattle.Core.Services.EngineServices;
 
 namespace SpaceshipBattle.Injector
 {
@@ -27,6 +28,13 @@ namespace SpaceshipBattle.Injector
         private void RegisterFactoryComponents(ContainerBuilder builder)
         {
             builder.RegisterType<EngineFactory>().As<IEngineFactory>();
+            builder.RegisterType<CreateBugattiW16Service>().Named<IEngineService>("bugatti w16");
+            builder.RegisterType<CreateFerrariV12GTService>().Named<IEngineService>("ferrari v12 gt");
+            builder.RegisterType<CreateH2OMotorService>().Named<IEngineService>("h2o motor");
+            builder.RegisterType<CreateIonX3Service>().Named<IEngineService>("ion x3");
+            builder.RegisterType<CreateTrabantMotorService>().Named<IEngineService>("trabant motor");
+            builder.RegisterType<CreateVasimirPlasmaService>().Named<IEngineService>("vasimir plasma engine");
+            builder.RegisterType<CreateVW19TDIService>().Named<IEngineService>("vw 1.9 tdi");
             builder.RegisterType<ArmourFactory>().As<IArmourFactory>();
             builder.RegisterType<CreateAerogelCoverService>().Named<IArmorService>("aerogel cover");
             builder.RegisterType<CreateAntiMatterFieldService>().Named<IArmorService>("anti matter field");
