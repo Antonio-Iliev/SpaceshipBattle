@@ -155,35 +155,25 @@ namespace SpaceshipBattle.Core
             }
         }
 
-        protected void MoveDown(IPlayer player)
+        protected void TryMoveDown(IPlayer player)
         {
             if (player.Spaceship.PositionY + player.Spaceship.Speed < appInterface.WindowHeight - 2)
             {
                 player.Spaceship.PositionY += player.Spaceship.Speed;
                 player.Spaceship.TotalDist += player.Spaceship.Speed;
-
-                if (player.Spaceship.TotalDist >= player.Spaceship.FuelCapacity)
-                {
-                    player.Spaceship.Refuel();
-                }
             }
         }
 
-        protected void MoveUp(IPlayer player)
+        protected void TryMoveUp(IPlayer player)
         {
             if (player.Spaceship.PositionY - player.Spaceship.Speed > 1)
             {
                 player.Spaceship.PositionY -= player.Spaceship.Speed;
                 player.Spaceship.TotalDist += player.Spaceship.Speed;
-
-                if (player.Spaceship.TotalDist >= player.Spaceship.FuelCapacity)
-                {
-                    player.Spaceship.Refuel();
-                }
             }
         }
 
-        private void PrepareToShoot(IPlayer player)
+        protected void PrepareToShoot(IPlayer player)
         {
             player.Spaceship.Weapon.Bullet.PositionY = player.Spaceship.PositionY;
             player.Spaceship.IsAtShooting = true;
@@ -213,22 +203,22 @@ namespace SpaceshipBattle.Core
         {
             if (keyInfo.Key == ConsoleKey.W)
             {
-                MoveUp(firstPlayer);
+                TryMoveUp(firstPlayer);
             }
 
             if (keyInfo.Key == ConsoleKey.S)
             {
-                MoveDown(firstPlayer);
+                TryMoveDown(firstPlayer);
             }
 
             if (keyInfo.Key == ConsoleKey.UpArrow)
             {
-                MoveUp(secondPlayer);
+                TryMoveUp(secondPlayer);
             }
 
             if (keyInfo.Key == ConsoleKey.DownArrow)
             {
-                MoveDown(secondPlayer);
+                TryMoveDown(secondPlayer);
             }
 
             //Shoot first player

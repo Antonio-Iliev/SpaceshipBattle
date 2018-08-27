@@ -7,10 +7,26 @@ using System.Text;
 
 namespace SpaceshipBattle.Tests.GameControllerTests.Mocks
 {
-    //internal sealed class GameControllerMock : GameController
-    //{
-    //    //public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface) : base(writer, reader, appInterface)
-    //    //{
-    //    //}
-    //}
+    internal sealed class GameControllerMock : GameController
+    {
+        public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface, IDrawShip drawShip) : base(writer, reader, appInterface, drawShip)
+        {
+        }
+
+        public void ExposedMoveDown(IPlayer player)
+        {
+             base.TryMoveDown(player);
+        }
+
+        public void ExposedMoveUp(IPlayer player)
+        {
+            base.TryMoveUp(player);
+        }
+
+        public void ExposedPrepareToShoot(IPlayer player)
+        {
+            base.PrepareToShoot(player);
+        }
+
+    }
 }

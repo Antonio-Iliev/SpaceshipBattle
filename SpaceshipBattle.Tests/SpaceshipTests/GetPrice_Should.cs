@@ -8,7 +8,7 @@ namespace SpaceshipBattle.Tests.SpaceshipTests.Mocks
     public class GetPrice_Should
     {
         [TestMethod]
-        public void ReturnTheProperValue_WhenGetMethodIsCalled()
+        public void ReturnProperValue_WhenGetMethodIsCalled()
         {
             //Arrange
             var engineMock = new Mock<ISpaceshipEngine>();
