@@ -1,16 +1,14 @@
 ﻿using SpaceshipBattle.Contracts;
-using SpaceshipBattle.Contracts.Entities;
 using SpaceshipBattle.Entities.Spaceships;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceshipBattle.Core
 {
-    public static class DrawShip
+    public class DrawShip : IDrawShip
     {
          
-        public static void DrawShipPlayerOne(IPlayer player)
+        public string DrawShipPlayerOne(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
 
@@ -30,9 +28,11 @@ namespace SpaceshipBattle.Core
                 Console.SetCursorPosition(0, player.Spaceship.PositionY + ofsetRow++);
                 Console.Write(element);
             }
+
+            return $"Player One use {player.Spaceship.Model}";
         }
 
-        public static void DrawShipPlayerTwo(IPlayer player)
+        public string DrawShipPlayerTwo(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
 
@@ -53,7 +53,8 @@ namespace SpaceshipBattle.Core
                 Console.SetCursorPosition(Console.WindowWidth - offset, player.Spaceship.PositionY + ofsetRow++);
                 Console.Write(element);
             }
-        }
 
+            return $"Player Two use {player.Spaceship.Model}";
+        }
     }
 }

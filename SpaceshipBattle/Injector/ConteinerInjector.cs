@@ -65,6 +65,7 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<GameController>().As<IGameController>();
             builder.RegisterType<SelectingSpaceship>().As<ISelectingSpaceship>();
             builder.RegisterType<FilterComponents>().As<IFilterComponents>();
+            builder.RegisterType<DrawShip>().As<IDrawShip>();
 
         }
 
