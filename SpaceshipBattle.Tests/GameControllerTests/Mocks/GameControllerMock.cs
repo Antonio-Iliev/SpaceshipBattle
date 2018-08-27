@@ -7,10 +7,10 @@ using System.Text;
 
 namespace SpaceshipBattle.Tests.GameControllerTests.Mocks
 {
-    internal sealed class GameControllerMock : GameController
-    {
-        public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface) : base(writer, reader, appInterface)
-        {
-        }
-    }
+    //internal sealed class GameControllerMock : GameController
+    //{
+    //    //public GameControllerMock(IWriter writer, IReader reader, IApplicationInterface appInterface) : base(writer, reader, appInterface)
+    //    //{
+    //    //}
+    //}
 }
