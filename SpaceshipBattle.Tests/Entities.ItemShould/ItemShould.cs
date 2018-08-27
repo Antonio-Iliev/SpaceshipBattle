@@ -89,5 +89,21 @@ namespace SpaceshipBattle.Tests.Entities.ItemShould
             //Arrange & Act & Assert
             var item = new ItemMock(validModel, validPrice, weight);
         }
+
+        [TestMethod]
+        [DataRow("Model")]
+        [DataRow("Price")]
+        [DataRow("Weight")]
+        public void Item_WhenToStringIsCalled_ShouldReturnMessage(string actual)
+        {
+            //Arrange
+            var item = new ItemMock(validModel, validPrice, validWeight);
+
+            //Act
+            var result = item.ToString();
+
+            //Assert
+            StringAssert.Contains(result, actual);
+        }
     }
 }
