@@ -27,10 +27,13 @@ namespace SpaceshipBattle.Contracts
 
         void Refuel();
         
-        void TakeDamageToPlayer(IPlayer player, int damage);
+        int TakeDamageToPlayer(ISpaceship player, int damage);
 
         string Model { get; }
 
+        int Price { get; }
+
+        int Weight { get; }
        //string[] Design { get; }
     }
 }

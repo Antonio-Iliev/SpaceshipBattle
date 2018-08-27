@@ -11,6 +11,7 @@ namespace SpaceshipBattle.Entities
     {
         private const int MinPriceValue = 1000;
         private const int MaxPriceValue = 10000;
+
         private string model;
 
         public Spaceship(ISpaceshipEngine engine, IArmour armour, IWeapon weapon, string model)
@@ -20,7 +21,7 @@ namespace SpaceshipBattle.Entities
             this.Weapon = weapon;
             this.Model = model;
         }
-
+         
         public int Health { get; set; } = 100;
 
         public string Model
@@ -39,7 +40,7 @@ namespace SpaceshipBattle.Entities
         public int Price
         {
             get => this.Engine.Price + this.Armour.Price + this.Weapon.Price;
-            protected set
+            set
             {
                 if (value < 0 || value > 10000)
                 {
@@ -71,22 +72,24 @@ namespace SpaceshipBattle.Entities
             this.TotalDist = this.FuelCapacity;
         }
                        
-        public void TakeDamageToPlayer(IPlayer player, int damage)
-        {
-            if (player.Spaceship.Armour.ArmourCoefficient > 0)
+        public int TakeDamageToPlayer(ISpaceship spaceship, int damage)
+        {            
+            if (spaceship.Armour.ArmourCoefficient > 0)
             {
-                player.Spaceship.Armour.ArmourCoefficient -= damage;
+                spaceship.Armour.ArmourCoefficient -= damage;
 
-                if (player.Spaceship.Armour.ArmourCoefficient < 0)
+                if (spaceship.Armour.ArmourCoefficient < 0)
                 {
-                    player.Spaceship.Health -= player.Spaceship.Armour.ArmourCoefficient;
-                    player.Spaceship.Armour.ArmourCoefficient = 0;
+                    spaceship.Health -= spaceship.Armour.ArmourCoefficient;
+                    spaceship.Armour.ArmourCoefficient = 0;
                 }
             }
             else
             {
-                player.Spaceship.Health -= damage;
+                spaceship.Health -= damage;
             }
+
+            return spaceship.Armour.ArmourCoefficient;
         }
 
         public override string ToString()

@@ -135,7 +135,7 @@ namespace SpaceshipBattle.Core
             var dealDamage = playerShooting.Spaceship.Weapon.DealDamage(playerShooting.Spaceship.Weapon.Bullet.PositionY, playerShot.Spaceship.PositionY);
 
             //Take the damage from the ship
-            playerShooting.Spaceship.TakeDamageToPlayer(playerShot, dealDamage);
+            playerShooting.Spaceship.TakeDamageToPlayer(playerShot.Spaceship, dealDamage);
 
             //There is a winner
             if (playerShot.Spaceship.Health <= 0)
