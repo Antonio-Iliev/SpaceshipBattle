@@ -30,7 +30,7 @@ namespace SpaceshipBattle.DataBase
                             case "engine":
                                 return SelectElementsByPrice(this.dataBase.DrossMashupEngines, playerAvailableМoney);
                             default:
-                                return null;
+                                throw new ArgumentNullException("The element is not selected!");
                         }
                     case "Futuristic Spaceship":
                         switch (element)
@@ -42,10 +42,10 @@ namespace SpaceshipBattle.DataBase
                             case "engine":
                                 return SelectElementsByPrice(this.dataBase.FuturisticEngines, playerAvailableМoney);
                             default:
-                                return null;
+                                throw new ArgumentNullException("The element is not selected!");
                         }
                     default:
-                        return null;
+                        throw new ArgumentNullException("The ship is not selected!");
                 }
             }
             else
