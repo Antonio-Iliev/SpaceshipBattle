@@ -13,10 +13,10 @@ namespace SpaceshipBattle.Tests.WeaponTests.CriticalStrikeWeaponTests
         {
             //Arrange
             var engine = new CriticalStrikeWeapon("AK47", 2000, 20, 8, 4, 200, 30);
-            
+
             //Assert
             Assert.IsNotNull(engine);
-        }        
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -24,7 +24,15 @@ namespace SpaceshipBattle.Tests.WeaponTests.CriticalStrikeWeaponTests
         public void ThrowError_WhenWeightIsOutOfRange(int value)
         {
             //Arrange
-            var weapon = new CriticalStrikeWeapon("AK47", 1300, value,22 , 800,22, 100);
+            var weapon = new CriticalStrikeWeapon("AK47", 1300, value, 22, 800, 22, 100);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowError_WhenNullValueIsPassed()
+        {
+            //Arrange
+            var weapon = new CriticalStrikeWeapon(null, 1300, 34, 22, 800, 22, 100);
         }
 
         [TestMethod]

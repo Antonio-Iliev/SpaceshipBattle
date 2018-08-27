@@ -26,6 +26,13 @@ namespace SpaceshipBattle.Tests.WeaponTests.AreaOfEffectWeaponTests
             //Arrange
             var weapon = new AreaOfEffectWeapon("AK47", 1300, value, 22, 800, 22, 100);
         }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowError_WhenNullValueIsPassed()
+        {
+            //Arrange
+            var weapon = new AreaOfEffectWeapon(null, 1300, 33, 22, 800, 22, 100);
+        }
 
         [TestMethod]
         public void ReturnProperMessage_WhenToStringIsCalled()
