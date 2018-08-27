@@ -7,7 +7,14 @@ namespace SpaceshipBattle.Core
 {
     public class DrawShip : IDrawShip
     {
-         
+        private readonly ISpaceShipDesign spaceShipDesign;
+
+        public DrawShip(ISpaceShipDesign spaceShipDesign)
+        {
+            this.spaceShipDesign = spaceShipDesign;
+        }
+
+        // Draw left player 
         public string DrawShipPlayerOne(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
@@ -15,10 +22,10 @@ namespace SpaceshipBattle.Core
             switch (player.Spaceship.Model)
             {
                 case "Dross-Mashup Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.DrossLeft);
+                    shipDesign.AddRange(spaceShipDesign.DrossLeft);
                     break;
                 case "Futuristic Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.FuturisticLeft);
+                    shipDesign.AddRange(spaceShipDesign.FuturisticLeft);
                     break;
             }
 
@@ -32,6 +39,7 @@ namespace SpaceshipBattle.Core
             return $"Player One use {player.Spaceship.Model}";
         }
 
+        // Draw right player
         public string DrawShipPlayerTwo(IPlayer player)
         {
             List<string> shipDesign = new List<string>();
@@ -39,10 +47,10 @@ namespace SpaceshipBattle.Core
             switch (player.Spaceship.Model)
             {
                 case "Dross-Mashup Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.DrossaRight);
+                    shipDesign.AddRange(spaceShipDesign.DrossaRight);
                     break;
                 case "Futuristic Spaceship":
-                    shipDesign.AddRange(SpaceShipDesign.FuturisticRight);
+                    shipDesign.AddRange(spaceShipDesign.FuturisticRight);
                     break;
             }
 

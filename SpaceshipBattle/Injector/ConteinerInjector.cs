@@ -12,6 +12,7 @@ using SpaceshipBattle.Core.Services;
 using SpaceshipBattle.Core.Services.ArmorServices;
 using SpaceshipBattle.Core.Services.EngineServices;
 using SpaceshipBattle.Core.Services.SpaceShipService;
+using SpaceshipBattle.Entities.Spaceships;
 
 namespace SpaceshipBattle.Injector
 {
@@ -26,6 +27,7 @@ namespace SpaceshipBattle.Injector
             base.Load(builder);
         }
 
+        //Register Factory Components
         private void RegisterFactoryComponents(ContainerBuilder builder)
         {
             builder.RegisterType<EngineFactory>().As<IEngineFactory>();
@@ -57,6 +59,7 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();
         }
 
+        // Register Core Components
         private void RegisterCoreComponents(ContainerBuilder builder)
         {
             builder.RegisterType<Engine>().As<IEngine>();
@@ -65,10 +68,12 @@ namespace SpaceshipBattle.Injector
             builder.RegisterType<GameController>().As<IGameController>();
             builder.RegisterType<SelectingSpaceship>().As<ISelectingSpaceship>();
             builder.RegisterType<FilterComponents>().As<IFilterComponents>();
-            builder.RegisterType<DrawShip>().As<IDrawShip>();
+            builder.RegisterType<DrawShip>().As<IDrawShip>().SingleInstance();
+            builder.RegisterType<SpaceShipDesign>().As<ISpaceShipDesign>();
 
         }
 
+        // Register Providers Components
         private void RegisterProvidersComponents(ContainerBuilder builder)
         {
             builder.RegisterType<ConsoleWriter>().As<IWriter>();
