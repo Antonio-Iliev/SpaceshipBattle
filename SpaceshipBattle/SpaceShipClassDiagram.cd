@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SpaceshipBattle.DataBase.FilterComponents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAQAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\RegistrationEntities\FilterComponents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.DataBase.LocalDataBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACESABAAgKgoQKQCAAAAAAAAAQAAkAAAABAAAAAAACM=</HashCode>
+      <FileName>DataBase\LocalDataBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Menu" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIABAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Core\Menus\Menu.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.ConsoleApplicationInterface" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAAAAAAAAAAAAACAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Providers\ConsoleApplicationInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.DrawShip" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAA=</HashCode>
+      <FileName>Core\DrawShip.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Engine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACAAAAAQAAAAAABAAAAAAAABABAAAAEAAAA=</HashCode>
+      <FileName>Core\Engine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.GameController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAgAQAAAAAAAAJAAgAAAAWAAAAwQAhqABQCCA=</HashCode>
+      <FileName>Core\GameController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.PlayerCreator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAEAAACAAAAAAAAAAABAAAAAAAAAgAAAABAAAgA=</HashCode>
+      <FileName>Core\PlayerCreator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Registration.SelectingSpaceship" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAEAAACIAEgCAgAAIAAAgAAAQAACACRAgA=</HashCode>
+      <FileName>Core\RegistrationEntities\SelectingSpaceship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Common.Weapons" Collapsed="true">
+    <Position X="35" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAACGAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Common\Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.ArmourFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Factories\ArmourFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.BulletFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Factories\BulletFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.EngineFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Factories\EngineFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.PlayerFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Factories\PlayerFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.SpaceshipFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Factories\SpaceshipFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Factories.WeaponFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Factories\WeaponFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Providers.ConsoleReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Providers\ConsoleReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Providers.ConsoleWriter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAIAAAAAAgAQYAAAAAAAAAABEAAAAIAggAAEAIAA=</HashCode>
+      <FileName>Core\Providers\ConsoleWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.RegistrationEntities.Registration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAKAEAAACAAEAAABAAIACAIAAAQAAAAARAAA=</HashCode>
+      <FileName>Core\RegistrationEntities\Registration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateAerogelCoverService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAABACAAAAAAAAAAAAAgIAIAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateAerogelCoverService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateAntiMatterFieldService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAAAACAAAAAAACCAAAAgIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateAntiMatterFieldService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateBrickCageService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAABACAAAAAAAAAAAAAgIAIAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateBrickCageService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateBubbleFieldService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAAAACAAAAAAACCAAAAgIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateBubbleFieldService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateFullerenesArmourService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAABACAAAAAAAAAAAAAgIAIAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateFullerenesArmourService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreatePlasmaFieldService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAAAACAAAAAAACCAAAAgIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreatePlasmaFieldService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateRecycledPaperService" Collapsed="true">
+    <Position X="33.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAABACAAAAAAAAAAAAAgIAIAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateRecycledPaperService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.ArmorServices.CreateSwitzArmourService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAACAAAAAAAABACAAAAAAAAAAAAAgIAIAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\CreateSwitzArmourService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateBugattiW16Service" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAIABAAAAAkQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateBugattiW16Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateFerrariV12GTService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAIABAAAAAkQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateFerrariV12GTService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateH2OMotorService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAAAAAAAAAFQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateH2OMotorService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateIonX3Service" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAAAAAAAAAFQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateIonX3Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateTrabantMotorService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAIABAAAAAkQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateTrabantMotorService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateVasimirPlasmaService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAAAAAAAAAFQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateVasimirPlasmaService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.EngineServices.CreateVW19TDIService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAIABAAAAAkQAAAgAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\CreateVW19TDIService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.SpaceShipService.CreateDrossMashupService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\SpaceShipService\CreateDrossMashupService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.SpaceShipService.CreateFuturisticSpaceshipService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\SpaceShipService\CreateFuturisticSpaceshipService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.CreateAK47Service" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJBAAAAAAAAAAAABAAAAAAAAEABQAgAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\WeaponServices\CreateAK47Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.CreateCannonService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJBAAAAAAAAAAAAAAAAAAAAAEABQAgIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\WeaponServices\CreateCannonService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.CreateLaserService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJBAAAAAAAAAAAABAAAAAAAAEABQAgAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\WeaponServices\CreateLaserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Core.Services.CreatePlasmaWeaponService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJBAAAAAAAAAAAAAAAAAAAAAEABQAgIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\WeaponServices\CreatePlasmaWeaponService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Armour.ArmourAbstract" Collapsed="true">
+    <Position X="11" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAEAIAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Armours\ArmourAbstract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Armours.ArmourComponents" Collapsed="true">
+    <Position X="29.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Armours\ArmourComponents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Armours.DenseArmour" Collapsed="true">
+    <Position X="12.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAFAIAAAAAAAAAAAgAAAAIAAAAAAAA=</HashCode>
+      <FileName>Entities\Armours\DenseArmour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Armours.ProtectiveFields" Collapsed="true">
+    <Position X="10" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAIAAIIAAACCAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Armours\ProtectiveFields.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Engines.AutomobileEngine" Collapsed="true">
+    <Position X="5.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEAAIhDAAiACwAAEADAAAAQAAAAAA=</HashCode>
+      <FileName>Entities\Engines\AutomobileEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Engines.HighTechEngine" Collapsed="true">
+    <Position X="7.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAEAAAAAACgAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Engines\HighTechEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Engines.SpaceshipEngine" Collapsed="true">
+    <Position X="6.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAgAAEQAEABEAAAQAAAAAA=</HashCode>
+      <FileName>Entities\Engines\SpaceshipEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Spaceships.DrossMashupSpaceship" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAABAAgIAAAAAAAAA=</HashCode>
+      <FileName>Entities\Spaceships\DrossMashupSpaceship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Spaceships.FuturisticSpaceship" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Spaceships\FuturisticSpaceship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Spaceships.SpaceShipDesign" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAGgAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Spaceships\SpaceShipDesign.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Spaceship" Collapsed="true">
+    <Position X="1.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQBCAABkAAgAAABBBCAAABgIBAgAAAAIAAA=</HashCode>
+      <FileName>Entities\Spaceships\Spaceship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Item" Collapsed="true">
+    <Position X="6.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAUBAAAAEAAAAEAAABCAAEAAgAAgAAAAMAAA=</HashCode>
+      <FileName>Entities\Item.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Weapons.AreaOfEffectWeapon" Collapsed="true">
+    <Position X="1" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACSAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Weapons\AreaOfEffectWeapon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Weapons.CriticalStrikeWeapon" Collapsed="true">
+    <Position X="3.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Weapons\CriticalStrikeWeapon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Weapons.WeaponAbstract" Collapsed="true">
+    <Position X="2" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAASAAAAAAAAAEAAAAAAFAAAAAAAhAAAAAAAQAAA=</HashCode>
+      <FileName>Entities\Weapons\WeaponAbstract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SpaceshipBattle.Entities.Players.Player" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAABAAAIAA=</HashCode>
+      <FileName>Entities\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceshipBattle.Extension.MyExtension" Collapsed="true">
+    <Position X="29.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extension\MyExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.Injector.ContainerInjector" Collapsed="true">
+    <Position X="40.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Injector\ConteinerInjector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceshipBattle.StartUp" Collapsed="true">
+    <Position X="31.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>StartUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="SpaceshipBattle.Entities.Bullet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Bullet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="SpaceshipsBattle.Contracts.IArmour" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Armour\IArmour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipsBattle.Contracts.IEngine" Collapsed="true">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAABEAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Engines\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipsBattle.Contracts.IBullet" Collapsed="true">
+    <Position X="18" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IBullet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipsBattle.Contracts.IItem" Collapsed="true">
+    <Position X="13.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipsBattle.Contracts.IPlayer" Collapsed="true">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipsBattle.Contracts.IWeapon" Collapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAFAAAAAAABAAAAAAAQAAA=</HashCode>
+      <FileName>Contracts\Entities\IWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.IDenseArmour" Collapsed="true">
+    <Position X="22.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Armour\IDenseArmour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.IProtectiveFields" Collapsed="true">
+    <Position X="22.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Armour\IProtectiveFields.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.Engines.IAutomobileEngine" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAACAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Engines\IAutomobileEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.Engines.IHighTechEngine" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Engines\IHighTechEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.DataBase.IDataBase" Collapsed="true">
+    <Position X="29.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAIAAAAQAAAAAAAAAAQAAEAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Contracts\DataBase\IDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.DataBase.IFilterComponents" Collapsed="true">
+    <Position X="38.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\IFilterComponents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IArmour" Collapsed="true">
+    <Position X="22.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Armour\IArmour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.ISpaceshipEngine" Collapsed="true">
+    <Position X="25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAABEAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Engines\ISpaceshipEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IWeapon" Collapsed="true">
+    <Position X="27.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAFAAAAAAABAAAAAAAQAAA=</HashCode>
+      <FileName>Contracts\Entities\Weapon\IWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IBullet" Collapsed="true">
+    <Position X="36.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IBullet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IItem" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IPlayer" Collapsed="true">
+    <Position X="31.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.ISpaceShip" Collapsed="true">
+    <Position X="40.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQACAABgAAgAAABBACAAABgIBAgAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\ISpaceship.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.IGameController" Collapsed="true">
+    <Position X="40.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IGameController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.Weapon.IAreaOfEffectWeapon" Collapsed="true">
+    <Position X="31.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Weapon\IAreaOfEffectWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Entities.Weapon.ICriticalStrikeWeapon" Collapsed="true">
+    <Position X="40.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Entities\Weapon\ICriticalStrikeWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.IArmourFactory" Collapsed="true">
+    <Position X="35" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Factories\IArmourFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.IBulletFactory" Collapsed="true">
+    <Position X="38.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Factories\IBulletFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.IEngineFactory" Collapsed="true">
+    <Position X="35" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Contracts\Factories\IEngineFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.IPlayerFactory" Collapsed="true">
+    <Position X="35" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Factories\IPlayerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.ISpaceshipFactory" Collapsed="true">
+    <Position X="31.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Factories\ISpaceshipFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Factories.IWeaponFactory" Collapsed="true">
+    <Position X="35" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Factories\IWeaponFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.IMenu" Collapsed="true">
+    <Position X="29.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Menus\IMenu.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.IPlayerCreator" Collapsed="true">
+    <Position X="33.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\IPlayerCreator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.IRegistration" Collapsed="true">
+    <Position X="36.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\IRegistration.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.IApplicationInterface" Collapsed="true">
+    <Position X="29.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAAAAAAAAAAAAACAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IApplicationInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.IDrawShip" Collapsed="true">
+    <Position X="31.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Core\IDrawShip.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Providers.IConsoleReader" Collapsed="true">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\ConsoleProviders\IConsoleReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Providers.IEngine" Collapsed="true">
+    <Position X="33.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Providers.IReader" Collapsed="true">
+    <Position X="0.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\IReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Providers.IWriter" Collapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAIAAAAAAgAQYAAAAAAAAAABEAAAAIAggAAEAIAA=</HashCode>
+      <FileName>Contracts\Providers\IWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Contracts.Providers.ConsoleProviders.IConsoleWriter" Collapsed="true">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Providers\ConsoleProviders\IConsoleWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.Registration.ISelectingSpaceship" Collapsed="true">
+    <Position X="38.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Contracts\ISelectingSpaceship.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.Services.ArmorServices.IArmorService" Collapsed="true">
+    <Position X="33.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\ArmorServices\IArmorService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.Services.EngineServices.IEngineService" Collapsed="true">
+    <Position X="36.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Core\Services\EngineServices\IEngineService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.Services.SpaceShipService.ISpaceShipService" Collapsed="true">
+    <Position X="33.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\SpaceShipService\ISpaceShipService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Core.Services.IWeaponService" Collapsed="true">
+    <Position X="36.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Services\WeaponServices\IWeaponService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpaceshipBattle.Entities.Spaceships.ISpaceShipDesign" Collapsed="true">
+    <Position X="29.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAGgAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Spaceships\ISpaceShipDesign.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SpaceshipBattle.Core.Common.Colors" Collapsed="true">
+    <Position X="31.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAgAAQBAAAAAABAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Core\Common\Colors.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpaceshipBattle.Entities.Armours.Common.ArmourType" Collapsed="true">
+    <Position X="29.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAEAAAAAAAAABAAAAAAAAAAAMEAAAACAEAAA=</HashCode>
+      <FileName>Entities\Common\ArmourType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpaceshipBattle.Entities.Engines.FuelType" Collapsed="true">
+    <Position X="33.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEAAAAAAAAAAAAAAAgAAAAAABEAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Common\FuelType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
