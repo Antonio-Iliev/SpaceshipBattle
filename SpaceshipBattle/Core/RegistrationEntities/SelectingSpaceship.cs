@@ -122,7 +122,7 @@ namespace SpaceshipBattle.Core.Registration
                     if (keyInfo.Key == ConsoleKey.UpArrow)
                     {
                         if (focusPosition > 0)
-                        {
+                        { 
                             focusPosition--;
                         }
                     }
