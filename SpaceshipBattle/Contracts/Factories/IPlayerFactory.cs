@@ -7,6 +7,6 @@ namespace SpaceshipBattle.Contracts.Factories
 {
     public interface IPlayerFactory
     {
-        IPlayer CreatePlayer(string name, ISpaceship spaceship);
+        IPlayer CreatePlayer(string name, ISpaceShip spaceship);
     }
 }

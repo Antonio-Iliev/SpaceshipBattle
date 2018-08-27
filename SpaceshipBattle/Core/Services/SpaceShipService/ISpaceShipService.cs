@@ -1,11 +1,8 @@
 ﻿using SpaceshipBattle.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SpaceshipBattle.Contracts.Factories
+namespace SpaceshipBattle.Core.Services.SpaceShipService
 {
-   public interface ISpaceshipFactory 
+    public interface ISpaceShipService
     {
         ISpaceShip CreateSpaceship(string model, ISpaceshipEngine engine, IArmour armour, IWeapon weapon);
     }

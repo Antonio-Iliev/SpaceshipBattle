@@ -12,7 +12,7 @@ namespace SpaceshipBattle.Entities.Players
         
         private string name;
 
-        public Player(string name, ISpaceship spaceship)
+        public Player(string name, ISpaceShip spaceship)
         {
             this.Name = name;
             this.Spaceship = spaceship;
@@ -35,6 +35,6 @@ namespace SpaceshipBattle.Entities.Players
         }
         public int Money { get; set; } = 10000;
 
-        public ISpaceship Spaceship { get; set; }
+        public ISpaceShip Spaceship { get; set; }
     }
 }
