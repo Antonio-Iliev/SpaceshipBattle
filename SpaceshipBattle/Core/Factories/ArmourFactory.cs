@@ -1,6 +1,4 @@
 ﻿using SpaceshipBattle.Contracts.Factories;
-using SpaceshipBattle.Entities.Armours;
-using SpaceshipBattle.Entities.Armours.Common;
 using SpaceshipBattle.Contracts;
 using System;
 using Autofac;

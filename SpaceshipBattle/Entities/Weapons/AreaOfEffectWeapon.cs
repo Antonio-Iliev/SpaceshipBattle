@@ -21,23 +21,30 @@ namespace SpaceshipBattle.Entities.Weapons
 
         public override int DealDamage(int shootingPlayerBulletPosition, int shotPlayerPosition)
         {
-            //Assign min/max positions of the ship
-            var topSpaceShipPositoon = shotPlayerPosition - 2;
-            var bottomSpaceShipPosition = shotPlayerPosition + 2;
-
-            if (shootingPlayerBulletPosition >= topSpaceShipPositoon
-               && shootingPlayerBulletPosition <= bottomSpaceShipPosition)
+            if (shootingPlayerBulletPosition <= 0 || shotPlayerPosition <= 0)
             {
-                return damage = Power;
-            }
-            else if (shootingPlayerBulletPosition >= topSpaceShipPositoon - this.SplashArea
-                && shootingPlayerBulletPosition <= bottomSpaceShipPosition + this.SplashArea)
-            {
-                return damage = Power / 2;
+                throw new ArgumentOutOfRangeException("Invalid player or bullet position");
             }
             else
             {
-                return 0;
+                //Assign min/max positions of the ship
+                var topSpaceShipPositoon = shotPlayerPosition - 2;
+                var bottomSpaceShipPosition = shotPlayerPosition + 2;
+
+                if (shootingPlayerBulletPosition >= topSpaceShipPositoon
+                   && shootingPlayerBulletPosition <= bottomSpaceShipPosition)
+                {
+                    return damage = Power;
+                }
+                else if (shootingPlayerBulletPosition >= topSpaceShipPositoon - this.SplashArea
+                    && shootingPlayerBulletPosition <= bottomSpaceShipPosition + this.SplashArea)
+                {
+                    return damage = Power / 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
 
         }

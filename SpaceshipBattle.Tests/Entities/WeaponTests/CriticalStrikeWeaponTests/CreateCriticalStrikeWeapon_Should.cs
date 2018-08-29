@@ -8,46 +8,51 @@ namespace SpaceshipBattle.Tests.WeaponTests.CriticalStrikeWeaponTests
     [TestClass]
     public class CreateCriticalStrikeWeapon_Should
     {
+
         [TestMethod]
-        public void CreateCriticalStrikeWeapon_WhenMethodIsCalled()
+        public void DealNormalDamage_WhenDirectHit()
         {
             //Arrange
-            var engine = new CriticalStrikeWeapon("AK47", 2000, 20, 8, 4, 200, 30);
+            var engine = new CriticalStrikeWeapon("Laser", 2000, 22, 8, 4, 200, 0);
 
             //Assert
-            Assert.IsNotNull(engine);
+            Assert.AreEqual(engine.DealDamage(1, 1), 8);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [DataRow(1300)]
-        public void ThrowError_WhenWeightIsOutOfRange(int value)
+        [DataRow(1,5)]        
+        public void NotDealDamage_WhenNotHit(int value1, int value2)
         {
             //Arrange
-            var weapon = new CriticalStrikeWeapon("AK47", 1300, value, 22, 800, 22, 100);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowError_WhenNullValueIsPassed()
-        {
-            //Arrange
-            var weapon = new CriticalStrikeWeapon(null, 1300, 34, 22, 800, 22, 100);
-        }
-
-        [TestMethod]
-        public void ReturnProperMessage_WhenToStringIsCalled()
-        {
-            //Arrange
-            var engine = new CriticalStrikeWeapon("AK47", 1300, 55, 22, 800, 22, 100);
-
-            //Act
-            var result = engine.ToString();
+            var engine = new CriticalStrikeWeapon("Laser", 2000, 22, 8, 4, 200, 0);
 
             //Assert
-            StringAssert.Contains(result, "Model: AK47"
-                + Environment.NewLine + "Price: 1300$"
-                + Environment.NewLine + "Weight: 55kg");
+            Assert.AreEqual(engine.DealDamage(value1, value2), 0);
+        }
+
+        [TestMethod]
+        [DataRow(1, 1)]
+        public void DealCriticalDamage_WhenCriticalHit(int value1, int value2)
+        {
+            //Arrange
+            var engine = new CriticalStrikeWeapon("Laser", 2000, 22, 8, 4, 200, 100);
+
+            //Assert
+            Assert.AreEqual(engine.DealDamage(value1, value2), 12);
+        }
+
+        [TestMethod]
+        [DataRow(0, 1)]
+        [DataRow(1,0)]
+        [DataRow(1, -1)]
+        public void ThrowError_WhenParametersInvalid(int value1, int value2)
+        {
+            //Arrange
+            var engine = new CriticalStrikeWeapon("Cannon", 2000, 22, 8, 4, 200, 2);
+
+            //Assert
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.DealDamage(value1, value2));
+
         }
     }
 }
